@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./index.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,300;0,400;0,700;1,300&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Dosis:wght@400&display=swap"
+    />
+  </head>
+  <body>
+    <div class="home">
+      <section class="menus-parent">
+        <header class="menus">
+          <div class="logo-e-ttulo-wrapper">
+            <div class="logo-e-ttulo">
+              <div class="linkmargin"></div>
+              <img
+                class="gohelp-icon"
+                loading="lazy"
+                alt=""
+                src="./public/gohelp@2x.png"
+              />
+
+              <div class="go-help-wrapper">
+                <h3 class="go-help">GO HELP</h3>
+              </div>
+            </div>
+          </div>
+          <nav class="home-parent">
+            <div class="home1" id="homeContainer">
+              <div class="home2">Home</div>
+            </div>
+            <nav class="sobre-ns-parent">
+              <div class="sobre-ns" id="sobreNsContainer">
+                <div class="sobre">Sobre</div>
+              </div>
+              <div class="causas" id="causasContainer">
+                <div class="causas1">Causas</div>
+              </div>
+              <div class="doaes" id="doaesContainer">
+                <div class="doaes1">Doações</div>
+              </div>
+              <div class="link" id="linkContainer">
+                <div class="galeria">Galeria</div>
+              </div>
+              <div class="link1" id="linkContainer1">
+                <div class="eventos">Eventos</div>
+              </div>
+              <div class="contactos" id="contactosContainer">
+                <div class="contactos1">Contactos</div>
+              </div>
+            </nav>
+            <div class="login-wrapper">
+              <div class="login">Login</div>
+            </div>
+          </nav>
+        </header>
+        <div class="divhero-wrap-parent">
+          <div class="divhero-wrap">
+            <div class="divcontainer">
+              <div class="divrow" data-scroll-to="divrowContainer">
+                <div class="divcol-md-7">
+                  <div class="heading-1"></div>
+                  <div class="p"></div>
+                </div>
+                <h1 class="no-fazer-nada">
+                  Não fazer nada não é uma opção na nossa vida!
+                </h1>
+              </div>
+            </div>
+          </div>
+          <div class="divcontainer1">
+            <div class="divrow1">
+              <div class="divcol-md-5">
+                <div class="divblock-18">
+                  <div class="divtext">
+                    <div class="span">
+                      <h3 class="servimos-cerca-de">Servimos cerca de</h3>
+                    </div>
+                    <div class="strong-1432805">1,432,805</div>
+                    <div class="span1">
+                      <h3 class="pessoas-em-190">Pessoas em 190 países</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="divcol-md">
+                <div class="divblock-181">
+                  <div class="doar-dinheiro-parent">
+                    <h2 class="doar-dinheiro">Doar Dinheiro</h2>
+                    <div class="ajude-quem-precise">Ajude quem precise!</div>
+                  </div>
+                  <button class="link2">
+                    <div class="doar-agora">Doar agora</div>
+                  </button>
+                </div>
+              </div>
+              <div class="divcol-md1">
+                <div class="divblock-182">
+                  <div class="ser-voluntrio-parent">
+                    <h2 class="ser-voluntrio">Ser Voluntário</h2>
+                    <div class="junta-te-a-ns">Junta-te a nós!</div>
+                  </div>
+                  <button class="link3">
+                    <div class="saber-mais">Saber mais</div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="divcontainer2">
+          <div class="divrow2">
+            <div class="divcol-md-4">
+              <div class="divmedia">
+                <div class="diviconmargin">
+                  <div class="divicon">
+                    <div class="spanflaticon-donation-1">
+                      <div class="before">
+                        <img
+                          class="icon"
+                          loading="lazy"
+                          alt=""
+                          src="./public/icon.svg"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="divmedia-body">
+                  <div class="heading-3">
+                    <div class="fazer-uma-doao">Fazer uma Doação</div>
+                  </div>
+                  <div class="p1">
+                    <div class="a-maior-recompensa">
+                      "A maior recompensa da doação é o calor no coração e a
+                      gratidão nos olhos de quem recebe."
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="divcol-md-41">
+              <div class="divmedia1">
+                <div class="diviconmargin1">
+                  <div class="divicon1">
+                    <div class="spanflaticon-charity">
+                      <div class="before1">
+                        <img class="icon1" alt="" src="./public/icon-1.svg" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="divmedia-body1">
+                  <div class="heading-31">
+                    <div class="tornar-se-voluntrio">Tornar-se Voluntário</div>
+                  </div>
+                  <div class="p2">
+                    <div class="o-voluntariado">
+                      "O voluntariado é, um ato de doação de si mesmo que
+                      ilumina tanto quem recebe quanto quem oferece sua ajuda
+                      desinteressada."
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="divcol-md-42">
+              <div class="divmedia2">
+                <div class="diviconmargin2">
+                  <div class="divicon2">
+                    <div class="spanflaticon-donation">
+                      <div class="before2">
+                        <img class="icon2" alt="" src="./public/icon-2.svg" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="divmedia-body2">
+                  <div class="heading-32">
+                    <div class="patrocnios">Patrocínios</div>
+                  </div>
+                  <div class="p3">
+                    <div class="o-patrocnio">
+                      "O patrocínio é mais do que um apoio financeiro, é uma
+                      parceria que impulsiona sonhos, cria oportunidades e
+                      transforma visões em realidade."
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section-wrapper">
+        <div class="section1">
+          <div class="divrow3">
+            <div class="divcol-md-51">
+              <div class="heading-2">
+                <h1 class="as-nossas-causas">As nossas causas</h1>
+              </div>
+              <div class="p4">
+                <div class="quando-somos-bons">
+                  “Quando somos bons para os outros, somos ainda melhores para
+                  nós”
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="divrow4">
+            <div class="divcol-md-12">
+              <div class="divowl-stage-outer">
+                <div class="divowl-item">
+                  <div class="divcause-entry">
+                    <img
+                      class="link-icon"
+                      loading="lazy"
+                      alt=""
+                      src="./public/link@2x.png"
+                    />
+
+                    <div class="divtext1">
+                      <div class="even-the-all-powerful">
+                        Even the all-powerful Pointing has no control
+                      </div>
+                      <div class="divprogress"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="divowl-item1">
+                  <div class="divcause-entry-parent">
+                    <div class="divcause-entry1">
+                      <img
+                        class="link-icon1"
+                        alt=""
+                        src="./public/link-1@2x.png"
+                      />
+
+                      <div class="divtext2">
+                        <h2 class="guerra-ucrnia">Guerra Ucrânia</h2>
+                        <div class="angariao-de-dinheiro-wrapper">
+                          <div class="angariao-de-dinheiro">
+                            Angariação de dinheiro
+                          </div>
+                        </div>
+                        <div class="last-donation-1w-ago-parent">
+                          <i class="last-donation-1w">Last donation 1w ago</i>
+                          <div class="divprogress-parent">
+                            <div class="divprogress1">
+                              <div class="progressbar"></div>
+                            </div>
+                            <div class="raised-of-30000">
+                              $12,000 raised of $30,000
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="divcause-entry2">
+                      <img
+                        class="link-icon2"
+                        alt=""
+                        src="./public/link-2@2x.png"
+                      />
+
+                      <div class="heading-3-link-clean-water-parent">
+                        <h2 class="heading-33">Cuidados de Saúde</h2>
+                        <div class="garantir-o-acesso-a-cuidados-d-parent">
+                          <div class="garantir-o-acesso">
+                            Garantir o acesso a cuidados de saúde básicos e
+                            essenciais, apoiando clínicas médicas, hospitais,
+                            campanhas de vacinação.
+                          </div>
+                          <div class="ltima-doao-1-semana-atrs-parent">
+                            <i class="ltima-doao-1"
+                              >Última doação 1 semana atrás</i
+                            >
+                            <div class="divprogress2">
+                              <div class="progressbar1"></div>
+                            </div>
+                          </div>
+                          <div class="angariados-de-30000-wrapper">
+                            <div class="angariados-de-30000">
+                              22,000€ angariados de 30,000€
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="divcause-entry-group">
+                    <div class="divcause-entry3">
+                      <img
+                        class="link-icon3"
+                        alt=""
+                        src="./public/link-3@2x.png"
+                      />
+
+                      <div class="divtext3">
+                        <h2 class="heading-34">
+                          Apoio a Pessoas em Situação de Rua
+                        </h2>
+                        <div class="oferecer-abrigo-temporrio">
+                          Oferecer abrigo temporário, alimentos, cuidados
+                          médicos, assistência psicossocial, capacitação
+                          profissional.
+                        </div>
+                        <div class="input-provider">
+                          <i class="ltima-doao3-semanas"
+                            >Última doação3 semanas atrás</i
+                          >
+                          <div class="divprogress3">
+                            <div class="progressbar2"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="divcause-entry4">
+                      <img
+                        class="link-icon4"
+                        alt=""
+                        src="./public/link-4@2x.png"
+                      />
+
+                      <div class="divtext4">
+                        <h2 class="heading-35">Combate à Discriminação</h2>
+                        <div class="apoiar-iniciativas-que-combata-parent">
+                          <div class="apoiar-iniciativas-que">
+                            Apoiar iniciativas que combatam o racismo, a
+                            xenofobia, a homofobia, a intolerância religiosa e
+                            promovam a igualdade e a justiça social.
+                          </div>
+                          <div class="ltima-doao-1-semana-atrs-group">
+                            <i class="ltima-doao-11"
+                              >Última doação 1 semana atrás</i
+                            >
+                            <div class="divprogress4">
+                              <div class="progressbar3"></div>
+                            </div>
+                          </div>
+                          <div class="value-holder">
+                            <div class="angariados-de-300001">
+                              24,000€ angariados de 30,000€
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="divowl-item2">
+                  <div class="divcause-entry5">
+                    <img
+                      class="link-icon5"
+                      alt=""
+                      src="./public/link-5@2x.png"
+                    />
+
+                    <div class="divtext5">
+                      <h2 class="heading-36">Cuidados de Saúde</h2>
+                      <div class="for-each-loop">
+                        <div class="garantir-o-acesso1">
+                          Garantir o acesso a cuidados de saúde básicos e
+                          essenciais, apoiando clínicas médicas, hospitais,
+                          campanhas de vacinação.
+                        </div>
+                        <div class="variable-assigner">
+                          <i class="ltima-doao-12"
+                            >Última doação 1 semana atrás</i
+                          >
+                          <div class="divprogress5">
+                            <div class="progressbar4"></div>
+                          </div>
+                        </div>
+                        <div class="angariados-de-30000-container">
+                          <div class="angariados-de-300002">
+                            22,000€ angariados de 30,000€
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="logical-operator">
+                    <div class="divcause-entry6">
+                      <img
+                        class="link-icon6"
+                        alt=""
+                        src="./public/link-6@2x.png"
+                      />
+
+                      <div class="heading-3-link-clean-water-group">
+                        <h2 class="heading-37">
+                          Apoio a Pessoas em Situação de Rua
+                        </h2>
+                        <div class="oferecer-abrigo-temporrio1">
+                          Oferecer abrigo temporário, alimentos, cuidados
+                          médicos, assistência psicossocial, capacitação
+                          profissional.
+                        </div>
+                        <div class="ltima-doao3-semanas-atrs-parent">
+                          <i class="ltima-doao3-semanas1"
+                            >Última doação3 semanas atrás</i
+                          >
+                          <div class="divprogress6">
+                            <div class="progressbar5"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="divcause-entry7">
+                      <img
+                        class="link-icon7"
+                        alt=""
+                        src="./public/link-7@2x.png"
+                      />
+
+                      <div class="divtext6">
+                        <h2 class="heading-38">Combate à Discriminação</h2>
+                        <div class="apoiar-iniciativas-que-combata-group">
+                          <div class="apoiar-iniciativas-que1">
+                            Apoiar iniciativas que combatam o racismo, a
+                            xenofobia, a homofobia, a intolerância religiosa e
+                            promovam a igualdade e a justiça social.
+                          </div>
+                          <div class="ltima-doao-1-semana-atrs-container">
+                            <i class="ltima-doao-13"
+                              >Última doação 1 semana atrás</i
+                            >
+                            <div class="divprogress7">
+                              <div class="progressbar6"></div>
+                            </div>
+                          </div>
+                          <div class="angariados-de-30000-frame">
+                            <div class="angariados-de-300003">
+                              24,000€ angariados de 30,000€
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="divowl-item3">
+                  <div class="divcause-entry8">
+                    <div class="divcause-entry9">
+                      <img
+                        class="link-icon8"
+                        alt=""
+                        src="./public/link-8@2x.png"
+                      />
+
+                      <div class="divtext7">
+                        <div class="split-function">
+                          <h2 class="heading-39">Combate à Discriminação</h2>
+                        </div>
+                        <div class="mapping-operator">
+                          <div class="transform-operator">
+                            <div class="apoiar-iniciativas-que2">
+                              Apoiar iniciativas que combatam o racismo, a
+                              xenofobia, a homofobia, a intolerância religiosa e
+                              promovam a igualdade e a justiça social.
+                            </div>
+                          </div>
+                          <div class="sorter-operator">
+                            <div class="search-operator">
+                              <i class="ltima-doao-14"
+                                >Última doação 1 semana atrás</i
+                              >
+                              <div class="divprogress8">
+                                <div class="progressbar7"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="angariados-de-300004">
+                            24,000€ angariados de 30,000€
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="divcause-entry-container">
+                    <div class="divcause-entry10">
+                      <img
+                        class="link-icon9"
+                        alt=""
+                        src="./public/link-9@2x.png"
+                      />
+
+                      <div class="heading-3-link-clean-water-container">
+                        <h2 class="heading-310">Cuidados de Saúde</h2>
+                        <div class="garantir-o-acesso-a-cuidados-d-group">
+                          <div class="garantir-o-acesso2">
+                            Garantir o acesso a cuidados de saúde básicos e
+                            essenciais, apoiando clínicas médicas, hospitais,
+                            campanhas de vacinação.
+                          </div>
+                          <div class="frame-div">
+                            <i class="ltima-doao-15"
+                              >Última doação 1 semana atrás</i
+                            >
+                            <div class="divprogress9">
+                              <div class="progressbar8"></div>
+                            </div>
+                          </div>
+                          <div class="angariados-de-30000-wrapper1">
+                            <div class="angariados-de-300005">
+                              22,000€ angariados de 30,000€
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="divcause-entry11">
+                      <img
+                        class="link-icon10"
+                        alt=""
+                        src="./public/link-10@2x.png"
+                      />
+
+                      <div class="divtext8">
+                        <h2 class="heading-311">
+                          Apoio a Pessoas em Situação de Rua
+                        </h2>
+                        <div class="oferecer-abrigo-temporrio2">
+                          Oferecer abrigo temporário, alimentos, cuidados
+                          médicos, assistência psicossocial, capacitação
+                          profissional.
+                        </div>
+                        <div class="ltima-doao3-semanas-atrs-group">
+                          <i class="ltima-doao3-semanas2"
+                            >Última doação3 semanas atrás</i
+                          >
+                          <div class="divprogress10">
+                            <div class="progressbar9"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="divcause-entry12">
+                      <img
+                        class="link-icon11"
+                        alt=""
+                        src="./public/link-11@2x.png"
+                      />
+
+                      <div class="divtext9">
+                        <h2 class="heading-312">Combate à Discriminação</h2>
+                        <div class="apoiar-iniciativas-que-combata-container">
+                          <div class="apoiar-iniciativas-que3">
+                            Apoiar iniciativas que combatam o racismo, a
+                            xenofobia, a homofobia, a intolerância religiosa e
+                            promovam a igualdade e a justiça social.
+                          </div>
+                          <div class="ltima-doao-1-semana-atrs-parent1">
+                            <i class="ltima-doao-16"
+                              >Última doação 1 semana atrás</i
+                            >
+                            <div class="divprogress11">
+                              <div class="progressbar10"></div>
+                            </div>
+                          </div>
+                          <div class="angariados-de-30000-wrapper2">
+                            <div class="angariados-de-300006">
+                              24,000€ angariados de 30,000€
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="divowl-item4">
+                  <div class="divcause-entry13">
+                    <img
+                      class="link-icon12"
+                      alt=""
+                      src="./public/link-12@2x.png"
+                    />
+
+                    <div class="divtext10">
+                      <div class="clean-water-for-the-urban-area-wrapper">
+                        <h2 class="clean-water-for-container">
+                          <p class="clean-water-for">
+                            Clean water for the urban
+                          </p>
+                          <p class="area">area</p>
+                        </h2>
+                      </div>
+                      <div class="even-the-all-powerful-container">
+                        <p class="even-the-all-powerful1">
+                          Even the all-powerful Pointing has no control
+                        </p>
+                        <p class="about-the-blind">
+                          about the blind texts it is an almost
+                        </p>
+                        <p class="unorthographic-life">unorthographic life</p>
+                      </div>
+                      <i class="last-donation-1w1">Last donation 1w ago</i>
+                      <div class="divprogress-wrapper">
+                        <div class="divprogress12">
+                          <div class="progressbar11"></div>
+                        </div>
+                      </div>
+                      <div class="raised-of-300001">
+                        $12,000 raised of $30,000
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="divcol-md-12-inner">
+                <div class="button-parent">
+                  <div class="button">
+                    <div class="after"></div>
+                  </div>
+                  <div class="button1">
+                    <div class="after1"></div>
+                  </div>
+                  <div class="button2">
+                    <div class="after2"></div>
+                  </div>
+                  <div class="button3">
+                    <div class="after3"></div>
+                  </div>
+                  <div class="button4">
+                    <div class="after4"></div>
+                  </div>
+                  <div class="button5">
+                    <div class="after5"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="divcontainer-wrapper">
+        <div class="divcontainer3">
+          <div class="divrow5">
+            <div class="divcol-md-71">
+              <div class="heading-21">
+                <h1 class="ltimas-doaes">Últimas Doações</h1>
+              </div>
+              <div class="p5">
+                <div class="cada-doao">
+                  “Cada doação é um tijolo na construção de um Mundo mais
+                  solidário!”
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="divrow6">
+            <div class="divstaff">
+              <img
+                class="divimg-icon"
+                loading="lazy"
+                alt=""
+                src="./public/divimg@2x.png"
+              />
+
+              <div class="frame-parent">
+                <div class="heading-3-link-ivan-jacobs-parent">
+                  <h3 class="heading-313">Ivo Rodrigues</h3>
+                  <div class="donated-just-now">Donated Just now</div>
+                </div>
+                <div class="frame-group">
+                  <div class="frame-container">
+                    <div class="frame-parent1">
+                      <div class="doou-wrapper">
+                        <div class="doou">Doou</div>
+                      </div>
+                      <div class="div">1000€</div>
+                    </div>
+                    <div class="para-wrapper">
+                      <div class="para">para</div>
+                    </div>
+                  </div>
+                  <div class="link-children">Children Needs Food</div>
+                </div>
+              </div>
+            </div>
+            <div class="divstaff1">
+              <img class="divimg-icon1" alt="" src="./public/divimg-1@2x.png" />
+
+              <div class="frame-parent2">
+                <div class="heading-3-link-ivan-jacobs-group">
+                  <h3 class="heading-314">Miguel Silva</h3>
+                  <div class="donated-just-now1">Donated Just now</div>
+                </div>
+                <div class="frame-parent3">
+                  <div class="frame-parent4">
+                    <div class="doou-container">
+                      <div class="doou1">Doou</div>
+                    </div>
+                    <div class="wrapper">
+                      <div class="div1">150€</div>
+                    </div>
+                    <div class="para-container">
+                      <div class="para1">para</div>
+                    </div>
+                  </div>
+                  <div class="link-children1">Children Needs Food</div>
+                </div>
+              </div>
+            </div>
+            <div class="divstaff2">
+              <img class="divimg-icon2" alt="" src="./public/divimg-2@2x.png" />
+
+              <div class="frame-parent5">
+                <div class="heading-3-link-ivan-jacobs-container">
+                  <h3 class="heading-315">João Campos</h3>
+                  <div class="donated-just-now2">Donated Just now</div>
+                </div>
+                <div class="frame-parent6">
+                  <div class="frame-parent7">
+                    <div class="doou-frame">
+                      <div class="doou2">Doou</div>
+                    </div>
+                    <div class="div2">550€</div>
+                    <div class="for-wrapper">
+                      <div class="for">for</div>
+                    </div>
+                  </div>
+                  <div class="link-children2">Children Needs Food</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="divd-md-flex-parent">
+        <div class="divd-md-flex">
+          <div class="link4">
+            <div class="after6"></div>
+          </div>
+          <div class="link-parent">
+            <div class="link5">
+              <div class="after7"></div>
+            </div>
+            <div class="link6">
+              <div class="after8"></div>
+            </div>
+          </div>
+          <div class="link7">
+            <div class="after9"></div>
+          </div>
+        </div>
+        <div class="divd-md-flex-wrapper">
+          <div class="divd-md-flex1">
+            <div class="link8">
+              <div class="after10"></div>
+            </div>
+            <div class="link-group">
+              <div class="link9">
+                <div class="after11"></div>
+              </div>
+              <div class="link10">
+                <div class="after12"></div>
+              </div>
+            </div>
+            <div class="link11">
+              <div class="after13"></div>
+            </div>
+          </div>
+        </div>
+        <div class="divcontainer-container">
+          <div class="divcontainer4">
+            <div class="divrow7">
+              <div class="divcol-md-72">
+                <div class="heading-22">
+                  <h1 class="eventos-j-ocorridos">EVENTOS já ocorridos</h1>
+                </div>
+              </div>
+            </div>
+            <div class="divrow8">
+              <div class="divcol-md-43">
+                <div class="divblog-entry">
+                  <img
+                    class="link-icon13"
+                    alt=""
+                    src="./public/link-13@2x.png"
+                  />
+
+                  <div class="divtext11">
+                    <div class="frame-parent8">
+                      <div class="link-sept-10-2018-parent">
+                        <div class="link-sept">Jan 10, 2024</div>
+                        <div class="link-admin">Admin</div>
+                        <div class="frame-parent9">
+                          <div class="icon-wrapper">
+                            <img
+                              class="icon3"
+                              alt=""
+                              src="./public/icon-3.svg"
+                            />
+                          </div>
+                          <div class="div3">3</div>
+                        </div>
+                      </div>
+                      <div class="recolha-de-alimentos-parent">
+                        <div class="recolha-de-alimentos">
+                          Recolha de Alimentos
+                        </div>
+                        <div class="recolha-de-alimentos1">
+                          Recolha de alimentos para as associações mais
+                          necessitadas.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="link-join">Ver fotos&gt;</div>
+                  </div>
+                </div>
+              </div>
+              <div class="divcol-md-44">
+                <div class="divblog-entry1">
+                  <img
+                    class="link-icon14"
+                    alt=""
+                    src="./public/link-14@2x.png"
+                  />
+
+                  <div class="divtext12">
+                    <div class="link-sept-10-2018-group">
+                      <div class="link-sept1">Set 10, 2023</div>
+                      <div class="link-admin1">Admin</div>
+                      <div class="frame-parent10">
+                        <div class="icon-container">
+                          <img class="icon4" alt="" src="./public/icon-3.svg" />
+                        </div>
+                        <div class="div4">3</div>
+                      </div>
+                    </div>
+                    <div class="concerto-solidrio-parent">
+                      <div class="concerto-solidrio">Concerto Solidário</div>
+                      <div class="evento-musical-organizado-com-parent">
+                        <div class="evento-musical-organizado">
+                          Evento musical organizado com o propósito de arrecadar
+                          fundos e consciencializar sobre as crianças
+                          desfavorecidas.
+                        </div>
+                        <div class="link-join1">Ver fotos&gt;</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <img class="list-item-link" alt="" src="./public/list--item--link.svg" />
+
+      <section class="section-container">
+        <div class="section2">
+          <div class="divcontainer5">
+            <div class="divrow9">
+              <div class="divcol-md-73">
+                <div class="heading-23">
+                  <h1 class="prximos-eventos">próximos eventos</h1>
+                </div>
+              </div>
+            </div>
+            <div class="divrow10">
+              <div class="divcol-md-45">
+                <div class="divblog-entry2">
+                  <img
+                    class="link-icon15"
+                    alt=""
+                    src="./public/link-15@2x.png"
+                  />
+
+                  <div class="divtext13">
+                    <div class="frame-parent11">
+                      <div class="link-sep-10-2018-parent">
+                        <div class="link-sep">Ago.12,2024</div>
+                        <div class="link-admin2">Admin</div>
+                        <div class="frame-parent12">
+                          <div class="link-wrapper">
+                            <img
+                              class="link-icon16"
+                              alt=""
+                              src="./public/link-16.svg"
+                            />
+                          </div>
+                          <div class="link12">3</div>
+                        </div>
+                      </div>
+                      <div class="heading-3-link-world-wide-parent">
+                        <div class="heading-316">Caminhada Solidária</div>
+                        <div class="frame-parent13">
+                          <div class="frame-parent14">
+                            <div class="icon-frame">
+                              <img
+                                class="icon5"
+                                alt=""
+                                src="./public/icon-5.svg"
+                              />
+                            </div>
+                            <div class="am-0400pm">9:30AM-04:00PM</div>
+                          </div>
+                          <div class="frame-parent15">
+                            <div class="icon-wrapper1">
+                              <img
+                                class="icon6"
+                                alt=""
+                                src="./public/icon-6.svg"
+                              />
+                            </div>
+                            <div class="porto">Porto</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="evento-organizado-com-o-objeti-parent">
+                      <div class="evento-organizado-com">
+                        Evento organizado com o objetivo de ajudar uma
+                        instituição de caridade apoiando pessoas em situação de
+                        vulnerabilidade.
+                      </div>
+                      <div class="link-join-event-parent">
+                        <div class="link-join2">Juntar-me</div>
+                        <div class="link-container">
+                          <img
+                            class="link-icon17"
+                            alt=""
+                            src="./public/link-17.svg"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="divcol-md-46">
+                <div class="divblog-entry3">
+                  <img
+                    class="link-icon18"
+                    alt=""
+                    src="./public/link-18@2x.png"
+                  />
+
+                  <div class="divtext14">
+                    <div class="frame-parent16">
+                      <div class="link-sep-10-2018-group">
+                        <div class="link-sep1">Set.25,2024</div>
+                        <div class="link-admin3">Admin</div>
+                        <div class="frame-parent17">
+                          <div class="link-frame">
+                            <img
+                              class="link-icon19"
+                              alt=""
+                              src="./public/link-19.svg"
+                            />
+                          </div>
+                          <div class="link13">6</div>
+                        </div>
+                      </div>
+                      <div class="heading-3-link-world-wide-group">
+                        <div class="heading-317">
+                          Recolha de Alimentos e Bens
+                        </div>
+                        <div class="frame-parent18">
+                          <div class="frame-parent19">
+                            <div class="icon-wrapper2">
+                              <img
+                                class="icon7"
+                                alt=""
+                                src="./public/icon-5.svg"
+                              />
+                            </div>
+                            <div class="am-0330pm">10:30AM-03:30PM</div>
+                          </div>
+                          <div class="frame-parent20">
+                            <div class="icon-wrapper3">
+                              <img
+                                class="icon8"
+                                alt=""
+                                src="./public/icon-6.svg"
+                              />
+                            </div>
+                            <div class="famalico">Famalicão</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="recolha-de-alimentos-e-bens-pa-parent">
+                      <div class="recolha-de-alimentos2">
+                        Recolha de alimentos e bens para as associações mais
+                        necessitadas da cidade.
+                      </div>
+                      <div class="link-join-event-group">
+                        <div class="link-join3">Juntar-me</div>
+                        <div class="link-wrapper1">
+                          <img
+                            class="link-icon20"
+                            alt=""
+                            src="./public/link-17.svg"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="divcol-md-47">
+                <div class="divblog-entry4">
+                  <img
+                    class="link-icon21"
+                    alt=""
+                    src="./public/link-21@2x.png"
+                  />
+
+                  <div class="divtext15">
+                    <div class="frame-parent21">
+                      <div class="frame-parent22">
+                        <div class="link-sep-10-2018-wrapper">
+                          <div class="link-sep2">Jan. 10, 2025</div>
+                        </div>
+                        <div class="link-admin-wrapper">
+                          <div class="link-admin4">Admin</div>
+                        </div>
+                        <div class="link-wrapper2">
+                          <img
+                            class="link-icon22"
+                            alt=""
+                            src="./public/link-16.svg"
+                          />
+                        </div>
+                        <div class="link14">9</div>
+                      </div>
+                      <div class="heading-3-link-world-wide-container">
+                        <div class="heading-318">Gala Solidária</div>
+                        <div class="frame-parent23">
+                          <div class="frame-parent24">
+                            <div class="icon-wrapper4">
+                              <img
+                                class="icon9"
+                                alt=""
+                                src="./public/icon-5.svg"
+                              />
+                            </div>
+                            <div class="am-0330pm1">10:30AM-03:30PM</div>
+                          </div>
+                          <div class="frame-parent25">
+                            <div class="icon-wrapper5">
+                              <img
+                                class="icon10"
+                                alt=""
+                                src="./public/icon-6.svg"
+                              />
+                            </div>
+                            <div class="guimares">Guimarães</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="gala-para-angariar-fundos-para-parent">
+                      <div class="gala-para-angariar">
+                        Gala para angariar fundos para ajudar as pessoas do
+                        continente africano.
+                      </div>
+                      <div class="link-join-event-container">
+                        <div class="link-join4">Juntar-me</div>
+                        <div class="link-wrapper3">
+                          <img
+                            class="link-icon23"
+                            alt=""
+                            src="./public/link-17.svg"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section-parent">
+        <div class="section3">
+          <div class="divoverlay"></div>
+          <div class="divcontainer6">
+            <div class="divrow11">
+              <div class="divcol-md-6">
+                <div class="wrapper-divimg">
+                  <img
+                    class="divimg-icon3"
+                    alt=""
+                    src="./public/divimg-3@2x.png"
+                  />
+                </div>
+              </div>
+              <div class="divcol-md-61">
+                <div class="heading-319">
+                  <h2 class="s-voluntrio">Sê voluntário!</h2>
+                </div>
+                <div class="form">
+                  <div class="input">
+                    <h2 class="transforme-vidas-incluindo-container">
+                      <span class="transforme-vidas-incluindo-container1">
+                        <p class="transforme-vidas-incluindo">
+                          Transforme Vidas, Incluindo a Tua: Torna-te
+                          Voluntário!
+                        </p>
+                        <p class="ests-procura">
+                          Estás à procura de uma maneira de fazer a diferença e
+                          enriquecer a tua vida? O voluntariado é uma porta
+                          aberta para novas experiências, amizades e impacto
+                          real.
+                        </p>
+                        <p class="blank-line">&nbsp;</p>
+                        <p class="junta-te-a-ns1">
+                          Junta-te a nós nesta jornada de solidariedade e
+                          descobre como pequenos gestos podem criar grandes
+                          transformações.
+                        </p>
+                      </span>
+                    </h2>
+                    <div class="divplaceholder"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="input-wrapper">
+            <button class="input1">
+              <div class="saber-mais1">Saber mais</div>
+            </button>
+          </div>
+        </div>
+        <footer class="list-item-link-parent">
+          <img
+            class="list-item-link1"
+            loading="lazy"
+            alt=""
+            src="./public/list--item--link.svg"
+          />
+
+          <img
+            class="list-item-link2"
+            alt=""
+            src="./public/list--item--link-1.svg"
+          />
+
+          <div class="rodap">
+            <div class="textos-e-redes-sociais">
+              <div class="textos">
+                <div class="sobre-ns1">
+                  <div class="sobre-ns2">Sobre nós</div>
+                  <div class="linha-parent">
+                    <div class="linha"></div>
+                    <div class="go-help-container">
+                      <span class="go-help-container1">
+                        <p class="blank-line1">&nbsp;</p>
+                        <p class="go-help1">
+                          Go help é uma empresa especializada em ajudar causas
+                          mundiais, promovemos ações de solidariedade e eventos
+                          associativos.
+                        </p>
+                        <p class="acreditamos-que-todos">
+                          “Acreditamos que todos nascemos cidadãos do mundo,
+                          nascemos pessoas globais e por isso a nossa tarefa é
+                          ajudar a descobrir qual o destino a seguir!”
+                        </p>
+                      </span>
+                    </div>
+                  </div>
+                  <img
+                    class="x-icon"
+                    loading="lazy"
+                    alt=""
+                    src="./public/x.svg"
+                  />
+
+                  <img
+                    class="fb-icon"
+                    loading="lazy"
+                    alt=""
+                    src="./public/fb.svg"
+                  />
+
+                  <img
+                    class="insta-icon"
+                    loading="lazy"
+                    alt=""
+                    src="./public/insta.svg"
+                  />
+                </div>
+                <div class="ltimas-publicaes-do-blog">
+                  <div class="eventos1">Eventos</div>
+                  <div class="frame-parent26">
+                    <div class="linha-group">
+                      <div class="linha1"></div>
+                      <div class="imagem-parent">
+                        <div class="imagem">
+                          <img
+                            class="imagem-1-icon"
+                            alt=""
+                            src="./public/imagem-1@2x.png"
+                          />
+                        </div>
+                        <div class="frame-wrapper">
+                          <div class="gala-solidria-parent">
+                            <div class="gala-solidria">Gala Solidária</div>
+                            <div class="frame-parent27">
+                              <div class="frame-parent28">
+                                <div class="icon-wrapper6">
+                                  <img
+                                    class="icon11"
+                                    alt=""
+                                    src="./public/icon-11.svg"
+                                  />
+                                </div>
+                                <div class="jan-2025">10 Jan, 2025</div>
+                              </div>
+                              <div class="frame-parent29">
+                                <div class="icon-wrapper7">
+                                  <img
+                                    class="icon12"
+                                    alt=""
+                                    src="./public/icon-12.svg"
+                                  />
+                                </div>
+                                <div class="admin">Admin</div>
+                              </div>
+                              <div class="frame-parent30">
+                                <div class="icon-wrapper8">
+                                  <img
+                                    class="icon13"
+                                    alt=""
+                                    src="./public/icon-13.svg"
+                                  />
+                                </div>
+                                <div class="div5">14</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="imagem-group">
+                      <button class="imagem1">
+                        <img
+                          class="imagem-2-icon"
+                          alt=""
+                          src="./public/imagem-2@2x.png"
+                        />
+                      </button>
+                      <div class="frame-wrapper1">
+                        <div class="caminhada-solidria-parent">
+                          <div class="caminhada-solidria">
+                            Caminhada Solidária
+                          </div>
+                          <div class="frame-parent31">
+                            <div class="frame-parent32">
+                              <div class="icon-wrapper9">
+                                <img
+                                  class="icon14"
+                                  alt=""
+                                  src="./public/icon-11.svg"
+                                />
+                              </div>
+                              <div class="ago-2024">11, Ago, 2024</div>
+                            </div>
+                            <div class="frame-parent33">
+                              <div class="icon-wrapper10">
+                                <img
+                                  class="icon15"
+                                  alt=""
+                                  src="./public/icon-12.svg"
+                                />
+                              </div>
+                              <div class="admin1">Admin</div>
+                            </div>
+                            <div class="frame-parent34">
+                              <div class="icon-wrapper11">
+                                <img
+                                  class="icon16"
+                                  alt=""
+                                  src="./public/icon-13.svg"
+                                />
+                              </div>
+                              <div class="div6">13</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="links">
+                  <div class="links-parent">
+                    <div class="links1">Links</div>
+                    <div class="linha2"></div>
+                  </div>
+                  <div class="home-group">
+                    <div class="home3">Home</div>
+                    <div class="sobre-ns3">Sobre Nós</div>
+                  </div>
+                  <div class="causas2">Causas</div>
+                  <div class="doaes-parent">
+                    <div class="doaes2">Doações</div>
+                    <div class="eventos2">Eventos</div>
+                  </div>
+                </div>
+                <div class="como-nos-contactar">
+                  <div class="frame-parent35">
+                    <div class="como-nos-contactar-parent">
+                      <div class="como-nos-contactar1">COMO NOS CONTACTAR</div>
+                      <div class="after14"></div>
+                    </div>
+                    <img class="icon17" alt="" src="./public/icon-17.svg" />
+
+                    <a
+                      class="campus-de-azurm"
+                      href="https://www.google.com/maps/place//data=!4m2!3m1!1s0xd24eff2732ad231:0x3048fe13f1faee11?sa=X&ved=1t:8290&ictx=111"
+                      target="_blank"
+                      >Campus de Azurém, Av. da Universidade, 4800-058
+                      Guimarães</a
+                    >
+                  </div>
+                  <div class="frame-parent36">
+                    <div class="frame-parent37">
+                      <div class="icon-wrapper12">
+                        <img class="icon18" alt="" src="./public/icon-18.svg" />
+                      </div>
+                      <div class="div7">+2 392 3929 210</div>
+                    </div>
+                    <div class="frame-parent38">
+                      <div class="icon-wrapper13">
+                        <img class="icon19" alt="" src="./public/icon-19.svg" />
+                      </div>
+                      <div class="infogohelpcom">info@gohelp.com</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="divrow12">
+                <div class="divcol-md-121"></div>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </section>
+    </div>
+
+    <script>
+      var homeContainer = document.getElementById("homeContainer");
+      if (homeContainer) {
+        homeContainer.addEventListener("click", function () {
+          var anchor = document.querySelector("[data-scroll-to='divrowContainer']");
+          if (anchor) {
+            anchor.scrollIntoView({ block: "start", behavior: "smooth" });
+          }
+        });
+      }
+      
+      var sobreNsContainer = document.getElementById("sobreNsContainer");
+      if (sobreNsContainer) {
+        sobreNsContainer.addEventListener("click", function (e) {
+          // Please sync "Sobre Nós" to the project
+        });
+      }
+      
+      var causasContainer = document.getElementById("causasContainer");
+      if (causasContainer) {
+        causasContainer.addEventListener("click", function (e) {
+          // Please sync "Causas" to the project
+        });
+      }
+      
+      var doaesContainer = document.getElementById("doaesContainer");
+      if (doaesContainer) {
+        doaesContainer.addEventListener("click", function (e) {
+          // Please sync "Doações" to the project
+        });
+      }
+      
+      var linkContainer = document.getElementById("linkContainer");
+      if (linkContainer) {
+        linkContainer.addEventListener("click", function (e) {
+          // Please sync "Galeria" to the project
+        });
+      }
+      
+      var linkContainer1 = document.getElementById("linkContainer1");
+      if (linkContainer1) {
+        linkContainer1.addEventListener("click", function (e) {
+          // Please sync "Eventos" to the project
+        });
+      }
+      
+      var contactosContainer = document.getElementById("contactosContainer");
+      if (contactosContainer) {
+        contactosContainer.addEventListener("click", function (e) {
+          // Please sync "Contactos" to the project
+        });
+      }
+      </script>
+  </body>
+</html>
