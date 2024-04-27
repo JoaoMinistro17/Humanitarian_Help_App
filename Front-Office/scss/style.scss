@@ -8,9 +8,9 @@ $white: #fff;
 $black: #000;
 $darken: #4a5562;
 
-$primary: #f86f2d;
-$secondary: #fa8f3d;
-$tertiary: #faaa3a;
+$primary: #006063;
+$secondary: #01B2B7;
+$tertiary: #01B2B7;
 $quarternary: #7cbd1e;
 
 
@@ -2376,4 +2376,13 @@ textarea.form-control {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px;
   }
+}
+
+.causas-dropdown {
+	margin: auto;
+	
+	.causas-button {
+		background-color: transparent;
+		border: none;
+	}
 }
