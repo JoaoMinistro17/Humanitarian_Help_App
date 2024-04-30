@@ -32,83 +32,25 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="../index.html" class="brand-link">
-      <img src="../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="../dist/img/go_help.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">GO HELP</span>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
 
-      <!-- SidebarSearch Form -->
-      <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+          <li class="nav-item">
 
-              <!-- Iniciativas -->
-              <li class="nav-item">
-              <a href="iniciativas.html" class="nav-link active">               
-                <p>Iniciativas</p>
-              </a>
-              <li class="nav-item">
-
-              <!-- Causas -->
-              <li class="nav-item">
-                <a href="causas.html" class="nav-link">               
-                  <p>Causas</p>
-                </a>
-              <li class="nav-item">
-
-              <!-- Profissionais -->
-              <li class="nav-item">
-                <a href="profissionais.html" class="nav-link">               
-                  <p>Profissionais</p>
-                </a>
-              <li class="nav-item">  
-
-              <!-- Materiais -->
-              <li class="nav-item">
-                <a href="materiais.html" class="nav-link">               
-                  <p>Materiais</p>
-                </a>
-              <li class="nav-item"> 
-
-              <!-- Fotografias -->
-              <li class="nav-item">
-                <a href="fotografias.html" class="nav-link">
-                  <i class="nav-icon far fa-image"></i>
-                  <p>
-                    Fotografias
-                  </p>
-                </a>
-              </li> 
-
-              <!-- Voluntários -->
-              <li class="nav-item">
-                <a href="voluntarios.html" class="nav-link">               
-                  <p>Voluntários</p>
-                </a>
-              <li class="nav-item"> 
-
-              <!-- Apagar a treta que está para baixo e 
-                escolher sempre o nav-link active ná página que estamos a usar -->
 
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Dashboard
+                Página Inicial
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -131,10 +73,61 @@
                   <p>Dashboard v3</p>
                 </a>
               </li>
-            </ul>      
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
+            </ul>
+            <!-- Iniciativas -->
+            <li class="nav-item">
+              <a href="iniciativas.html" class="nav-link active"> 
+                <i class="nav-icon fas fa-stream"></i>             
+                <p>Iniciativas</p>
+              </a>
+            </li>
+
+            <!-- Causas -->
+            <li class="nav-item">
+              <a href="causas.html" class="nav-link">   
+                <i class="nav-icon fas fa-pencil-alt"></i>               
+                <p>Causas</p>
+              </a>
+            </li>
+
+            <!-- Profissionais -->
+            <li class="nav-item">
+              <a href="profissionais.html" class="nav-link"> 
+                <i class="nav-icon fas fa-circle"></i>              
+                <p>Profissionais</p>
+              </a>
+            </li>  
+
+            <!-- Materiais -->
+            <li class="nav-item">
+              <a href="materiais.html" class="nav-link">  
+                <i class="nav-icon fas fa-search"></i>                
+                <p>Materiais</p>
+              </a>
+            </li> 
+
+            <!-- Fotografias -->
+            <li class="nav-item">
+              <a href="fotografias.html" class="nav-link">
+                <i class="nav-icon fas fa-image"></i>
+                <p>Fotografias</p>
+              </a>
+            </li>
+
+            <!-- Voluntários -->
+            <li class="nav-item">
+              <a href="voluntarios.html" class="nav-link"> 
+                <i class="nav-icon fas fa-tree"></i>              
+                <p>Voluntários</p>
+              </a>
+            <li class="nav-item"> 
+
+            <!-- Apagar a treta que está para baixo e 
+              escolher sempre o nav-link active ná página que estamos a usar -->
+    
+            </ul>
+          </nav> 
+           <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
   </aside>
@@ -176,7 +169,6 @@
               border-radius: 4px;
               cursor: pointer;
           }
-  
           .btn-rejeitar {
               background-color: #dc3545; /* Cor do botão Rejeitar */
               color: #fff;
@@ -185,7 +177,6 @@
               border-radius: 4px;
               cursor: pointer;
           }
-  
           .btn-add-linha,
           .btn-remover-linha {
               background-color: #007bff; /* Cor do botão Adicionar e Remover Linha */
@@ -199,57 +190,61 @@
       <script>
           // Variável para armazenar o ID
           var idCount = 1;
-  
           // Função para adicionar uma nova linha
           function adicionarLinha() {
-              var table = document.getElementById("example2").getElementsByTagName('tbody')[0];
+              var table = document.getElementById("pendentes").getElementsByTagName('tbody')[0];
               var newRow = table.insertRow();
-              newRow.innerHTML = "<td>" + idCount + "</td><td>Novo Valor</td><td>Novo Valor</td><td>Novo Valor</td><td>Novo Valor</td><td>Novo Valor</td><td><button class='btn-aceitar' onclick='aceitarLinha(" + idCount + ")'>Aceitar</button><button class='btn-rejeitar' onclick='rejeitarLinha(" + idCount + ")'>Rejeitar</button></td>";
+              newRow.innerHTML = "<td>" + idCount + "</td><td>Novo Valor</td><td>Novo Valor</td><td>Pendente</td><td>Novo Valor</td><td>Novo Valor</td><td><button class='btn-aceitar' onclick='aceitarLinha(" + idCount + ")'>Aceitar</button><button class='btn-rejeitar' onclick='rejeitarLinha(" + idCount + ")'>Rejeitar</button></td>";
               idCount++; // Incrementa o ID para a próxima linha
           }
-  
           // Função para remover a última linha
           function removerLinha() {
-              var table = document.getElementById("example2").getElementsByTagName('tbody')[0];
+              var table = document.getElementById("pendentes").getElementsByTagName('tbody')[0];
               if (table.rows.length > 0) {
                   table.deleteRow(-1);
                   idCount--; // Decrementa o ID quando uma linha é removida
               }
           }
-  
           // Função para aceitar a linha
           function aceitarLinha(rowId) {
               alert("Linha aceita: " + rowId);
           }
-  
           // Função para rejeitar a linha
           function rejeitarLinha(rowId) {
               alert("Linha rejeitada: " + rowId);
           }
       </script>
-  </head>
-  <body>
-  
-  <section class="content">
-      <div class="container-fluid">
-          <div class="row">
-              <div class="col-12">
-                  <div class="card">
-                      <div class="card-header">
-                          <h3 class="card-title">DataTable with minimal features & hover style</h3>
-                      </div>
-                      <!-- /.card-header -->
-                      <div class="card-body">
-                          <table id="example2" class="table table-bordered table-hover">
+    </head>
+    <body>
+    
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Pedidos Pendentes</h3>
+                            <div class="card-tools">
+                              <button type="button" class="btn btn-tool" data-toggle="collapse" data-target="#projectCollapse" title="Expand">
+                                  <i class="fas fa-plus"></i>
+                              </button>
+                            </div>
+                        </div>
+                        <div class="collapse" id="projectCollapse"> <!-- Adicionando a classe "collapse" aqui -->
+
+
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                          <table id="pendentes" class="table table-bordered table-hover">
                               <thead>
                               <tr>
                                   <th>ID</th>
                                   <th>Rendering engine</th>
                                   <th>Browser</th>
-                                  <th>Platform(s)</th>
+                                  <th>Estado</th>
                                   <th>Engine version</th>
                                   <th>CSS grade</th>
-                                  <th>Action</th> <!-- Nova coluna para os botões -->
+                                  
                               </tr>
                               </thead>
                               <tbody>
@@ -265,7 +260,6 @@
                                       <button class="btn-rejeitar" onclick="rejeitarLinha(1)">Rejeitar</button>
                                   </td>
                               </tr>
-                              <!-- Restante das linhas da tabela -->
                               </tbody>
                               <tfoot>
                               <tr>
@@ -276,18 +270,154 @@
                               </tr>
                               </tfoot>
                           </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                  </div>
+                  <!-- /.col -->
+                </div>  
+                <div class="col-12">
+                  <div class="card">
+                      <div class="card-header">
+                          <h3 class="card-title">Iniciativas a Decorrer</h3>
+                          <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-toggle="collapse" data-target="#decorrerCollapse" title="Expand">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                          </div>
+                      </div>
+                      <div class="collapse" id="decorrerCollapse"> <!-- Adicionando a classe "collapse" aqui -->
+                      <!-- /.card-header -->
+                      <div class="card-body">
+                        <table id="decorrer" class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Rendering engine</th>
+                                <th>Browser</th>
+                                <th>Estado</th>
+                                <th>Engine version</th>
+                                <th>CSS grade</th>
+                                
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Trident</td>
+                                <td>Internet Explorer 4.0</td>
+                                <td>Win 95+</td>
+                                <td> 4</td>
+                                <td>X</td>
+                            </tr>
+                            </tbody>
+                        </table>
                       </div>
                       <!-- /.card-body -->
-                </div>
-                <!-- /.card -->
+                  </div>
+                  <!-- /.card -->
+              </div>
+              <!-- /.col -->
             </div>
-            <!-- /.col -->
+
+            <div class="col-12">
+              <div class="card">
+                  <div class="card-header">
+                      <h3 class="card-title">Iniciativas Terminadas</h3>
+                      <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-toggle="collapse" data-target="#terminadasCollapse" title="Expand">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="collapse" id="terminadasCollapse"> <!-- Adicionando a classe "collapse" aqui -->
+
+                  <!-- /.card-header -->
+                  <div class="card-body">
+                    <table id="decorridos" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Rendering engine</th>
+                            <th>Browser</th>
+                            <th>Estado</th>
+                            <th>Engine version</th>
+                            <th>CSS grade</th>
+                            
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Trident</td>
+                            <td>Internet Explorer 4.0</td>
+                            <td>Win 95+</td>
+                            <td> 4</td>
+                            <td>X</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                  </div>
+                  <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+      
+          <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Iniciativas Futuras</h3>
+                    <div class="card-tools">
+                      <button type="button" class="btn btn-tool" data-toggle="collapse" data-target="#futurasCollapse" title="Expand">
+                          <i class="fas fa-plus"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="collapse" id="futurasCollapse"> <!-- Adicionando a classe "collapse" aqui -->
+
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <table id="decorridos" class="table table-bordered table-hover">
+                      <thead>
+                      <tr>
+                          <th>ID</th>
+                          <th>Rendering engine</th>
+                          <th>Browser</th>
+                          <th>Estado</th>
+                          <th>Engine version</th>
+                          <th>CSS grade</th>
+                          
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr>
+                          <td>1</td>
+                          <td>Trident</td>
+                          <td>Internet Explorer 4.0</td>
+                          <td>Win 95+</td>
+                          <td> 4</td>
+                          <td>X</td>
+                      </tr>
+                      </tbody>
+                  </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+
+
         </div>
         <!-- /.row -->
-    </div>
-    <!-- /.container-fluid -->
-</section>
-<!-- /.content -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
 
