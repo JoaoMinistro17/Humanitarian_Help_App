@@ -1,0 +1,18 @@
+[
+    {
+        "title": "Combate à Discriminação",
+        "description": "Apoiar iniciativas que combatam o racismo, a xenofobia, a homofobia, a intolerância religiosa e promovam a igualdade e a justiça social.",
+        "lastDonationTime": "1 semana atrás",
+        "totalDonations": 24000,
+        "donationsGoal": 30000,
+        "imageUrl": "images/cause-6.jpg"
+    },
+    {
+        "title": "Cuidados de Saúde",
+        "description": "Garantir o acesso a cuidados de saúde básicos e essenciais, apoiando clínicas médicas, hospitais, campanhas de vacinação.",
+        "lastDonationTime": "2 semana atrás",
+        "totalDonations": 10000,
+        "donationsGoal": 50000,
+        "imageUrl": "images/cause-1.jpg"
+    }
+]

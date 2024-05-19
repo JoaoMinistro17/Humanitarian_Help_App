@@ -73,25 +73,25 @@
               </div>
               <div class="col-md-6 volunteer pl-md-5 ftco-animate">
                   <h3 class="mb-3">SUGERIR CAUSA</h3>
-                  <form action="#" class="volunter-form">
-                      <div class="form-group">
-                          <label for="inputNome">Nome</label>
-                          <input type="text" class="form-control" id="inputNome" placeholder="Nome">
-                      </div>
-                      <div class="form-group">
-                          <label for="inputEmail">Email</label>
-                          <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                      </div>
-                      <div class="form-group">
-                          <label for="inputValor">Valor</label>
-                          <input type="number" class="form-control" id="inputValor" placeholder="Valor a angariar">
-                      </div>
-                      <div class="form-group">
-                          <label for="inputDescricao">Descrição</label>
-                          <textarea class="form-control" id="inputDescricao" rows="3" placeholder="Descrição"></textarea>
-                      </div>
-                      <button type="submit" class="btn btn-white btn-lg btn-block">Sugerir</button>
-                  </form>
+                  <form action="#" class="volunter-form" id="volunterForm">
+                    <div class="form-group">
+                        <label for="inputNome">Nome</label>
+                        <input type="text" class="form-control" id="inputNome" placeholder="Nome">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail">Email</label>
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputValor">Valor</label>
+                        <input type="number" class="form-control" id="inputValor" placeholder="Valor a angariar">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputDescricao">Descrição</label>
+                        <textarea class="form-control" id="inputDescricao" rows="3" placeholder="Descrição"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-white btn-lg btn-block">Sugerir</button>
+                </form>                
               </div>
           </div>
       </div>
@@ -121,6 +121,40 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
+
+  <script>
+    document.getElementById('volunterForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the form from submitting in the traditional way
+    
+        // Get the values from the form fields
+        const nome = document.getElementById('inputNome').value;
+        const email = document.getElementById('inputEmail').value;
+        const valor = document.getElementById('inputValor').value;
+        const descricao = document.getElementById('inputDescricao').value;
+    
+        // Create an object to store the current form submission
+        const formSubmission = {
+            nome: nome,
+            email: email,
+            valor: valor,
+            descricao: descricao
+        };
+    
+        // Get the existing form submissions from local storage
+        let formSubmissions = JSON.parse(localStorage.getItem('formSubmissions')) || [];
+    
+        // Add the new submission to the array
+        formSubmissions.push(formSubmission);
+    
+        // Save the updated array back to local storage
+        localStorage.setItem('formSubmissions', JSON.stringify(formSubmissions));
+    
+        // Optionally, you can provide feedback to the user that the data has been saved
+        alert('Formulário enviado!');
+    });
+    </script>
+    
+    
     
   </body>
 </html>
