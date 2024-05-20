@@ -160,7 +160,7 @@
                     </button>
                   </div>
                 </div>
-                <div class="collapse" id="evento1"> <!-- Adicionando a classe "collapse" aqui -->
+                <div class="collapse" id="evento1">
                   <div class="card-body">
                     <div class="row">
                       <div class="col-sm-2">
@@ -198,7 +198,7 @@
                     </button>
                   </div>
                 </div>
-                <div class="collapse" id="eventox"> <!-- Adicionando a classe "collapse" aqui -->
+                <div class="collapse" id="eventox">
                   <div class="card-body">
                     <div class="row">
                       <div class="col-sm-2">
@@ -227,12 +227,19 @@
               <div class="card card-primary">
                 <div class="card-header">
                   <h4 class="card-title">Carregar Fotografia</h4>
+                  <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-toggle="collapse" data-target="#carregarFoto" title="Expand">
+                      <i class="fas fa-plus"></i>
+                    </button>
+                  </div>
                 </div>
-                <div class="card-body">
-                  <input type="file" id="fileInput" accept="image/*">
-                  <button id="uploadButton" class="btn btn-primary mt-2">Guardar</button>
-                  <div class="mt-4">
-                    <img id="uploadedImage" class="img-fluid mb-2" alt="Imagem carregada" style="display:none;"/>
+                <div class="collapse" id="carregarFoto">
+                  <div class="card-body">
+                    <input type="file" id="fileInput" accept="image/*">
+                    <button id="uploadButton" class="btn btn-primary mt-2">Guardar</button>
+                    <div class="mt-4">
+                      <img id="uploadedImage" class="img-fluid mb-2" alt="Imagem carregada" style="display:none;"/>
+                    </div>
                   </div>
                 </div>
               </div>
