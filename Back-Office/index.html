@@ -182,21 +182,86 @@
         <!-- Small boxes (Stat box) -->
         <div class="row">
 
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3>15</h3>
-
-                <p>Pedidos de Iniciativa</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-              <a href="pages/iniciativas.html" class="small-box-footer">Mais Info <i class="fas fa-arrow-circle-right"></i></a>
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Dashboard</title>
+            <!-- Include necessary CSS -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+            <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+            <style>
+                .small-box {
+                    border-radius: 0.25rem;
+                    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+                    display: block;
+                    margin-bottom: 20px;
+                    position: relative;
+                }
+                .small-box>.inner {
+                    padding: 10px;
+                }
+                .small-box .icon {
+                    color: rgba(0, 0, 0, 0.15);
+                    z-index: 0;
+                }
+                .small-box .icon>i {
+                    font-size: 70px;
+                    position: absolute;
+                    right: 15px;
+                    top: 15px;
+                    transition: all 0.3s linear;
+                }
+                .small-box-footer {
+                    background: rgba(0, 0, 0, 0.1);
+                    color: rgba(255, 255, 255, 0.8);
+                    display: block;
+                    padding: 3px 0;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    z-index: 10;
+                }
+                .small-box.bg-info {
+                    background-color: #17a2b8 !important;
+                    color: #fff;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3 id="pending-initiatives-count">0</h3>
+                        <p>Pedidos de Iniciativa</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-person-add"></i>
+                    </div>
+                    <a href="pages/iniciativas.html" class="small-box-footer">Mais Info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
             </div>
-          </div>
-          <!-- ./col -->
+            <!-- ./col -->
+        
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    // Fetch the initiatives data from localStorage
+                    const initiatives = JSON.parse(localStorage.getItem("initiatives")) || [];
+        
+                    // Count the pending initiatives
+                    const pendingCount = initiatives.filter(initiative => initiative.estado === 'pendente').length;
+        
+                    // Update the count in the small box
+                    document.getElementById("pending-initiatives-count").innerText = pendingCount;
+                });
+            </script>
+        </body>
+
+
+
+
+
+
 
           <div class="col-lg-3 col-6">
             <!-- small box -->
@@ -280,15 +345,10 @@
                     <canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>
                   </div>
                 </div>
-              </div><!-- /.card-body -->
+              </div>
+              <!-- /.card-body -->
             </div>
             <!-- /.card -->
-
-
-
-
-
-             <!-- /.card -->
 
              <div class="card">
               <div class="card-header border-0">
@@ -395,144 +455,6 @@
               </div>
             </div>
             <!-- /.card -->
-
-
-
-
-
-
-
-
-            <!-- TO DO List -->
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">
-                  <i class="ion ion-clipboard mr-1"></i>
-                  To Do List
-                </h3>
-
-                <div class="card-tools">
-                  <ul class="pagination pagination-sm">
-                    <li class="page-item"><a href="#" class="page-link">&laquo;</a></li>
-                    <li class="page-item"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item"><a href="#" class="page-link">3</a></li>
-                    <li class="page-item"><a href="#" class="page-link">&raquo;</a></li>
-                  </ul>
-                </div>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <ul class="todo-list" data-widget="todo-list">
-                  <li>
-                    <!-- drag handle -->
-                    <span class="handle">
-                      <i class="fas fa-ellipsis-v"></i>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </span>
-                    <!-- checkbox -->
-                    <div  class="icheck-primary d-inline ml-2">
-                      <input type="checkbox" value="" name="todo1" id="todoCheck1">
-                      <label for="todoCheck1"></label>
-                    </div>
-                    <!-- todo text -->
-                    <span class="text">Design a nice theme</span>
-                    <!-- Emphasis label -->
-                    <small class="badge badge-danger"><i class="far fa-clock"></i> 2 mins</small>
-                    <!-- General tools such as edit or delete-->
-                    <div class="tools">
-                      <i class="fas fa-edit"></i>
-                      <i class="fas fa-trash-o"></i>
-                    </div>
-                  </li>
-                  <li>
-                    <span class="handle">
-                      <i class="fas fa-ellipsis-v"></i>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </span>
-                    <div  class="icheck-primary d-inline ml-2">
-                      <input type="checkbox" value="" name="todo2" id="todoCheck2" checked>
-                      <label for="todoCheck2"></label>
-                    </div>
-                    <span class="text">Make the theme responsive</span>
-                    <small class="badge badge-info"><i class="far fa-clock"></i> 4 hours</small>
-                    <div class="tools">
-                      <i class="fas fa-edit"></i>
-                      <i class="fas fa-trash-o"></i>
-                    </div>
-                  </li>
-                  <li>
-                    <span class="handle">
-                      <i class="fas fa-ellipsis-v"></i>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </span>
-                    <div  class="icheck-primary d-inline ml-2">
-                      <input type="checkbox" value="" name="todo3" id="todoCheck3">
-                      <label for="todoCheck3"></label>
-                    </div>
-                    <span class="text">Let theme shine like a star</span>
-                    <small class="badge badge-warning"><i class="far fa-clock"></i> 1 day</small>
-                    <div class="tools">
-                      <i class="fas fa-edit"></i>
-                      <i class="fas fa-trash-o"></i>
-                    </div>
-                  </li>
-                  <li>
-                    <span class="handle">
-                      <i class="fas fa-ellipsis-v"></i>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </span>
-                    <div  class="icheck-primary d-inline ml-2">
-                      <input type="checkbox" value="" name="todo4" id="todoCheck4">
-                      <label for="todoCheck4"></label>
-                    </div>
-                    <span class="text">Let theme shine like a star</span>
-                    <small class="badge badge-success"><i class="far fa-clock"></i> 3 days</small>
-                    <div class="tools">
-                      <i class="fas fa-edit"></i>
-                      <i class="fas fa-trash-o"></i>
-                    </div>
-                  </li>
-                  <li>
-                    <span class="handle">
-                      <i class="fas fa-ellipsis-v"></i>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </span>
-                    <div  class="icheck-primary d-inline ml-2">
-                      <input type="checkbox" value="" name="todo5" id="todoCheck5">
-                      <label for="todoCheck5"></label>
-                    </div>
-                    <span class="text">Check your messages and notifications</span>
-                    <small class="badge badge-primary"><i class="far fa-clock"></i> 1 week</small>
-                    <div class="tools">
-                      <i class="fas fa-edit"></i>
-                      <i class="fas fa-trash-o"></i>
-                    </div>
-                  </li>
-                  <li>
-                    <span class="handle">
-                      <i class="fas fa-ellipsis-v"></i>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </span>
-                    <div  class="icheck-primary d-inline ml-2">
-                      <input type="checkbox" value="" name="todo6" id="todoCheck6">
-                      <label for="todoCheck6"></label>
-                    </div>
-                    <span class="text">Let theme shine like a star</span>
-                    <small class="badge badge-secondary"><i class="far fa-clock"></i> 1 month</small>
-                    <div class="tools">
-                      <i class="fas fa-edit"></i>
-                      <i class="fas fa-trash-o"></i>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <!-- /.card-body -->
-              <div class="card-footer clearfix">
-                <button type="button" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Add item</button>
-              </div>
-            </div>
-            <!-- /.card -->
           </section>
           
           <!-- right col (We are only adding the ID to make the widgets sortable)-->
@@ -574,19 +496,19 @@
                   $(document).ready(function() {
                       // Define your area chart data
                       var areaChartData = {
-                          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                          labels: ['Material1', 'Material2', 'Material3', 'Material4', 'Material5', 'Material6', 'Material7'],
                           datasets: [{
-                              label: 'Dataset 1',
+                              label: 'Materiais disponíveis',
                               backgroundColor: 'rgba(54, 162, 235, 0.5)',
                               borderColor: 'rgba(54, 162, 235, 1)',
                               borderWidth: 1,
                               data: [65, 59, 80, 81, 56, 55, 40]
                           }, {
-                              label: 'Dataset 2',
+                              label: 'Materiais em uso',
                               backgroundColor: 'rgba(255, 99, 132, 0.5)',
                               borderColor: 'rgba(255, 99, 132, 1)',
                               borderWidth: 1,
-                              data: [28, 48, 40, 19, 86, 27, 90]
+                              data: [28, 48, 40, 19, 2, 27, 20]
                           }]
                       };
           
