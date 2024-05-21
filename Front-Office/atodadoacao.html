@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Go Help - Sugerir Causa</title>
+    <title>Go Help - Ato da Doação</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -58,7 +58,7 @@
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-7 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Sugerir Causa</h1>
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Ato de Doação</h1>
           </div>
         </div>
       </div>
@@ -72,26 +72,79 @@
               <div class="col-md-6 d-flex ftco-animate"> 
               </div>
               <div class="col-md-6 volunteer pl-md-5 ftco-animate">
-                  <h3 class="mb-3">SUGERIR CAUSA</h3>
-                  <form action="#" class="volunter-form" id="volunterForm">
-                    <div class="form-group">
-                        <label for="inputNome">Nome</label>
-                        <input type="text" class="form-control" id="inputNome" placeholder="Nome">
+                  <h3 class="mb-3">Donativo</h3>
+                  <form action="#" class="volunter-form">
+                      <div class="form-group">
+                          <label for="inputNome">Nome</label>
+                          <input type="text" class="form-control" id="inputNome" placeholder="Nome">
+                      </div>
+                      <div class="form-group">
+                        <label for="inputApelido">Apelido</label>
+                        <input type="text" class="form-control" id="inputApelido" placeholder="Apelido">
                     </div>
                     <div class="form-group">
-                        <label for="inputEmail">Email</label>
-                        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                      <label for="inputTelemovel">Telemóvel</label>
+                      <input type="text" class="form-control" id="inputTelemovel" placeholder="Telemóvel">
+                  </div>
+                      <div class="form-group">
+                          <label for="inputEmail">Email</label>
+                          <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                      </div>
+                      <div class="form-group">
+                        <label for="inputNIF">NIF</label>
+                        <input type="email" class="form-control" id="inputNIF" placeholder="NIF">
                     </div>
-                    <div class="form-group">
-                        <label for="inputValor">Valor</label>
-                        <input type="number" class="form-control" id="inputValor" placeholder="Valor a angariar">
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Doação</title>
+                    <style>
+                        .payment-methods {
+                            display: flex;
+                            justify-content: space-around;
+                            align-items: center;
+                            margin: 20px;
+                        }
+                        .payment-method {
+                            text-align: center;
+                        }
+                        .payment-method img {
+                            max-width: 100px;
+                            max-height: 50px;
+                        }
+                        .payment-method button {
+                            margin-top: 10px;
+                            padding: 5px 10px;
+                            background-color: #007bff;
+                            color: white;
+                            border: none;
+                            border-radius: 3px;
+                            cursor: pointer;
+                        }
+                    </style>
+                </head>
+                <body>
+                    
+                    <div class="payment-methods">
+                        <div class="payment-method">
+                            <img src="https://seeklogo.com/images/M/mbway-logo-2CD6980569-seeklogo.com.png" alt="MB Way">
+                            <button onclick="window.location.href='https://www.mbway.pt'">MB Way</button>
+                        </div>
+                        <div class="payment-method">
+                            <img src="https://seeklogo.com/images/M/multibanco-logo-DE3FDDFB4A-seeklogo.com.png" alt="Multibanco">
+                            <button onclick="window.location.href='https://www.multibanco.pt'">Multibanco</button>
+                        </div>
+                        <div class="payment-method">
+                            <img src="https://seeklogo.com/images/P/paypal-logo-484B6FE744-seeklogo.com.png" alt="PayPal">
+                            <button onclick="window.location.href='https://www.paypal.com/donate'">PayPal</button>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="inputDescricao">Descrição</label>
-                        <textarea class="form-control" id="inputDescricao" rows="3" placeholder="Descrição"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-white btn-lg btn-block">Sugerir</button>
-                </form>                
+                </body>
+                </html>
+                
+                
+                     
+                      <button type="submit" class="btn btn-white btn-lg btn-block">Doar</button>
+                  </form>
               </div>
           </div>
       </div>
@@ -121,40 +174,6 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
-
-  <script>
-    document.getElementById('volunterForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent the form from submitting in the traditional way
-    
-        // Get the values from the form fields
-        const nome = document.getElementById('inputNome').value;
-        const email = document.getElementById('inputEmail').value;
-        const valor = document.getElementById('inputValor').value;
-        const descricao = document.getElementById('inputDescricao').value;
-    
-        // Create an object to store the current form submission
-        const formSubmission = {
-            nome: nome,
-            email: email,
-            valor: valor,
-            descricao: descricao
-        };
-    
-        // Get the existing form submissions from local storage
-        let formSubmissions = JSON.parse(localStorage.getItem('formSubmissions')) || [];
-    
-        // Add the new submission to the array
-        formSubmissions.push(formSubmission);
-    
-        // Save the updated array back to local storage
-        localStorage.setItem('formSubmissions', JSON.stringify(formSubmissions));
-    
-        // Optionally, you can provide feedback to the user that the data has been saved
-        alert('Formulário enviado!');
-    });
-    </script>
-    
-    
     
   </body>
 </html>

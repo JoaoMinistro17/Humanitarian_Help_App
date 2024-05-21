@@ -126,3 +126,5 @@ btnConfirm.addEventListener("click", () => {
     inputConfirmPassw.setAttribute("type", "password");
   }
 });
+
+
