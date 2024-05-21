@@ -148,34 +148,26 @@
 
       <!-- Main content -->
       <section class="content">
-        <div class="container-fluid">
-          <div class="row">
-
-            <!-- Seção para carregar a foto do dispositivo -->
-            <div class="col-12">
-              <div class="card card-primary">
-                <div class="card-header">
-                  <h4 class="card-title">Carregar Fotografia</h4>
-                  <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-toggle="collapse" data-target="#carregarFoto" title="Expand">
-                      <i class="fas fa-plus"></i>
-                    </button>
-                  </div>
-                </div>
-                <div class="collapse" id="carregarFoto">
-                  <div class="card-body">
-                    <input type="file" id="fileInput" accept="image/*">
-                    <button id="uploadButton" class="btn btn-primary mt-2">Guardar</button>
-                    <div class="mt-4">
-                      <img id="uploadedImage" class="img-fluid mb-2" alt="Imagem carregada" style="display:none;"/>
-                    </div>
-                  </div>
+        <!-- Seção para carregar a foto do dispositivo -->
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title">Evento x</h4>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-toggle="collapse" data-target="#carregarFoto" title="Expand">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="collapse" id="carregarFoto">
+              <div class="card-body">
+                <input type="file" id="fileInput" accept="image/*">
+                <button id="uploadButton" class="btn btn-primary mt-2">Guardar</button>
+                <div class="mt-4">
+                  <img id="uploadedImage" class="img-fluid mb-2" alt="Imagem carregada" style="display:none;"/>
                 </div>
               </div>
             </div>
-          </div><!-- /.container-fluid -->
-
-        </div>
+          </div>
       </section>
       <!-- /.content -->
 
@@ -189,7 +181,6 @@
                 alert('Por favor, selecione uma imagem para carregar.');
                 return;
             }
-
             const file = fileInput.files[0];
             const reader = new FileReader();
             
@@ -201,7 +192,6 @@
                 // Salvar a imagem em localStorage
                 localStorage.setItem('uploadedImage', base64Image);
             };
-
             reader.readAsDataURL(file);
         });
 
@@ -216,9 +206,6 @@
             }
         };
     </script>
-
-
-
 
     </div>
 

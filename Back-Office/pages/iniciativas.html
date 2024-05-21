@@ -168,7 +168,7 @@
       <div class="card-body">
         <table class="table table-bordered table-hover">
           <thead>
-            <tr>
+            <t  r>
               <th>ID</th>
               <th>Nome</th>
               <th>Email</th>
@@ -333,14 +333,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 </td>
             `;
 
-            if (initiative.estado === 'pendente') {
-                pendingTable.appendChild(newRow);
-            } else if (initiative.estado === 'aceite') {
-                acceptedTable.appendChild(newRow);
-            } else if (initiative.estado === 'rejeitado') {
-                rejectedTable.appendChild(newRow);
-            }
-        });
+      if (initiative.estado === 'pendente') {
+              pendingTable.appendChild(newRow);
+          } else if (initiative.estado === 'aceite') {
+              acceptedTable.appendChild(newRow);
+          } else if (initiative.estado === 'rejeitado') {
+              rejectedTable.appendChild(newRow);
+          }
+      });
     }
 
     // Renderizar iniciativas ao carregar a página
@@ -393,9 +393,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
     });
 </script>
-
-
-
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
