@@ -456,7 +456,7 @@
             </div>
             <!-- /.card -->
           </section>
-          
+
           <!-- right col (We are only adding the ID to make the widgets sortable)-->
           <section class="col-lg-5 connectedSortable">
 
@@ -464,67 +464,87 @@
               <meta charset="UTF-8">
               <meta name="viewport" content="width=device-width, initial-scale=1.0">
               <title>Bar Chart</title>
+
               <!-- Include necessary CSS and JavaScript libraries -->
               <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css">
               <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
               <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+              <!-- jQuery -->
+              <script src="plugins/jquery/jquery.min.js"></script>
+              <!-- Bootstrap 4 -->
+              <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+              <!-- ChartJS -->
+              <script src="plugins/chart.js/Chart.min.js"></script>
+              <!-- AdminLTE App -->
+              <script src="dist/js/adminlte.min.js"></script>
+              <!-- AdminLTE for demo purposes -->
+              <script src="dist/js/demo.js"></script>
+
           </head>
           <body>
-              <!-- BAR CHART -->
-              <div class="card card-success">
-                  <div class="card-header">
-                      <h3 class="card-title">Bar Chart</h3>
-                      <div class="card-tools">
-                          <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                              <i class="fas fa-minus"></i>
-                          </button>
-                          <button type="button" class="btn btn-tool" data-card-widget="remove">
-                              <i class="fas fa-times"></i>
-                          </button>
-                      </div>
-                  </div>
-                  <div class="card-body">
-                      <div class="chart">
-                          <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-                      </div>
-                  </div>
-                  <!-- /.card-body -->
+
+            <!-- BAR CHART -->
+            <div class="card card-success">
+              <div class="card-header">
+                <h3 class="card-title">Materiais</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
               </div>
-              <!-- /.card -->
+              <div class="card-body">
+                <div class="chart">
+                  <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
           
-              <script>
-                  $(document).ready(function() {
-                      // Define your area chart data
-                      var areaChartData = {
-                          labels: ['Material1', 'Material2', 'Material3', 'Material4', 'Material5', 'Material6', 'Material7'],
-                          datasets: [{
-                              label: 'Materiais disponíveis',
-                              backgroundColor: 'rgba(54, 162, 235, 0.5)',
-                              borderColor: 'rgba(54, 162, 235, 1)',
-                              borderWidth: 1,
-                              data: [65, 59, 80, 81, 56, 55, 40]
-                          }, {
-                              label: 'Materiais em uso',
-                              backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                              borderColor: 'rgba(255, 99, 132, 1)',
-                              borderWidth: 1,
-                              data: [28, 48, 40, 19, 2, 27, 20]
-                          }]
-                      };
-          
-                      // Initialize the bar chart
-                      var barChartCanvas = $('#barChart');
-                      var barChart = new Chart(barChartCanvas, {
-                          type: 'bar',
-                          data: areaChartData,
-                          options: {
-                              responsive: true,
-                              maintainAspectRatio: false,
-                              datasetFill: false
-                          }
-                      });
-                  });
-              </script>
+            <script>              
+              $(document).ready(function() {
+                const material = JSON.parse(localStorage.getItem('materials')) || [];
+                const materialLabels = material.map(function(material) {return material.nome;});
+                const materialList = material.map(function(material) { return material.nome; });
+                const materialQuant = material.map(function(material) { return material.quantidade; });
+                const materialAvaQuant = material.map(function(material) { return material.quantidade_disponivel; });
+            
+                // Define your area chart data
+                const areaChartData = {
+                    labels: materialList,
+                    datasets: [{
+                        label: 'Disponível',
+                        backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1,
+                        data: materialQuant,
+                    }, {
+                        label: 'Em uso',
+                        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1,
+                        data: materialAvaQuant,
+                    }]
+                };
+    
+                // Initialize the bar chart
+                const barChartCanvas = $('#barChart');
+                const barChart = new Chart(barChartCanvas, {
+                    type: 'bar',
+                    data: areaChartData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        datasetFill: false
+                    }
+                });
+              });
+            </script>
 
             <!-- Map card -->
             <div class="card bg-gradient-primary">
@@ -678,10 +698,13 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+
+<!-- SCRIPT QUE INSERE DADOS AUTOMATICOS INICIATIVAS/MATERIAIS PARA JÁ-->
 <script>
-  // Verifique se já existem dados no Local Storage
+  
+  // Verificar se já existem iniciativas no Local Storage
   if (!localStorage.getItem('initiatives')) {
-    // Exemplo de dados genéricos para as iniciativas
+    // Exemplos de iniciativas
     const initiatives = [
         {
             nome: "Iniciativa 1",
@@ -720,10 +743,34 @@
             estado: "aceite"
         }
     ];
-
-    // Armazene os dados no Local Storage
+    // Armazenar os dados no Local Storage
     localStorage.setItem('initiatives', JSON.stringify(initiatives));
   } 
+
+  // Verificar se já existem materiais no Local Storage
+  if (!localStorage.getItem('materials')) {
+      // Exemplo de materiais
+    const materials = [
+        {
+            nome: "Cadeira",
+            quantidade: "100",
+            quantidade_disponivel: "10"
+        },
+        {
+            nome: "Mesa",
+            quantidade: "200",
+            quantidade_disponivel: "20"
+        },
+        {
+            nome: "Tenda",
+            quantidade: "300",
+            quantidade_disponivel: "30"
+        }
+    ];
+    // Armazenar os dados no Local Storage
+    localStorage.setItem('materials', JSON.stringify(materials));
+  } 
+
 </script>
 
 <!-- jQuery -->
@@ -760,6 +807,7 @@
 <script src="dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard.js"></script>
+
 
 </body>
 </html>
