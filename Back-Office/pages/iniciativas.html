@@ -168,13 +168,13 @@
       <div class="card-body">
         <table class="table table-bordered table-hover">
           <thead>
-            <t  r>
+            <tr>
               <th>ID</th>
               <th>Nome</th>
               <th>Email</th>
               <th>Data</th>
               <th>Hora de Início</th>
-              <th>Duração</th>
+              <th>Hora de Fim</th>
               <th>Tipo</th>
               <th>Imagem</th>
               <th>Local</th>
@@ -202,7 +202,7 @@
               <th>Email</th>
               <th>Data</th>
               <th>Hora de Início</th>
-              <th>Duração</th>
+              <th>Hora de Fim</th>
               <th>Tipo</th>
               <th>Imagem</th>
               <th>Local</th>
@@ -229,7 +229,7 @@
               <th>Email</th>
               <th>Data</th>
               <th>Hora de Início</th>
-              <th>Duração</th>
+              <th>Hora de Fim</th>
               <th>Tipo</th>
               <th>Imagem</th>
               <th>Local</th>
@@ -272,8 +272,8 @@
             <input type="time" class="form-control" id="hora_inicio" name="hora_inicio" required>
           </div>
           <div class="form-group">
-            <label for="duracao">Duração (em horas)</label>
-            <input type="number" class="form-control" id="duracao" name="duracao" required>
+            <label for="hora_fim">Hora de Fim</label>
+            <input type="time" class="form-control" id="hora_fim" name="hora_fim" required>
           </div>
           <div class="form-group">
             <label for="tipo">Tipo</label>
@@ -298,8 +298,8 @@
   </div>
 </div>
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
+<script> 
+    document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("addInitiativeForm");
     const pendingTable = document.getElementById("pendingInitiativeTableBody");
     const acceptedTable = document.getElementById("acceptedInitiativeTableBody");
@@ -320,7 +320,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <td>${initiative.email}</td>
                 <td>${initiative.data}</td>
                 <td>${initiative.hora_inicio}</td>
-                <td>${initiative.duracao}</td>
+                <td>${initiative.hora_fim}</td>
                 <td>${initiative.tipo}</td>
                 <td><img src="${initiative.imagem}" alt="${initiative.nome}" style="width: 50px; height: auto;"></td>
                 <td>${initiative.local}</td>
@@ -333,7 +333,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 </td>
             `;
 
-      if (initiative.estado === 'pendente') {
+          if (initiative.estado === 'pendente') {
               pendingTable.appendChild(newRow);
           } else if (initiative.estado === 'aceite') {
               acceptedTable.appendChild(newRow);
@@ -342,6 +342,20 @@ document.addEventListener("DOMContentLoaded", function () {
           }
       });
     }
+
+     // Função para aceitar iniciativa
+     window.acceptInitiative = function(index) {
+      initiativesData[index].estado = 'aceite';
+      localStorage.setItem("initiatives", JSON.stringify(initiativesData));
+      renderInitiatives();
+    };
+
+      // Função para rejeitar iniciativa
+    window.rejectInitiative = function(index) {
+      initiativesData[index].estado = 'rejeitado';
+      localStorage.setItem("initiatives", JSON.stringify(initiativesData));
+      renderInitiatives();
+    };
 
     // Renderizar iniciativas ao carregar a página
     renderInitiatives();
@@ -354,14 +368,14 @@ document.addEventListener("DOMContentLoaded", function () {
         const email = form.email.value;
         const data = form.data.value;
         const hora_inicio = form.hora_inicio.value;
-        const duracao = form.duracao.value;
+        const hora_fim = form.hora_fim.value;
         const tipo = form.tipo.value;
         const imagem = form.imagem.value;
         const local = form.local.value;
         const descricao = form.descricao.value;
 
         // Adicionar a nova iniciativa aos dados
-        const newInitiative = { nome, email, data, hora_inicio, duracao, tipo, imagem, local, descricao, estado: 'pendente' };
+        const newInitiative = { nome, email, data, hora_inicio, hora_fim, tipo, imagem, local, descricao, estado: 'pendente' };
         initiativesData.push(newInitiative);
 
         // Atualizar os dados no localStorage
@@ -375,23 +389,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Fechar o modal após adicionar a iniciativa
         $('#addInitiativeModal').modal('hide');
-
-
-      // Função para aceitar iniciativa
-      window.acceptInitiative = function(index) {
-      initiativesData[index].estado = 'aceite';
-      localStorage.setItem("initiatives", JSON.stringify(initiativesData));
-      renderInitiatives();
-    };
-
-      // Função para rejeitar iniciativa
-      window.rejectInitiative = function(index) {
-      initiativesData[index].estado = 'rejeitado';
-      localStorage.setItem("initiatives", JSON.stringify(initiativesData));
-      renderInitiatives();
-    };
-});
     });
+});
 </script>
 
   <!-- Control Sidebar -->

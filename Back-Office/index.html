@@ -678,6 +678,53 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+<script>
+  // Verifique se já existem dados no Local Storage
+  if (!localStorage.getItem('initiatives')) {
+    // Exemplo de dados genéricos para as iniciativas
+    const initiatives = [
+        {
+            nome: "Iniciativa 1",
+            email: "iniciativa1@example.com",
+            data: "2023-05-20",
+            hora_inicio: "08:00",
+            hora_fim: "10:00",
+            tipo: "Workshop",
+            imagem: "https://via.placeholder.com/50",
+            local: "Local 1",
+            descricao: "Descrição da Iniciativa 1",
+            estado: "pendente"
+        },
+        {
+            nome: "Iniciativa 2",
+            email: "iniciativa2@example.com",
+            data: "2023-05-21",
+            hora_inicio: "09:00",
+            hora_fim: "11:00",
+            tipo: "Seminário",
+            imagem: "https://via.placeholder.com/50",
+            local: "Local 2",
+            descricao: "Descrição da Iniciativa 2",
+            estado: "rejeitado"
+        },
+        {
+            nome: "Iniciativa 3",
+            email: "iniciativa3@example.com",
+            data: "2023-05-22",
+            hora_inicio: "10:00",
+            hora_fim: "12:00",
+            tipo: "Palestra",
+            imagem: "https://via.placeholder.com/50",
+            local: "Local 3",
+            descricao: "Descrição da Iniciativa 3",
+            estado: "aceite"
+        }
+    ];
+
+    // Armazene os dados no Local Storage
+    localStorage.setItem('initiatives', JSON.stringify(initiatives));
+  } 
+</script>
 
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
