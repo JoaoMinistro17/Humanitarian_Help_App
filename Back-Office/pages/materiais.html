@@ -170,7 +170,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Nome</th>
-                            <th>Quantidade Disponível</th>
+                            <th>Quantidade Em Uso</th>
                             <th>Quantidade</th>
                             <th>Ações</th> <!-- Nova coluna para ações -->
                         </tr>
@@ -207,8 +207,8 @@
                         <input type="number" class="form-control" id="quantidade" name="quantidade" required>
                     </div>
                     <div class="form-group">
-                        <label for="quantidade_disponivel">Quantidade Disponível</label>
-                        <input type="number" class="form-control" id="quantidade_disponivel" name="quantidade_disponivel" required>
+                        <label for="quantidade_emUso">Quantidade Em Uso</label>
+                        <input type="number" class="form-control" id="quantidade_emUso" name="quantidade_emUso" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Adicionar</button>
                 </form>
@@ -231,7 +231,7 @@
                 newRow.innerHTML = `
                     <td>${index + 1}</td>
                     <td>${material.nome}</td>
-                    <td>${material.quantidade_disponivel}</td>
+                    <td>${material.quantidade_emUso}</td>
                     <td>${material.quantidade}</td>
                     <td><button class="btn btn-danger btn-sm" onclick="deleteMaterial(${index})">Excluir</button></td> <!-- Botão de exclusão -->
                 `;
@@ -247,10 +247,10 @@
             // Obter os valores dos campos do formulário
             const nome = form.nome.value;
             const quantidade = form.quantidade.value;
-            const quantidade_disponivel = form.quantidade_disponivel.value;
+            const quantidade_emUso = form.quantidade_emUso.value;
 
             // Adicionar o novo material aos dados
-            const newMaterial = { nome, quantidade, quantidade_disponivel };
+            const newMaterial = { nome, quantidade, quantidade_emUso: '0' };
             materialsData.push(newMaterial);
 
             // Atualizar os dados no localStorage

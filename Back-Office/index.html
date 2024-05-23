@@ -96,8 +96,6 @@
               </li>
             </ul>
 
-
-
              <!-- Iniciativas -->
              <li class="nav-item">
                 <a href="pages/iniciativas.html" class="nav-link"> 
@@ -509,10 +507,9 @@
             <script>              
               $(document).ready(function() {
                 const material = JSON.parse(localStorage.getItem('materials')) || [];
-                const materialLabels = material.map(function(material) {return material.nome;});
                 const materialList = material.map(function(material) { return material.nome; });
                 const materialQuant = material.map(function(material) { return material.quantidade; });
-                const materialAvaQuant = material.map(function(material) { return material.quantidade_disponivel; });
+                const materialAvaQuant = material.map(function(material) { return material.quantidade_emUso; });
             
                 // Define your area chart data
                 const areaChartData = {
@@ -701,7 +698,6 @@
 
 <!-- SCRIPT QUE INSERE DADOS AUTOMATICOS INICIATIVAS/MATERIAIS PARA JÁ-->
 <script>
-  
   // Verificar se já existem iniciativas no Local Storage
   if (!localStorage.getItem('initiatives')) {
     // Exemplos de iniciativas
@@ -729,6 +725,7 @@
             local: "Local 2",
             descricao: "Descrição da Iniciativa 2",
             estado: "rejeitado"
+
         },
         {
             nome: "Iniciativa 3",
@@ -740,7 +737,10 @@
             imagem: "https://via.placeholder.com/50",
             local: "Local 3",
             descricao: "Descrição da Iniciativa 3",
-            estado: "aceite"
+            estado: "aceite",
+            voluntarios: "Fernando",
+            profissionais: ["pro","fiss"],
+            materiais: "Tenda"
         }
     ];
     // Armazenar os dados no Local Storage
@@ -754,21 +754,78 @@
         {
             nome: "Cadeira",
             quantidade: "100",
-            quantidade_disponivel: "10"
+            quantidade_emUso: "10"
         },
         {
             nome: "Mesa",
             quantidade: "200",
-            quantidade_disponivel: "20"
+            quantidade_emUso: "20"
         },
         {
             nome: "Tenda",
             quantidade: "300",
-            quantidade_disponivel: "30"
+            quantidade_emUso: "30"
         }
     ];
     // Armazenar os dados no Local Storage
     localStorage.setItem('materials', JSON.stringify(materials));
+  } 
+
+  // Verificar se já existem voluntários no Local Storage
+  if (!localStorage.getItem('volunteers')) {
+      // Exemplo de materiais
+    const volunteers = [
+        {
+            nome: "Fernando",
+            idade: "100",
+            telemovel: "91",
+            email: "nando@gmail.com"
+        },
+        {
+            nome: "Paulo",
+            idade: "92",
+            telemovel: "92",
+            email: "paulo@gmail.com"
+        },
+        {
+            nome: "Gusto",
+            idade: "93",
+            telemovel: "93",
+            email: "gusto@gmail.com"
+        }
+    ];
+    // Armazenar os dados no Local Storage
+    localStorage.setItem('volunteers', JSON.stringify(volunteers));
+  } 
+
+  // Verificar se já existem voluntários no Local Storage
+  if (!localStorage.getItem('professionals')) {
+      // Exemplo de materiais
+    const professionals = [
+        {
+            nome: "pro",
+            idade: "91",
+            telemovel: "91",
+            email: "pro@gmail.com",
+            profissao: "Regador"
+        },
+        {
+            nome: "fiss",
+            idade: "92",
+            telemovel: "92",
+            email: "fiss@gmail.com",
+            profissao: "Juiz"
+        },
+        {
+            nome: "ional",
+            idade: "93",
+            telemovel: "93",
+            email: "ional@gmail.com",
+            profissao: "Osteopata"
+        }
+    ];
+    // Armazenar os dados no Local Storage
+    localStorage.setItem('professionals', JSON.stringify(professionals));
   } 
 
 </script>
@@ -807,7 +864,6 @@
 <script src="dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard.js"></script>
-
 
 </body>
 </html>
