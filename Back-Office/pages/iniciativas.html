@@ -299,19 +299,21 @@
 </div>
 
 <!-- Modal depois de clicar no botão de aceitar iniciativa para adicionar os voluntarios/profisionais/materiais -->
-<div class="modal fade" id="aditionalInitiativeModal" tabindex="-1" aria-labelledby="aditionalInitiativeModal" aria-hidden="true">
+<div class="modal fade" id="aditionalInitiativeModal" tabindex="-1" aria-labelledby="aditionalInitiativeModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="aditionalInitiativeModal">Adicionar Iniciativa</h5>
+        <h5 class="modal-title" id="aditionalInitiativeModalLabel">Adicionar Iniciativa</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form id="aditionalInitiativeModal" onsubmit="event.preventDefault(); addDataToInitiative();">
+        <form id="aditionalInitiativeForm">
           <!-- Campo oculto para armazenar o índice da iniciativa -->
           <input type="hidden" id="initiativeIndex">
+          
+          <span id="initiativeIndex"></span>
 
           <div class="form-group">
               <label for="voluntarios">Voluntários</label>
@@ -333,6 +335,45 @@
 </div>
 
 <script> 
+  // Função para preencher os campos do modal com os dados do localStorage ESTÁ A FUNCIONAR
+  function fillModalFields() {
+
+    // Recupera os dados dos voluntários, profissionais e materiais do localStorage
+    const volunteers = JSON.parse(localStorage.getItem("volunteers"));
+    const professionals = JSON.parse(localStorage.getItem("professionals"));
+    const materials = JSON.parse(localStorage.getItem("materials"));
+
+    // Se não houver dados em algum dos locais de armazenamento, saia da função
+    if (!volunteers || !professionals || !materials) return;
+
+    // Preenche o campo de seleção de voluntários
+    const voluntariosSelect = document.getElementById('voluntarios');
+    volunteers.forEach(volunteer => {
+        const option = document.createElement('option');
+        option.text = volunteer.nome;
+        voluntariosSelect.appendChild(option);
+    });
+
+    // Preenche o campo de seleção de profissionais
+    const profissionaisSelect = document.getElementById('profissionais');
+    professionals.forEach(professional => {
+        const option = document.createElement('option');
+        option.text = professional.nome;
+        profissionaisSelect.appendChild(option);
+    });
+
+    // Preenche o campo de seleção de materiais
+    const materiaisSelect = document.getElementById('materiais');
+    materials.forEach(material => {
+        const option = document.createElement('option');
+        option.text = material.nome;
+        //option.value = material.value;
+        materiaisSelect.appendChild(option);
+    });
+  }
+</script>
+
+<script>
   //Ir buscar os dados das tabelas inciativas
   document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("addInitiativeForm");
@@ -397,22 +438,6 @@
             </td>
           `;
         
-          /* <td colspan="10">
-            <h4>Voluntários:</h4>
-                <ul>
-                  ${initiative.volunteers.map(volunteer => `<li>${volunteer}</li>`).join("")}
-                </ul>
-                <h4>Profissionais:</h4>
-                <ul>
-                  ${initiative.professionals.map(professional => `<li>${professional}</li>`).join("")}
-                </ul>
-                <h4>Materiais:</h4>
-                <ul>
-                  ${initiative.materiais.map(material => `${material.nome} (${material.quantidade})`).join(', ')}
-                </ul>
-              </td>
-          */
-
           // Insere a linha expandida após a linha clicada
           newRow.parentNode.insertBefore(expandedRow, newRow.nextSibling);
         });
@@ -428,78 +453,6 @@
     });
   }
 
-    // Função para preencher os campos do modal com os dados do localStorage ESTÁ A FUNCIONAR
-    function fillModalFields() {
-
-      // Recupera os dados dos voluntários, profissionais e materiais do localStorage
-      const volunteers = JSON.parse(localStorage.getItem("volunteers"));
-      const professionals = JSON.parse(localStorage.getItem("professionals"));
-      const materials = JSON.parse(localStorage.getItem("materials"));
-      
-      // Se não houver dados em algum dos locais de armazenamento, saia da função
-      if (!volunteers || !professionals || !materials) return;
-      
-      // Preenche o campo de seleção de voluntários
-      const voluntariosSelect = document.getElementById('voluntarios');
-      volunteers.forEach(volunteer => {
-          const option = document.createElement('option');
-          option.text = volunteer.nome;
-          voluntariosSelect.appendChild(option);
-      });
-      
-      // Preenche o campo de seleção de profissionais
-      const profissionaisSelect = document.getElementById('profissionais');
-      professionals.forEach(professional => {
-          const option = document.createElement('option');
-          option.text = professional.nome;
-          profissionaisSelect.appendChild(option);
-      });
-      
-      // Preenche o campo de seleção de materiais
-      const materiaisSelect = document.getElementById('materiais');
-      materials.forEach(material => {
-          const option = document.createElement('option');
-          option.text = material.nome;
-          //option.value = material.value;
-          materiaisSelect.appendChild(option);
-      });
-}
-
-
-function addDataToInitiative() {
-  
-  //retorna a lista escolhida pelo utilizador
-  const voluntariosInput = document.getElementById('voluntarios').nome;
-  const profissionaisInput = document.getElementById('profissionais').nome;
-  const materiaisInput = document.getElementById('materiais').nome;
-
-  /*const selectedVoluntarios = voluntariosInput.split(',').map(item => item.trim());
-  const selectedProfissionais = profissionaisInput.split(',').map(item => item.trim());
-  const selectedMateriais = materiaisInput.split('\n').map(item => {
-      const [nome, quantidade] = item.split(',').map(part => part.trim());
-      return { nome, quantidade };
-  }); */
-
-  const initiativeIndex = document.getElementById('initiativeIndex').value;
-  let initiatives = JSON.parse(localStorage.getItem('initiatives')) || [];
-  let initiative = initiatives[initiativeIndex];
-
-  // Adicionar os dados selecionados à iniciativa
-  //initiative.voluntarios = selectedVoluntarios;
-  //initiative.profissionais = selectedProfissionais;
-  //initiative.materiais = selectedMateriais;
-
-  // Salvar de volta no localStorage
-  initiatives[initiativeIndex] = initiative;
-  localStorage.setItem('initiatives', JSON.stringify(initiatives));
-
-  // Re-renderizar a tabela
-  renderInitiatives();
-
-  // Fechar o modal
-  $('#aditionalInitiativeModal').modal('hide');
-} 
-
     /*  AO ACEITAR INICIATIVA VEM PARA O acceptInitiative QUE ACEITA A INICIATIVA E REDIRECIONA PARA O FORM aditionalInitiativeModal PARA ESCOLHER OS VOLUNTARIOS/PROFISSIONAIS/MATERIAIS
         QUANDO ESSE FORM FECHA COMEÇA O addDataToInitiative QUE ADICIONA O QUE ESCOLHEMOS À INICIATIVA. AINDA NAO ESTA A FUNCIONAR, 
         VAI BUSCAR OS NOMES DOS VOL/PRO/MAT MAS NÃO ENVIA, É UM PROBLEMA DO addDataToInitiative
@@ -508,20 +461,38 @@ function addDataToInitiative() {
     // Função para aceitar iniciativa
     window.acceptInitiative = function(index) {
 
-
       // Preenche o campo oculto com o índice da iniciativa
       document.getElementById('initiativeIndex').value = index;
 
-
+      //jquery e bootstrap para acionar o fillModalFields antes de abrir o form
       $('#aditionalInitiativeModal').on('show.bs.modal', function (event) {
+
         fillModalFields();
       });
       $('#aditionalInitiativeModal').modal('show');
 
+      $('#aditionalInitiativeModal').modal('hide');
+      // Capturar valores após o modal ser fechado
+      $('#aditionalInitiativeModal').on('hidden.bs.modal', function (e) {
+        const voluntarios = Array.from(document.getElementById('voluntarios').selectedOptions).map(option => option.value);
+      const profissionais = Array.from(document.getElementById('profissionais').selectedOptions).map(option => option.value);
+      const materiais = Array.from(document.getElementById('materiais').selectedOptions).map(option => option.value);
+
+      // Agora você pode usar os valores capturados como desejar
+      console.log('Voluntários selecionados:', voluntarios);
+      console.log('Profissionais selecionados:', profissionais);
+      console.log('Materiais selecionados:', materiais);
+      });
+
+      initiativesData[index].voluntarios = voluntarios;
+      initiativesData[index].profissionais = profissionais;
+      initiativesData[index].materiais = materiais;
 
       initiativesData[index].estado = 'aceite';
       localStorage.setItem("initiatives", JSON.stringify(initiativesData));
       renderInitiatives();
+
+      $('#aditionalInitiativeModal').modal('hide');
     };
 
       // Função para rejeitar iniciativa
@@ -566,6 +537,10 @@ function addDataToInitiative() {
     });
   });
 </script>
+
+<!-- jQuery primeiro, depois o Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
