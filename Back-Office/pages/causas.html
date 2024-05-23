@@ -151,7 +151,7 @@
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">Causas Pendentes</h3>
+            <h3 class="card-title">Causas</h3>
             <div class="card-tools">
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCauseModal">
                 Adicionar Causa
@@ -170,6 +170,7 @@
                   <th>Valor Angariado</th>
                   <th>Imagem</th>
                   <th>Descrição</th>
+                  <th>Estado</th>
                   <th>Ações</th>
                 </tr>
               </thead>
@@ -220,7 +221,15 @@
                 <label for="descricao">Descrição</label>
                 <textarea class="form-control" id="descricao" name="descricao" required></textarea>
               </div>
-              <button type="submit" class="btn btn-primary">Adicionar</button>
+              <div class="form-group">
+                <label for="estado">Estado</label>
+                <select class="form-control" id="estado" name="estado" required>
+                  <option value="pendente">Pendente</option>
+                  <option value="em andamento">Em Andamento</option>
+                  <option value="concluída">Concluída</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary">Salvar</button>
             </form>
           </div>
         </div>
@@ -268,6 +277,14 @@
                 <label for="edit-descricao">Descrição</label>
                 <textarea class="form-control" id="edit-descricao" name="descricao" required></textarea>
               </div>
+              <div class="form-group">
+                <label for="edit-estado">Estado</label>
+                <select class="form-control" id="edit-estado" name="estado" required>
+                  <option value="pendente">Pendente</option>
+                  <option value="em andamento">Em Andamento</option>
+                  <option value="concluída">Concluída</option>
+                </select>
+              </div>
               <button type="submit" class="btn btn-primary">Salvar</button>
             </form>
           </div>
@@ -312,6 +329,7 @@
             <td>${cause.valor_angariado}</td>
             <td><img src="${cause.imagem}" alt="Imagem da causa" style="width: 50px; height: 50px;"></td>
             <td>${cause.descricao}</td>
+            <td>${cause.estado}</td>
             <td>
               <button class="btn btn-info btn-sm edit-btn" data-index="${index}" data-toggle="modal" data-target="#editCauseModal">Editar</button>
               <button class="btn btn-danger btn-sm delete-btn" data-index="${index}">Excluir</button>
@@ -356,7 +374,8 @@
         data_conclusao: formData.get('data_conclusao'),
         valor_recebido: formData.get('valor_recebido'),
         valor_angariado: formData.get('valor_angariado'),
-        descricao: formData.get('descricao')
+        descricao: formData.get('descricao'),
+        estado: formData.get('estado')
       };
 
       const imageFile = formData.get('imagem');
@@ -379,7 +398,8 @@
         data_conclusao: formData.get('data_conclusao'),
         valor_recebido: formData.get('valor_recebido'),
         valor_angariado: formData.get('valor_angariado'),
-        descricao: formData.get('descricao')
+        descricao: formData.get('descricao'),
+        estado: formData.get('estado')
       };
 
       const imageFile = formData.get('imagem');
@@ -407,6 +427,7 @@
       $('#edit-valor_recebido').val(cause.valor_recebido);
       $('#edit-valor_angariado').val(cause.valor_angariado);
       $('#edit-descricao').val(cause.descricao);
+      $('#edit-estado').val(cause.estado);
     });
 
     $('#causesTable').on('click', '.delete-btn', function() {
