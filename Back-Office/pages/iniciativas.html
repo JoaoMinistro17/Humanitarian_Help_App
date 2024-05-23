@@ -337,43 +337,6 @@
   document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("addInitiativeForm");
 
-  form.addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    // Obter os valores dos campos do formulário
-    const nome = form.nome.value;
-    const email = form.email.value;
-    const data = form.data.value;
-    const hora_inicio = form.hora_inicio.value;
-    const hora_fim = form.hora_fim.value;
-    const tipo = form.tipo.value;
-    const imagem = form.imagem.value;
-    const local = form.local.value;
-    const descricao = form.descricao.value;
-
-    // Verificar se a hora de fim é anterior à hora de início
-    if (hora_fim < hora_inicio) {
-        alert("A hora de fim não pode ser anterior à hora de início.");
-        return; // Impede o envio do formulário se a condição não for cumprida
-    }
-
-    // Adicionar a nova iniciativa aos dados (COM OS DADOS QUE NÃO PRECISAM DE APARECER NO FORMULÁRIO)
-    const newInitiative = { nome, email, data, hora_inicio, hora_fim, tipo, imagem, local, descricao, estado: 'pendente', voluntarios, profissionais, materiais };
-    initiativesData.push(newInitiative);
-
-    // Atualizar os dados no localStorage
-    localStorage.setItem("initiatives", JSON.stringify(initiativesData));
-
-    // Renderizar iniciativas na tabela
-    renderInitiatives();
-
-    // Limpar os campos do formulário após adicionar a iniciativa
-    form.reset();
-
-    // Fechar o modal após adicionar a iniciativa
-    $('#addInitiativeModal').modal('hide');
-});
-
   const pendingTable = document.getElementById("pendingTable");
   const acceptedTable = document.getElementById("acceptedTable");
   const rejectedTable = document.getElementById("rejectedTable");
