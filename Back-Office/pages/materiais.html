@@ -38,7 +38,6 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -72,58 +71,56 @@
                 </a>
               </li>
             </ul>
-          </li>
+            <!-- Iniciativas -->
+            <li class="nav-item">
+              <a href="iniciativas.html" class="nav-link"> 
+                <i class="nav-icon fas fa-stream"></i>             
+                <p>Iniciativas</p>
+              </a>
+            </li>
 
-          <!-- Iniciativas -->
-          <li class="nav-item">
-            <a href="iniciativas.html" class="nav-link"> 
-              <i class="nav-icon fas fa-stream"></i>             
-              <p>Iniciativas</p>
-            </a>
-          </li>
+            <!-- Causas -->
+            <li class="nav-item">
+              <a href="causas.html" class="nav-link">   
+                <i class="nav-icon fas fa-pencil-alt"></i>               
+                <p>Causas</p>
+              </a>
+            </li>
 
-          <!-- Causas -->
-          <li class="nav-item">
-            <a href="causas.html" class="nav-link">   
-              <i class="nav-icon fas fa-pencil-alt"></i>               
-              <p>Causas</p>
-            </a>
-          </li>
+            <!-- Profissionais -->
+            <li class="nav-item">
+              <a href="profissionais.html" class="nav-link"> 
+                <i class="nav-icon fas fa-circle"></i>              
+                <p>Profissionais</p>
+              </a>
+            </li>  
 
-          <!-- Profissionais -->
-          <li class="nav-item">
-            <a href="profissionais.html" class="nav-link"> 
-              <i class="nav-icon fas fa-circle"></i>              
-              <p>Profissionais</p>
-            </a>
-          </li>  
+            <!-- Materiais -->
+            <li class="nav-item">
+              <a href="materiais.html" class="nav-link active">  
+                <i class="nav-icon fas fa-search"></i>                
+                <p>Materiais</p>
+              </a>
+            </li> 
 
-          <!-- Materiais -->
-          <li class="nav-item">
-            <a href="materiais.html" class="nav-link active">  
-              <i class="nav-icon fas fa-search"></i>                
-              <p>Materiais</p>
-            </a>
-          </li> 
+            <!-- Fotografias -->
+            <li class="nav-item">
+              <a href="fotografias.html" class="nav-link">
+                <i class="nav-icon fas fa-image"></i>
+                <p>Fotografias</p>
+              </a>
+            </li>
 
-          <!-- Fotografias -->
-          <li class="nav-item">
-            <a href="fotografias.html" class="nav-link">
-              <i class="nav-icon fas fa-image"></i>
-              <p>Fotografias</p>
-            </a>
-          </li>
-
-          <!-- Voluntários -->
-          <li class="nav-item">
-            <a href="voluntarios.html" class="nav-link"> 
-              <i class="nav-icon fas fa-tree"></i>              
-              <p>Voluntários</p>
-            </a>
-          </li>
-        </ul>
-      </nav> 
-      <!-- /.sidebar-menu -->
+            <!-- Voluntários -->
+            <li class="nav-item">
+              <a href="voluntarios.html" class="nav-link"> 
+                <i class="nav-icon fas fa-tree"></i>              
+                <p>Voluntários</p>
+              </a>
+            <li class="nav-item"> 
+            </ul>
+          </nav> 
+           <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
   </aside>
@@ -166,12 +163,12 @@
                 <tr>
                   <th>ID</th>
                   <th>Nome</th>
-                  <th>Quantidade Disponível</th>
+                  <th>Quantidade em Uso</th>
                   <th>Quantidade</th>
-                  <th>Ações</th>
+                  <th>Ações</th> <!-- Nova coluna para ações -->
                 </tr>
               </thead>
-              <tbody id="materialTableBody"></tbody>
+              <tbody id="materialTableBody"></tbody> <!-- Usaremos este corpo da tabela para adicionar linhas dinamicamente -->
             </table>
           </div>
           <!-- /.card-body -->
@@ -245,6 +242,12 @@
           const quantidade = form.quantidade.value;
           const quantidade_disponivel = form.quantidade_disponivel.value;
 
+          // Verificar se a quantidade disponível é maior que a quantidade total
+          if (parseInt(quantidade_disponivel) > parseInt(quantidade)) {
+            alert("A quantidade disponível não pode ser superior que a quantidade total.");
+            return;
+          }
+
           // Adicionar o novo material aos dados
           const newMaterial = { nome, quantidade, quantidade_disponivel };
           materialsData.push(newMaterial);
@@ -263,7 +266,7 @@
         });
 
         // Função para excluir material
-        window.deleteMaterial = function(index) {
+        window.deleteMaterial = function (index) {
           materialsData.splice(index, 1);
           localStorage.setItem("materials", JSON.stringify(materialsData));
           renderMaterials();
@@ -302,5 +305,23 @@
   <script src="../dist/js/adminlte.min.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="../dist/js/demo.js"></script>
+  <!-- Page specific script -->
+  <script>
+    $(function () {
+      $("#example1").DataTable({
+        "responsive": true, "lengthChange": false, "autoWidth": false,
+        "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+      $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+      });
+    });
+  </script>
 </body>
 </html>

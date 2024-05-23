@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Welfare - Free Bootstrap 4 Template by Colorlib</title>
+  <title>Go Help - Causas</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -22,7 +22,6 @@
 
   <link rel="stylesheet" href="css/bootstrap-datepicker.css">
   <link rel="stylesheet" href="css/jquery.timepicker.css">
-
 
   <link rel="stylesheet" href="css/flaticon.css">
   <link rel="stylesheet" href="css/icomoon.css">
@@ -76,8 +75,6 @@
     </div>
   </div>
 
-
-
   <section class="ftco-section">
     <div class="container">
       <div class="row" id="causes-container">
@@ -123,8 +120,6 @@
       </div>
     </div>
   </section>
-
-
 
   <footer class="ftco-footer ftco-section img">
     <div class="overlay"></div>
@@ -285,6 +280,9 @@
         const description = document.createElement('p');
         description.textContent = causeData.description;
 
+        const dates = document.createElement('p');
+        dates.innerHTML = `<strong>Data de Início:</strong> ${causeData.data_inicio} <br> <strong>Data de Fim:</strong> ${causeData.data_fim}`;
+
         const lastDonation = document.createElement('span');
         lastDonation.className = 'donation-time mb-3 d-block';
         lastDonation.textContent = `Última doação ${causeData.lastDonationTime}`;
@@ -314,6 +312,7 @@
         // Append all elements to the cause entry
         textDiv.appendChild(title);
         textDiv.appendChild(description);
+        textDiv.appendChild(dates);
         textDiv.appendChild(lastDonation);
         textDiv.appendChild(progressDiv);
         textDiv.appendChild(fundRaised);
