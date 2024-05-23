@@ -5,7 +5,9 @@
         "lastDonationTime": "1 semana atrás",
         "totalDonations": 24000,
         "donationsGoal": 30000,
-        "imageUrl": "images/cause-6.jpg"
+        "imageUrl": "images/cause-6.jpg",
+        "data_inicio": "2022-05-04",
+        "data_fim": "2024-12-25"
     },
     {
         "title": "Cuidados de Saúde",
@@ -13,6 +15,8 @@
         "lastDonationTime": "2 semana atrás",
         "totalDonations": 10000,
         "donationsGoal": 50000,
-        "imageUrl": "images/cause-1.jpg"
+        "imageUrl": "images/cause-1.jpg",
+        "data_inicio": "2023-09-01",
+        "data_fim": "2025-12-31"
     }
 ]

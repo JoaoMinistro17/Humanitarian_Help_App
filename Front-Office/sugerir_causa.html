@@ -90,6 +90,14 @@
                         <label for="inputDescricao">Descrição</label>
                         <textarea class="form-control" id="inputDescricao" rows="3" placeholder="Descrição"></textarea>
                     </div>
+                    <div class="form-group">
+                        <label for="inputDataInicio">Data de Início</label>
+                        <input type="date" class="form-control" id="inputDataInicio">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputDataFim">Data de Término</label>
+                        <input type="date" class="form-control" id="inputDataFim">
+                    </div>
                     <button type="submit" class="btn btn-white btn-lg btn-block">Sugerir</button>
                 </form>                
               </div>
@@ -131,13 +139,17 @@
         const email = document.getElementById('inputEmail').value;
         const valor = document.getElementById('inputValor').value;
         const descricao = document.getElementById('inputDescricao').value;
+        const dataInicio = document.getElementById('inputDataInicio').value;
+        const dataFim = document.getElementById('inputDataFim').value;
     
         // Create an object to store the current form submission
         const formSubmission = {
             nome: nome,
             email: email,
             valor: valor,
-            descricao: descricao
+            descricao: descricao,
+            dataInicio: dataInicio,
+            dataFim: dataFim
         };
     
         // Get the existing form submissions from local storage
@@ -152,7 +164,7 @@
         // Optionally, you can provide feedback to the user that the data has been saved
         alert('Formulário enviado!');
     });
-    </script>
+  </script>
     
     
     

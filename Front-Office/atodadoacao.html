@@ -99,12 +99,8 @@
           <h3 class="mb-3">Donativo</h3>
           <form action="#" class="volunter-form" id="volunteerForm">
             <div class="form-group">
-              <label for="inputNome">Nome</label>
+              <label for="inputNome">Nome Completo</label>
               <input type="text" class="form-control" id="inputNome" placeholder="Nome">
-            </div>
-            <div class="form-group">
-              <label for="inputApelido">Apelido</label>
-              <input type="text" class="form-control" id="inputApelido" placeholder="Apelido">
             </div>
             <div class="form-group">
               <label for="inputTelemovel">Telemóvel</label>
@@ -182,7 +178,6 @@
 
       // Get the values from the form fields
       const nome = document.getElementById('inputNome').value;
-      const apelido = document.getElementById('inputApelido').value;
       const telemovel = document.getElementById('inputTelemovel').value;
       const email = document.getElementById('inputEmail').value;
       const nif = document.getElementById('inputNIF').value;
@@ -194,7 +189,6 @@
       // Create an object to store the form submission
       const formSubmission = {
         nome: nome,
-        apelido: apelido,
         telemovel: telemovel,
         email: email,
         nif: nif,
