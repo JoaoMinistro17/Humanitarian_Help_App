@@ -152,135 +152,137 @@
     </section>
 
 
-<!-- Main content -->
-<section class="content">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Profissionais</h3>
-                <div class="card-tools">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addProfessionalModal">
-                        Adicionar Profissional
-                    </button>
-                </div>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-                <table id="decorrer" class="table table-bordered table-hover">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nome</th>
-                            <th>Idade</th>
-                            <th>Telemóvel</th>
-                            <th>Email</th>
-                            <th>Ações</th> <!-- Nova coluna para ações -->
-                        </tr>
-                    </thead>
-                    <tbody id="professionalTableBody"></tbody> <!-- Usaremos este corpo da tabela para adicionar linhas dinamicamente -->
-                </table>
-            </div>
-            <!-- /.card-body -->
-        </div>
-        <!-- /.card -->
-    </div>
-    <!-- /.col -->
-</section>
-<!-- /.content -->
-
-<!-- Modal para adicionar profissional -->
-<div class="modal fade" id="addProfessionalModal" tabindex="-1" aria-labelledby="addProfessionalModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="addProfessionalModalLabel">Adicionar Profissional</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form id="addProfessionalForm">
-                    <div class="form-group">
-                        <label for="nome">Nome</label>
-                        <input type="text" class="form-control" id="nome" name="nome" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="idade">Idade</label>
-                        <input type="number" class="form-control" id="idade" name="idade" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="telemovel">Telemóvel</label>
-                        <input type="tel" class="form-control" id="telemovel" name="telemovel" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Adicionar</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+    <section class="content">
+      <div class="col-12">
+          <div class="card">
+              <div class="card-header">
+                  <h3 class="card-title">Profissionais</h3>
+                  <div class="card-tools">
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addProfessionalModal">
+                          Adicionar Profissional
+                      </button>
+                  </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                  <table id="decorrer" class="table table-bordered table-hover">
+                      <thead>
+                          <tr>
+                              <th>ID</th>
+                              <th>Nome</th>
+                              <th>Idade</th>
+                              <th>Telemóvel</th>
+                              <th>Email</th>
+                              <th>Profissão</th> <!-- Nova coluna para profissão -->
+                              <th>Ações</th> <!-- Coluna para ações -->
+                          </tr>
+                      </thead>
+                      <tbody id="professionalTableBody"></tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+  </section>
+  
+  <!-- Modal para adicionar profissional -->
+  <div class="modal fade" id="addProfessionalModal" tabindex="-1" aria-labelledby="addProfessionalModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="addProfessionalModalLabel">Adicionar Profissional</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <form id="addProfessionalForm">
+                      <div class="form-group">
+                          <label for="nome">Nome</label>
+                          <input type="text" class="form-control" id="nome" name="nome" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="idade">Idade</label>
+                          <input type="number" class="form-control" id="idade" name="idade" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="telemovel">Telemóvel</label>
+                          <input type="tel" class="form-control" id="telemovel" name="telemovel" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="email">Email</label>
+                          <input type="email" class="form-control" id="email" name="email" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="profissao">Profissão</label>
+                          <input type="text" class="form-control" id="profissao" name="profissao" required> <!-- Campo para profissão -->
+                      </div>
+                      <button type="submit" class="btn btn-primary">Adicionar</button>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        const form = document.getElementById("addProfessionalForm");
-        const tabela = document.getElementById("professionalTableBody"); // Alteração do elemento de tabela para o corpo da tabela
-        const professionalsData = JSON.parse(localStorage.getItem("professionals")) || [];
+    const form = document.getElementById("addProfessionalForm");
+    const tabela = document.getElementById("professionalTableBody");
+    const professionalsData = JSON.parse(localStorage.getItem("professionals")) || [];
 
-        // Função para renderizar os profissionais na tabela
-        function renderProfessionals() {
-            tabela.innerHTML = "";
-            professionalsData.forEach((professional, index) => {
-                const newRow = tabela.insertRow();
-                newRow.innerHTML = `
-                    <td>${index + 1}</td>
-                    <td>${professional.nome}</td>
-                    <td>${professional.idade}</td>
-                    <td>${professional.telemovel}</td>
-                    <td>${professional.email}</td>
-                    <td><button class="btn btn-danger btn-sm" onclick="deleteProfessional(${index})">Excluir</button></td> <!-- Botão de exclusão -->
-                `;
-            });
-        }
+    // Função para renderizar os profissionais na tabela
+    function renderProfessionals() {
+        tabela.innerHTML = "";
+        professionalsData.forEach((professional, index) => {
+            const newRow = tabela.insertRow();
+            newRow.innerHTML = `
+                <td>${index + 1}</td>
+                <td>${professional.nome}</td>
+                <td>${professional.idade}</td>
+                <td>${professional.telemovel}</td>
+                <td>${professional.email}</td>
+                <td>${professional.profissao}</td> <!-- Coluna para profissão -->
+                <td><button class="btn btn-danger btn-sm" onclick="deleteProfessional(${index})">Excluir</button></td>
+            `;
+        });
+    }
 
-        // Renderizar profissionais ao carregar a página
+    // Renderizar profissionais ao carregar a página
+    renderProfessionals();
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        // Obter os valores dos campos do formulário
+        const nome = form.nome.value;
+        const idade = form.idade.value;
+        const telemovel = form.telemovel.value;
+        const email = form.email.value;
+        const profissao = form.profissao.value; // Obter o valor do campo profissão
+
+        // Adicionar o novo profissional aos dados
+        const newProfessional = { nome, idade, telemovel, email, profissao };
+        professionalsData.push(newProfessional);
+
+        // Atualizar os dados no localStorage
+        localStorage.setItem("professionals", JSON.stringify(professionalsData));
+
+        // Renderizar profissionais na tabela
         renderProfessionals();
 
-        form.addEventListener("submit", function (event) {
-            event.preventDefault();
+        // Limpar os campos do formulário após adicionar o profissional
+        form.reset();
 
-            // Obter os valores dos campos do formulário
-            const nome = form.nome.value;
-            const idade = form.idade.value;
-            const telemovel = form.telemovel.value;
-            const email = form.email.value;
-
-            // Adicionar o novo profissional aos dados
-            const newProfessional = { nome, idade, telemovel, email };
-            professionalsData.push(newProfessional);
-
-            // Atualizar os dados no localStorage
-            localStorage.setItem("professionals", JSON.stringify(professionalsData));
-
-            // Renderizar profissionais na tabela
-            renderProfessionals();
-
-            // Limpar os campos do formulário após adicionar o profissional
-            form.reset();
-
-            // Fechar o modal após adicionar o profissional
-            $('#addProfessionalModal').modal('hide');
-        });
-
-        // Função para excluir profissional
-        window.deleteProfessional = function(index) {
-            professionalsData.splice(index, 1);
-            localStorage.setItem("professionals", JSON.stringify(professionalsData));
-            renderProfessionals();
-        };
+        // Fechar o modal após adicionar o profissional
+        $('#addProfessionalModal').modal('hide');
     });
+
+    // Função para excluir profissional
+    window.deleteProfessional = function(index) {
+        professionalsData.splice(index, 1);
+        localStorage.setItem("professionals", JSON.stringify(professionalsData));
+        renderProfessionals();
+    };
+});
 </script>
 
 
