@@ -23,7 +23,6 @@
   <link rel="stylesheet" href="css/bootstrap-datepicker.css">
   <link rel="stylesheet" href="css/jquery.timepicker.css">
 
-
   <link rel="stylesheet" href="css/flaticon.css">
   <link rel="stylesheet" href="css/icomoon.css">
   <link rel="stylesheet" href="scss/style.css">
@@ -75,8 +74,6 @@
       </div>
     </div>
   </div>
-
-
 
   <section class="ftco-section">
     <div class="container">
@@ -283,6 +280,9 @@
         const description = document.createElement('p');
         description.textContent = causeData.description;
 
+        const dates = document.createElement('p');
+        dates.innerHTML = `<strong>Data de Início:</strong> ${causeData.data_inicio} <br> <strong>Data de Fim:</strong> ${causeData.data_fim}`;
+
         const lastDonation = document.createElement('span');
         lastDonation.className = 'donation-time mb-3 d-block';
         lastDonation.textContent = `Última doação ${causeData.lastDonationTime}`;
@@ -312,6 +312,7 @@
         // Append all elements to the cause entry
         textDiv.appendChild(title);
         textDiv.appendChild(description);
+        textDiv.appendChild(dates);
         textDiv.appendChild(lastDonation);
         textDiv.appendChild(progressDiv);
         textDiv.appendChild(fundRaised);
@@ -327,4 +328,5 @@
   </script>
 
 </body>
+
 </html>
