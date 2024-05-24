@@ -180,6 +180,40 @@
         </div>
       </div>
     </section>
+    <!-- Main content -->
+    <section class="content">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Causas</h3>
+            <div class="card-tools">
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCauseModal">
+                Adicionar Causa
+              </button>
+            </div>
+          </div>
+          <div class="card-body">
+            <table class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nome</th>
+                  <th>Email</th>
+                  <th>Data de Conclusão</th>
+                  <th>Valor Recebido</th>
+                  <th>Valor Angariado</th>
+                  <th>Imagem</th>
+                  <th>Descrição</th>
+                  <th>Estado</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="ocurredCausesTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Modal para adicionar causa -->
     <div class="modal fade" id="addCauseModal" tabindex="-1" aria-labelledby="addCauseModalLabel" aria-hidden="true">
@@ -225,8 +259,8 @@
                 <label for="estado">Estado</label>
                 <select class="form-control" id="estado" name="estado" required>
                   <option value="pendente">Pendente</option>
-                  <option value="em andamento">Em Andamento</option>
-                  <option value="concluída">Concluída</option>
+                  <option value="emAndamento">Em andamento</option>
+                  <option value="concluida">Concluída</option>
                 </select>
               </div>
               <button type="submit" class="btn btn-primary">Salvar</button>
@@ -281,8 +315,8 @@
                 <label for="edit-estado">Estado</label>
                 <select class="form-control" id="edit-estado" name="estado" required>
                   <option value="pendente">Pendente</option>
-                  <option value="em andamento">Em Andamento</option>
-                  <option value="concluída">Concluída</option>
+                  <option value="emAndamento">Em andamento</option>
+                  <option value="concluida">Concluída</option>
                 </select>
               </div>
               <button type="submit" class="btn btn-primary">Salvar</button>
