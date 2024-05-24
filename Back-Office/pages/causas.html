@@ -178,6 +178,7 @@
               <th>Imagem</th>
               <th>Descrição</th>
               <th>Estado</th>
+              <th>Ações</th> <!-- Nova coluna para as ações -->
             </tr>
           </thead>
           <tbody id="pendingCauseTable"></tbody>
@@ -203,6 +204,7 @@
               <th>Valor a Angariar</th>
               <th>Imagem</th>
               <th>Descrição</th>
+              <th>Ações</th> <!-- Nova coluna para as ações -->
             </tr>
           </thead>
           <tbody id="acceptedCauseTable"></tbody>
@@ -228,6 +230,7 @@
               <th>Valor a Angariar</th>
               <th>Imagem</th>
               <th>Descrição</th>
+              <th>Ações</th> <!-- Nova coluna para as ações -->
             </tr>
           </thead>
           <tbody id="rejectedCauseTable"></tbody>
@@ -320,6 +323,10 @@
           <td><img src="${cause.imagem}" alt="${cause.nome}" style="width: 50px; height: auto;"></td>
           <td>${cause.descricao}</td>
           <td>${cause.estado}</td>
+          <td>${cause.estado === 'pendente' ? `
+            <button class="btn btn-success" onclick="acceptCause(${index})">Aceitar</button>
+            <button class="btn btn-danger" onclick="rejectCause(${index})">Rejeitar</button>
+          ` : ''}</td>
         `;
 
         if (cause.estado === 'pendente') {
@@ -366,6 +373,20 @@
         });
       }
     });
+
+    // Função para aceitar uma causa
+    window.acceptCause = function(index) {
+      causesData[index].estado = 'aceite';
+      localStorage.setItem("causes", JSON.stringify(causesData));
+      renderCauses();
+    };
+
+    // Função para rejeitar uma causa
+    window.rejectCause = function(index) {
+      causesData[index].estado = 'rejeitado';
+      localStorage.setItem("causes", JSON.stringify(causesData));
+      renderCauses();
+    };
 
     // Renderizar causas ao carregar a página
     renderCauses();
