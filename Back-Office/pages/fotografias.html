@@ -174,39 +174,39 @@
       <!-- /.Guardar em Local Storage -->
       <script>
         document.getElementById('uploadButton').addEventListener('click', function() {
-            const fileInput = document.getElementById('fileInput');
-            const uploadedImage = document.getElementById('uploadedImage');
-
-            if (fileInput.files.length === 0) {
-                alert('Por favor, selecione uma imagem para carregar.');
-                return;
-            }
-            const file = fileInput.files[0];
-            const reader = new FileReader();
-            
-            reader.onload = function(e) {
-                const base64Image = e.target.result;
-                uploadedImage.src = base64Image;
-                uploadedImage.style.display = 'block';
-
-                // Salvar a imagem em localStorage
-                localStorage.setItem('uploadedImage', base64Image);
-            };
-            reader.readAsDataURL(file);
+          const fileInput = document.getElementById('fileInput');
+          const uploadedImage = document.getElementById('uploadedImage');
+      
+          if (fileInput.files.length === 0) {
+            alert('Por favor, selecione uma imagem para carregar.');
+            return;
+          }
+          const file = fileInput.files[0];
+          const reader = new FileReader();
+          
+          reader.onload = function(e) {
+            const base64Image = e.target.result;
+            uploadedImage.src = base64Image;
+            uploadedImage.style.display = 'block';
+      
+            // Salvar a imagem em localStorage
+            localStorage.setItem('uploadedImage', base64Image);
+          };
+          reader.readAsDataURL(file);
         });
-
+      
         // Carregar a imagem do localStorage ao carregar a página
         window.onload = function() {
-            const savedImage = localStorage.getItem('uploadedImage');
-            const uploadedImage = document.getElementById('uploadedImage');
-
-            if (savedImage) {
-                uploadedImage.src = savedImage;
-                uploadedImage.style.display = 'block';
-            }
+          const savedImage = localStorage.getItem('uploadedImage');
+          const uploadedImage = document.getElementById('uploadedImage');
+      
+          if (savedImage) {
+            uploadedImage.src = savedImage;
+            uploadedImage.style.display = 'block';
+          }
         };
-    </script>
-
+      </script>
+      
     </div>
 
     <!-- Control Sidebar -->
