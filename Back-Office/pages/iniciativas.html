@@ -338,7 +338,6 @@
 <script> 
   // Função para preencher os campos do modal com os dados do localStorage ESTÁ A FUNCIONAR
   function fillModalFields() {
-
     // Recupera os dados dos voluntários, profissionais e materiais do localStorage
     const volunteers = JSON.parse(localStorage.getItem("volunteers"));
     const professionals = JSON.parse(localStorage.getItem("professionals"));
@@ -441,8 +440,8 @@
         
           // Insere a linha expandida após a linha clicada
           newRow.parentNode.insertBefore(expandedRow, newRow.nextSibling);
-        });
-      }
+          });
+        }
         //Load das tabelas
         if (initiative.estado === 'pendente') {
             pendingTable.appendChild(newRow);
@@ -459,41 +458,46 @@
         VAI BUSCAR OS NOMES DOS VOL/PRO/MAT MAS NÃO ENVIA, É UM PROBLEMA DO addDataToInitiative
     */
 
+
+    // Define the variables outside the event handler
+    let voluntarios, profissionais, materiais;
+
     // Função para aceitar iniciativa
     window.acceptInitiative = function(index) {
 
-      // Preenche o campo oculto com o índice da iniciativa
-      document.getElementById('initiativeIndex').value = index;
-
       //jquery e bootstrap para acionar o fillModalFields antes de abrir o form
       $('#aditionalInitiativeModal').on('show.bs.modal', function (event) {
-
         fillModalFields();
       });
+      // Abre o modal
       $('#aditionalInitiativeModal').modal('show');
 
-      $('#aditionalInitiativeModal').modal('hide');
-      // Capturar valores após o modal ser fechado
-      $('#aditionalInitiativeModal').on('hidden.bs.modal', function (e) {
-        const voluntarios = Array.from(document.getElementById('voluntarios').selectedOptions).map(option => option.value);
-      const profissionais = Array.from(document.getElementById('profissionais').selectedOptions).map(option => option.value);
-      const materiais = Array.from(document.getElementById('materiais').selectedOptions).map(option => option.value);
+      // Adiciona evento de envio do formulário
+      document.getElementById('aditionalInitiativeModal').addEventListener('submit', function(event) {
+        event.preventDefault();
 
-      // Agora você pode usar os valores capturados como desejar
-      console.log('Voluntários selecionados:', voluntarios);
-      console.log('Profissionais selecionados:', profissionais);
-      console.log('Materiais selecionados:', materiais);
+        // Obter os valores dos campos do formulário
+        let voluntarios = Array.from(document.getElementById('voluntarios').selectedOptions).map(option => option.value);
+        let profissionais = Array.from(document.getElementById('profissionais').selectedOptions).map(option => option.value);
+        let materiais = Array.from(document.getElementById('materiais').selectedOptions).map(option => option.value);
+
+        // Adiciona os valores à iniciativa
+        initiativesData[index].voluntarios = voluntarios;
+        initiativesData[index].profissionais = profissionais;
+        initiativesData[index].materiais = materiais;
+
+        // Fecha o modal
+        $('#aditionalInitiativeModal').modal('hide');
       });
 
-      initiativesData[index].voluntarios = voluntarios;
-      initiativesData[index].profissionais = profissionais;
-      initiativesData[index].materiais = materiais;
-
+      // Atualiza o estado da iniciativa para aceite
       initiativesData[index].estado = 'aceite';
-      localStorage.setItem("initiatives", JSON.stringify(initiativesData));
-      renderInitiatives();
 
-      $('#aditionalInitiativeModal').modal('hide');
+      // Atualiza os dados no localStorage
+      localStorage.setItem("initiatives", JSON.stringify(initiativesData));
+
+      // Renderiza as iniciativas na tabela
+      renderInitiatives();
     };
 
       // Função para rejeitar iniciativa
@@ -539,27 +543,18 @@
   });
 </script>
 
-<!-- jQuery primeiro, depois o Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
-
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <!-- Bootstrap JS -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<!-- jQuery -->
-<script src="../plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+  <!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
 
 <!-- BOTÕES DAS TABELAS -->
 <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
