@@ -148,35 +148,95 @@
 
       <!-- Main content -->
       <section class="content">
-        <!-- Seção para carregar a foto do dispositivo -->
-          <div class="card">
-            <div class="card-header">
-              <h4 class="card-title">Carregar Fotografia</h4>
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-toggle="collapse" data-target="#carregarFoto" title="Expand">
-                  <i class="fas fa-plus"></i>
-                </button>
-              </div>
+        <!-- Seção para carregar fotos do dispositivo -->
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Carregar Fotografia</h4>
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-toggle="collapse" data-target="#carregarFoto1" title="Expand">
+                <i class="fas fa-plus"></i>
+              </button>
             </div>
-            <div class="collapse" id="carregarFoto">
-              <div class="card-body">
-                <input type="file" id="fileInput" accept="image/*">
-                <button id="uploadButton" class="btn btn-primary mt-2">Guardar</button>
-                <div class="mt-4">
-                  <img id="uploadedImage" class="img-fluid mb-2" alt="Imagem carregada" style="display:none;"/>
-                </div>
+          </div>
+          <div class="collapse" id="carregarFoto1">
+            <div class="card-body">
+              <input type="file" id="fileInput1" accept="image/*">
+              <button id="uploadButton1" class="btn btn-primary mt-2">Guardar</button>
+              <div class="mt-4">
+                <img id="uploadedImage1" class="img-fluid mb-2" alt="Imagem carregada" style="display:none;"/>
               </div>
             </div>
           </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Carregar Fotografia 2</h4>
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-toggle="collapse" data-target="#carregarFoto2" title="Expand">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+          </div>
+          <div class="collapse" id="carregarFoto2">
+            <div class="card-body">
+              <input type="file" id="fileInput2" accept="image/*">
+              <button id="uploadButton2" class="btn btn-primary mt-2">Guardar</button>
+              <div class="mt-4">
+                <img id="uploadedImage2" class="img-fluid mb-2" alt="Imagem carregada" style="display:none;"/>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Carregar Fotografia 3</h4>
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-toggle="collapse" data-target="#carregarFoto3" title="Expand">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+          </div>
+          <div class="collapse" id="carregarFoto3">
+            <div class="card-body">
+              <input type="file" id="fileInput3" accept="image/*">
+              <button id="uploadButton3" class="btn btn-primary mt-2">Guardar</button>
+              <div class="mt-4">
+                <img id="uploadedImage3" class="img-fluid mb-2" alt="Imagem carregada" style="display:none;"/>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Carregar Fotografia 4</h4>
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-toggle="collapse" data-target="#carregarFoto4" title="Expand">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+          </div>
+          <div class="collapse" id="carregarFoto4">
+            <div class="card-body">
+              <input type="file" id="fileInput4" accept="image/*">
+              <button id="uploadButton4" class="btn btn-primary mt-2">Guardar</button>
+              <div class="mt-4">
+                <img id="uploadedImage4" class="img-fluid mb-2" alt="Imagem carregada" style="display:none;"/>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
       <!-- /.content -->
 
       <!-- /.Guardar em Local Storage -->
       <script>
-        document.getElementById('uploadButton').addEventListener('click', function() {
-          const fileInput = document.getElementById('fileInput');
-          const uploadedImage = document.getElementById('uploadedImage');
-      
+        function handleUpload(fileInputId, uploadedImageId) {
+          const fileInput = document.getElementById(fileInputId);
+          const uploadedImage = document.getElementById(uploadedImageId);
+    
           if (fileInput.files.length === 0) {
             alert('Por favor, selecione uma imagem para carregar.');
             return;
@@ -188,22 +248,37 @@
             const base64Image = e.target.result;
             uploadedImage.src = base64Image;
             uploadedImage.style.display = 'block';
-      
+    
             // Salvar a imagem em localStorage
-            localStorage.setItem('uploadedImage', base64Image);
+            localStorage.setItem(uploadedImageId, base64Image);
           };
           reader.readAsDataURL(file);
+        }
+    
+        document.getElementById('uploadButton1').addEventListener('click', function() {
+          handleUpload('fileInput1', 'uploadedImage1');
         });
-      
+        document.getElementById('uploadButton2').addEventListener('click', function() {
+          handleUpload('fileInput2', 'uploadedImage2');
+        });
+        document.getElementById('uploadButton3').addEventListener('click', function() {
+          handleUpload('fileInput3', 'uploadedImage3');
+        });
+        document.getElementById('uploadButton4').addEventListener('click', function() {
+          handleUpload('fileInput4', 'uploadedImage4');
+        });
+    
         // Carregar a imagem do localStorage ao carregar a página
         window.onload = function() {
-          const savedImage = localStorage.getItem('uploadedImage');
-          const uploadedImage = document.getElementById('uploadedImage');
+          ['uploadedImage1', 'uploadedImage2', 'uploadedImage3', 'uploadedImage4'].forEach(function(imageId) {
+            const savedImage = localStorage.getItem(imageId);
+            const uploadedImage = document.getElementById(imageId);
       
-          if (savedImage) {
-            uploadedImage.src = savedImage;
-            uploadedImage.style.display = 'block';
-          }
+            if (savedImage) {
+              uploadedImage.src = savedImage;
+              uploadedImage.style.display = 'block';
+            }
+          });
         };
       </script>
       
@@ -233,14 +308,59 @@
   <script>
     $(function () {
       // Script para carregar a imagem do dispositivo e exibi-la
-      $('#uploadButton').on('click', function() {
-        const fileInput = document.getElementById('fileInput');
+      $('#uploadButton1').on('click', function() {
+        const fileInput = document.getElementById('fileInput1');
         const file = fileInput.files[0];
         if (file) {
           const reader = new FileReader();
           reader.onload = function(e) {
             const base64Image = e.target.result;
-            $('#uploadedImage').attr('src', base64Image).show();
+            $('#uploadedImage1').attr('src', base64Image).show();
+          };
+          reader.readAsDataURL(file);
+        } else {
+          alert('Por favor, selecione um arquivo de imagem válido.');
+        }
+      });
+
+      $('#uploadButton2').on('click', function() {
+        const fileInput = document.getElementById('fileInput2');
+        const file = fileInput.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            const base64Image = e.target.result;
+            $('#uploadedImage2').attr('src', base64Image).show();
+          };
+          reader.readAsDataURL(file);
+        } else {
+          alert('Por favor, selecione um arquivo de imagem válido.');
+        }
+      });
+
+      $('#uploadButton3').on('click', function() {
+        const fileInput = document.getElementById('fileInput3');
+        const file = fileInput.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            const base64Image = e.target.result;
+            $('#uploadedImage3').attr('src', base64Image).show();
+          };
+          reader.readAsDataURL(file);
+        } else {
+          alert('Por favor, selecione um arquivo de imagem válido.');
+        }
+      });
+
+      $('#uploadButton4').on('click', function() {
+        const fileInput = document.getElementById('fileInput4');
+        const file = fileInput.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            const base64Image = e.target.result;
+            $('#uploadedImage4').attr('src', base64Image).show();
           };
           reader.readAsDataURL(file);
         } else {
