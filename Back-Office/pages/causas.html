@@ -42,8 +42,12 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="../index.html" class="nav-link">
+
+
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Página Inicial
@@ -70,59 +74,60 @@
                 </a>
               </li>
             </ul>
-          </li>
+            <!-- Iniciativas -->
+            <li class="nav-item">
+              <a href="iniciativas.html" class="nav-link"> 
+                <i class="nav-icon fas fa-stream"></i>             
+                <p>Iniciativas</p>
+              </a>
+            </li>
 
-          <!-- Iniciativas -->
-          <li class="nav-item">
-            <a href="iniciativas.html" class="nav-link"> 
-              <i class="nav-icon fas fa-stream"></i>             
-              <p>Iniciativas</p>
-            </a>
-          </li>
+            <!-- Causas -->
+            <li class="nav-item">
+              <a href="causas.html" class="nav-link active">   
+                <i class="nav-icon fas fa-pencil-alt"></i>
+                <p>Causas</p>
+              </a>
+            </li>
 
-          <!-- Causas -->
-          <li class="nav-item">
-            <a href="causas.html" class="nav-link active">   
-              <i class="nav-icon fas fa-pencil-alt"></i>
-              <p>Causas</p>
-            </a>
-          </li>
+            <!-- Profissionais -->
+            <li class="nav-item">
+              <a href="profissionais.html" class="nav-link"> 
+                <i class="nav-icon fas fa-circle"></i>              
+                <p>Profissionais</p>
+              </a>
+            </li>  
 
-          <!-- Profissionais -->
-          <li class="nav-item">
-            <a href="profissionais.html" class="nav-link"> 
-              <i class="nav-icon fas fa-circle"></i>              
-              <p>Profissionais</p>
-            </a>
-          </li>  
+            <!-- Materiais -->
+            <li class="nav-item">
+              <a href="materiais.html" class="nav-link">  
+                <i class="nav-icon fas fa-search"></i>                
+                <p>Materiais</p>
+              </a>
+            </li> 
 
-          <!-- Materiais -->
-          <li class="nav-item">
-            <a href="materiais.html" class="nav-link">  
-              <i class="nav-icon fas fa-search"></i>                
-              <p>Materiais</p>
-            </a>
-          </li> 
+            <!-- Fotografias -->
+            <li class="nav-item">
+              <a href="fotografias.html" class="nav-link">
+                <i class="nav-icon fas fa-image"></i>
+                <p>Fotografias</p>
+              </a>
+            </li>
 
-          <!-- Fotografias -->
-          <li class="nav-item">
-            <a href="fotografias.html" class="nav-link">
-              <i class="nav-icon fas fa-image"></i>
-              <p>Fotografias</p>
-            </a>
-          </li>
+            <!-- Voluntários -->
+            <li class="nav-item">
+              <a href="voluntarios.html" class="nav-link"> 
+                <i class="nav-icon fas fa-tree"></i>              
+                <p>Voluntários</p>
+              </a>
+            <li class="nav-item"> 
 
-          <!-- Voluntários -->
-          <li class="nav-item">
-            <a href="voluntarios.html" class="nav-link"> 
-              <i class="nav-icon fas fa-tree"></i>              
-              <p>Voluntários</p>
-            </a>
-          </li> 
-
-        </ul>
-      </nav> 
-      <!-- /.sidebar-menu -->
+            <!-- Apagar a treta que está para baixo e 
+              escolher sempre o nav-link active ná página que estamos a usar -->
+    
+            </ul>
+          </nav> 
+           <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
   </aside>
@@ -146,298 +151,296 @@
       </div><!-- /.container-fluid -->
     </section>
 
-    <!-- Main content -->
-    <section class="content">
-      <div class="col-12">
-        <div class="card">
-          <div class="card-header">
-            <h3 class="card-title">Causas</h3>
-            <div class="card-tools">
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCauseModal">
-                Adicionar Causa
-              </button>
-            </div>
-          </div>
-          <div class="card-body">
-            <table class="table table-bordered table-hover">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Nome</th>
-                  <th>Email</th>
-                  <th>Data de Conclusão</th>
-                  <th>Valor Recebido</th>
-                  <th>Valor Angariado</th>
-                  <th>Imagem</th>
-                  <th>Descrição</th>
-                  <th>Estado</th>
-                  <th>Ações</th>
-                </tr>
-              </thead>
-              <tbody id="causesTable"></tbody>
-            </table>
-          </div>
+
+    
+<!-- Main content -->
+<section class="content">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Causas Pendentes</h3>
+        <div class="card-tools">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCauseModal">
+            Adicionar Causa
+          </button>
         </div>
       </div>
-    </section>
-
-    <!-- Modal para adicionar causa -->
-    <div class="modal fade" id="addCauseModal" tabindex="-1" aria-labelledby="addCauseModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="addCauseModalLabel">Adicionar Causa</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form id="addCauseForm">
-              <div class="form-group">
-                <label for="nome">Nome</label>
-                <input type="text" class="form-control" id="nome" name="nome" required>
-              </div>
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email" required>
-              </div>
-              <div class="form-group">
-                <label for="data_conclusao">Data de Conclusão</label>
-                <input type="date" class="form-control" id="data_conclusao" name="data_conclusao" required>
-              </div>
-              <div class="form-group">
-                <label for="valor_recebido">Valor Recebido</label>
-                <input type="number" class="form-control" id="valor_recebido" name="valor_recebido" required>
-              </div>
-              <div class="form-group">
-                <label for="valor_angariado">Valor Angariado</label>
-                <input type="number" class="form-control" id="valor_angariado" name="valor_angariado" required>
-              </div>
-              <div class="form-group">
-                <label for="imagem">Imagem</label>
-                <input type="file" class="form-control" id="imagem" name="imagem" accept="image/*" required>
-              </div>
-              <div class="form-group">
-                <label for="descricao">Descrição</label>
-                <textarea class="form-control" id="descricao" name="descricao" required></textarea>
-              </div>
-              <div class="form-group">
-                <label for="estado">Estado</label>
-                <select class="form-control" id="estado" name="estado" required>
-                  <option value="pendente">Pendente</option>
-                  <option value="emAndamento">Em andamento</option>
-                  <option value="concluida">Concluída</option>
-                </select>
-              </div>
-              <button type="submit" class="btn btn-primary">Salvar</button>
-            </form>
-          </div>
-        </div>
+      <div class="card-body">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Email</th>
+              <th>Data de Conclusão</th>
+              <th>Valor Recebido</th>
+              <th>Valor a Angariar</th>
+              <th>Imagem</th>
+              <th>Descrição</th>
+              <th>Estado</th>
+              <th>Ações</th> <!-- Nova coluna para as ações -->
+            </tr>
+          </thead>
+          <tbody id="pendingCauseTable"></tbody>
+        </table>
       </div>
     </div>
-
-    <!-- Modal para editar causa -->
-    <div class="modal fade" id="editCauseModal" tabindex="-1" aria-labelledby="editCauseModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="editCauseModalLabel">Editar Causa</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form id="editCauseForm">
-              <input type="hidden" id="edit-id">
-              <div class="form-group">
-                <label for="edit-nome">Nome</label>
-                <input type="text" class="form-control" id="edit-nome" name="nome" required>
-              </div>
-              <div class="form-group">
-                <label for="edit-email">Email</label>
-                <input type="email" class="form-control" id="edit-email" name="email" required>
-              </div>
-              <div class="form-group">
-                <label for="edit-data_conclusao">Data de Conclusão</label>
-                <input type="date" class="form-control" id="edit-data_conclusao" name="data_conclusao" required>
-              </div>
-              <div class="form-group">
-                <label for="edit-valor_recebido">Valor Recebido</label>
-                <input type="number" class="form-control" id="edit-valor_recebido" name="valor_recebido" required>
-              </div>
-              <div class="form-group">
-                <label for="edit-valor_angariado">Valor Angariado</label>
-                <input type="number" class="form-control" id="edit-valor_angariado" name="valor_angariado" required>
-              </div>
-              <div class="form-group">
-                <label for="edit-imagem">Imagem</label>
-                <input type="file" class="form-control" id="edit-imagem" name="imagem" accept="image/*">
-              </div>
-              <div class="form-group">
-                <label for="edit-descricao">Descrição</label>
-                <textarea class="form-control" id="edit-descricao" name="descricao" required></textarea>
-              </div>
-              <div class="form-group">
-                <label for="edit-estado">Estado</label>
-                <select class="form-control" id="edit-estado" name="estado" required>
-                  <option value="pendente">Pendente</option>
-                  <option value="emAndamento">Em andamento</option>
-                  <option value="concluida">Concluída</option>
-                </select>
-              </div>
-              <button type="submit" class="btn btn-primary">Salvar</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div>
-  <!-- /.content-wrapper -->
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Causas Aceites</h3>
+      </div>
+      <div class="card-body">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Email</th>
+              <th>Data de Conclusão</th>
+              <th>Valor Recebido</th>
+              <th>Valor a Angariar</th>
+              <th>Imagem</th>
+              <th>Descrição</th>
+              <th>Ações</th> <!-- Nova coluna para as ações -->
+            </tr>
+          </thead>
+          <tbody id="acceptedCauseTable"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Causas Rejeitadas</h3>
+      </div>
+      <div class="card-body">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Email</th>
+              <th>Data de Conclusão</th>
+              <th>Valor Recebido</th>
+              <th>Valor a Angariar</th>
+              <th>Imagem</th>
+              <th>Descrição</th>
+              <th>Ações</th> <!-- Nova coluna para as ações -->
+            </tr>
+          </thead>
+          <tbody id="rejectedCauseTable"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal para adicionar causa -->
+<div class="modal fade" id="addCauseModal" tabindex="-1" aria-labelledby="addCauseModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addCauseModalLabel">Adicionar Causa</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="addCauseForm">
+          <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" class="form-control" id="nome" name="nome" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="data_conclusao">Data de Conclusão</label>
+            <input type="date" class="form-control" id="data_conclusao" name="data_conclusao" required>
+          </div>
+          <div class="form-group">
+            <label for="valor_recebido">Valor Recebido</label>
+            <input type="number" class="form-control" id="valor_recebido" name="valor_recebido" min="0" value="0" required>
+          </div>
+          <div class="form-group">
+            <label for="valor_angariar">Valor a Angariar</label>
+            <input type="number" class="form-control" id="valor_angariar" name="valor_angariar" min="0" required>
+          </div>
+          <div class="form-group">
+            <label for="imagem">Imagem</label>
+            <input type="file" class="form-control-file" id="imagem" name="imagem" accept="image/*" required>
+          </div>
+          <div class="form-group">
+            <label for="descricao">Descrição</label>
+            <textarea class="form-control" id="descricao" name="descricao" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Adicionar</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
-<!-- ./wrapper -->
-
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../dist/js/adminlte.min.js"></script>
 
 <script>
-  $(document).ready(function() {
-    let causes = JSON.parse(localStorage.getItem('causes')) || [];
+  // Função para ler um arquivo de imagem e convertê-lo em base64
+  function readFileAsBase64(file, callback) {
+    const reader = new FileReader();
+    reader.onload = function(event) {
+      callback(event.target.result);
+    };
+    reader.readAsDataURL(file);
+  }
 
-    function displayCauses() {
-      const causesTable = $('#causesTable');
-      causesTable.empty();
+  //Ir buscar os dados das tabelas causas
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("addCauseForm");
+    const pendingTable = document.getElementById("pendingCauseTable");
+    const acceptedTable = document.getElementById("acceptedCauseTable");
+    const rejectedTable = document.getElementById("rejectedCauseTable");
+    let causesData = JSON.parse(localStorage.getItem("causes")) || [];
 
-      causes.forEach((cause, index) => {
-        const row = `
-          <tr>
-            <td>${index + 1}</td>
-            <td>${cause.nome}</td>
-            <td>${cause.email}</td>
-            <td>${cause.data_conclusao}</td>
-            <td>${cause.valor_recebido}</td>
-            <td>${cause.valor_angariado}</td>
-            <td><img src="${cause.imagem}" alt="Imagem da causa" style="width: 50px; height: 50px;"></td>
-            <td>${cause.descricao}</td>
-            <td>${cause.estado}</td>
-            <td>
-              <button class="btn btn-info btn-sm edit-btn" data-index="${index}" data-toggle="modal" data-target="#editCauseModal">Editar</button>
-              <button class="btn btn-danger btn-sm delete-btn" data-index="${index}">Excluir</button>
-            </td>
-          </tr>
+    // Função para renderizar as causas na tabela correspondente
+    function renderCauses() {
+      pendingTable.innerHTML = "";
+      acceptedTable.innerHTML = "";
+      rejectedTable.innerHTML = "";
+
+      causesData.forEach((cause, index) => {
+        const newRow = document.createElement('tr');
+        newRow.innerHTML = `
+          <td>${index + 1}</td>
+          <td>${cause.nome}</td>
+          <td>${cause.email}</td>
+          <td>${cause.data_conclusao}</td>
+          <td>${cause.valor_recebido}</td>
+          <td>${cause.valor_angariar}</td>
+          <td><img src="${cause.imagem}" alt="${cause.nome}" style="width: 50px; height: auto;"></td>
+          <td>${cause.descricao}</td>
+          <td>${cause.estado}</td>
+          <td>${cause.estado === 'pendente' ? `
+            <button class="btn btn-success" onclick="acceptCause(${index})">Aceitar</button>
+            <button class="btn btn-danger" onclick="rejectCause(${index})">Rejeitar</button>
+          ` : ''}</td>
         `;
-        causesTable.append(row);
+
+        if (cause.estado === 'pendente') {
+          pendingTable.appendChild(newRow);
+        } else if (cause.estado === 'aceite') {
+          acceptedTable.appendChild(newRow);
+        } else if (cause.estado === 'rejeitado') {
+          rejectedTable.appendChild(newRow);
+        }
       });
     }
 
-    function saveCause(cause) {
-      causes.push(cause);
-      localStorage.setItem('causes', JSON.stringify(causes));
-      displayCauses();
-    }
-
-    function updateCause(index, updatedCause) {
-      causes[index] = updatedCause;
-      localStorage.setItem('causes', JSON.stringify(causes));
-      displayCauses();
-    }
-
-    function deleteCause(index) {
-      causes.splice(index, 1);
-      localStorage.setItem('causes', JSON.stringify(causes));
-      displayCauses();
-    }
-
-    function convertToBase64(file, callback) {
-      const reader = new FileReader();
-      reader.onloadend = () => callback(reader.result);
-      reader.readAsDataURL(file);
-    }
-
-    $('#addCauseForm').submit(function(event) {
+    form.addEventListener("submit", function (event) {
       event.preventDefault();
 
-      const formData = new FormData(this);
-      const cause = {
-        nome: formData.get('nome'),
-        email: formData.get('email'),
-        data_conclusao: formData.get('data_conclusao'),
-        valor_recebido: formData.get('valor_recebido'),
-        valor_angariado: formData.get('valor_angariado'),
-        descricao: formData.get('descricao'),
-        estado: formData.get('estado')
-      };
+      // Obter os valores dos campos do formulário
+      const nome = form.nome.value;
+      const email = form.email.value;
+      const data_conclusao = form.data_conclusao.value;
+      const valor_recebido = form.valor_recebido.value;
+      const valor_angariar = form.valor_angariar.value;
+      const imagemInput = form.imagem;
+      const descricao = form.descricao.value;
 
-      const imageFile = formData.get('imagem');
-      convertToBase64(imageFile, (base64Image) => {
-        cause.imagem = base64Image;
-        saveCause(cause);
-        $('#addCauseModal').modal('hide');
-        this.reset();
-      });
-    });
+      // Ler e converter a imagem em base64
+      const imagemFile = imagemInput.files[0];
+      if (imagemFile) {
+        readFileAsBase64(imagemFile, function(base64Image) {
+          // Adicionar a nova causa aos dados
+          const newCause = { nome, email, data_conclusao, valor_recebido, valor_angariar, imagem: base64Image, descricao, estado: 'pendente' };
+          causesData.push(newCause);
 
-    $('#editCauseForm').submit(function(event) {
-      event.preventDefault();
+          // Atualizar os dados no localStorage
+          localStorage.setItem("causes", JSON.stringify(causesData));
 
-      const index = $('#edit-id').val();
-      const formData = new FormData(this);
-      const updatedCause = {
-        nome: formData.get('nome'),
-        email: formData.get('email'),
-        data_conclusao: formData.get('data_conclusao'),
-        valor_recebido: formData.get('valor_recebido'),
-        valor_angariado: formData.get('valor_angariado'),
-        descricao: formData.get('descricao'),
-        estado: formData.get('estado')
-      };
+          // Renderizar causas na tabela
+          renderCauses();
 
-      const imageFile = formData.get('imagem');
-      if (imageFile.size > 0) {
-        convertToBase64(imageFile, (base64Image) => {
-          updatedCause.imagem = base64Image;
-          updateCause(index, updatedCause);
-          $('#editCauseModal').modal('hide');
+          // Limpar os campos do formulário após adicionar a causa
+          form.reset();
+
+          // Fechar o modal após adicionar a causa
+          $('#addCauseModal').modal('hide');
         });
-      } else {
-        updatedCause.imagem = causes[index].imagem;
-        updateCause(index, updatedCause);
-        $('#editCauseModal').modal('hide');
       }
     });
 
-    $('#causesTable').on('click', '.edit-btn', function() {
-      const index = $(this).data('index');
-      const cause = causes[index];
+    // Função para aceitar uma causa
+    window.acceptCause = function(index) {
+      causesData[index].estado = 'aceite';
+      localStorage.setItem("causes", JSON.stringify(causesData));
+      renderCauses();
+    };
 
-      $('#edit-id').val(index);
-      $('#edit-nome').val(cause.nome);
-      $('#edit-email').val(cause.email);
-      $('#edit-data_conclusao').val(cause.data_conclusao);
-      $('#edit-valor_recebido').val(cause.valor_recebido);
-      $('#edit-valor_angariado').val(cause.valor_angariado);
-      $('#edit-descricao').val(cause.descricao);
-      $('#edit-estado').val(cause.estado);
-    });
+    // Função para rejeitar uma causa
+    window.rejectCause = function(index) {
+      causesData[index].estado = 'rejeitado';
+      localStorage.setItem("causes", JSON.stringify(causesData));
+      renderCauses();
+    };
 
-    $('#causesTable').on('click', '.delete-btn', function() {
-      const index = $(this).data('index');
-      deleteCause(index);
-    });
-
-    displayCauses();
+    // Renderizar causas ao carregar a página
+    renderCauses();
   });
 </script>
 
+</script>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+  <!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- BOTÕES DAS TABELAS -->
+<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="../plugins/jszip/jszip.min.js"></script>
+<script src="../plugins/pdfmake/pdfmake.min.js"></script>
+<script src="../plugins/pdfmake/vfs_fonts.js"></script>
+<script src="../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="../plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+<!-- AdminLTE App -->
+<script src="../dist/js/adminlte.min.js"></script>
+<!-- Page specific script -->
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
 </body>
 </html>
