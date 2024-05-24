@@ -66,40 +66,39 @@
     </div>
 
     <section class="ftco-section">
-      <div class="container_registo">
-          <div class='card'>
-            <h1> Registo </h1>
-            
-            <div id='msgError'></div>
-            <div id='msgSuccess'></div>
-            
-            <div class="label-float">
-              <input type="text" id="nome" placeholder=" " required>
-              <label id="labelNome" for="nome">Nome Completo</label>
-            </div>
+        <div class="container_login">
+            <div class="card">
+              <h1>Login</h1>
       
-            <div class="label-float">
-              <input type="email" id="email" placeholder=" " required>
-              <label id="labelEmail" for="email">Email</label>
-            </div>
-            
-            <div class="label-float">
-              <input type="password" id="password" placeholder=" " required />
-              <label id="labelPassword" for="password">Palavra-Passe</label>
-              <i id="verPassword" class="fa fa-eye" aria-hidden="true"></i>
-            </div>
+              <div id="msgError"></div>
       
-            <div class="label-float">
-              <input type="password" id="confirmPassword" placeholder=" " required  />
-              <label id="labelConfirmPassword" for="confirmPassword">Repita a palavra-passe</label>
-              <i id="verConfirmPassword" class="fa fa-eye" aria-hidden="true"></i>
-            </div>
-            
-            <div class='justify-center'>
-              <button onclick='registar()'>Confirmar</button>
+              <div class="label-float">
+                <input type="email" id="email" placeholder="" required />
+                <label id="emailLabel" for="email">Email</label>
+              </div>
+      
+              <div class="label-float">
+                <input type="password" id="senha" placeholder="" required />
+                <label id="senhaLabel" for="senha">Senha</label>
+                <i class="fa fa-eye" aria-hidden="true"></i>
+              </div>
+      
+              <div class="justify-center">
+                <button onclick="entrar()">Entrar</button>
+              </div>
+      
+              <div class="justify-center">
+                <hr />
+              </div>
+      
+              <p>
+                Não tem uma conta?
+                <a href="./registo.html">
+                  Registe-se
+                </a>
+              </p>
             </div>
           </div>
-        </div>
     </section>
 
  <section class="ftco-section-3 img" style="background-image: url(images/bg_3.jpg);">
