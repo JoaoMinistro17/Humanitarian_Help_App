@@ -250,7 +250,7 @@
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="pages/causas.html" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="pages/causas.html" class="small-box-footer">Mais info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -268,7 +268,6 @@
             </div>
         </div>
         <!-- ./col -->
-        
         <script>
             document.addEventListener("DOMContentLoaded", function () {
                 // Fetch the professionals data from localStorage or initialize if empty
@@ -280,22 +279,35 @@
                 // Update the count in the small box
                 document.getElementById("field-professionals-count").innerText = fieldProfessionalsCount;
             });
-        </script>        
+        </script>
           <!-- ./col -->
-          
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3>65</h3>
-                <p>Unique Visitors</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <div class="small-box bg-info">
+                <div class="inner">
+                    <h3 id="field-volunteers-count">0</h3>
+                    <p>Voluntários no Terreno</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                </div>
+                <a href="pages/voluntarios.html" class="small-box-footer">Mais Info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
-          </div>
+        </div>
+        <!-- ./col -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Fetch the volunteers data from localStorage or initialize if empty
+                let volunteers = JSON.parse(localStorage.getItem("volunteers")) || [];
+                
+                // Count the number of field volunteers
+                const fieldVolunteersCount = volunteers.length;
+                
+                // Update the count in the small box
+                document.getElementById("field-volunteers-count").innerText = fieldVolunteersCount;
+            });
+        </script>
+        
           <!-- ./col -->
         </div>
         <!-- /.row -->
