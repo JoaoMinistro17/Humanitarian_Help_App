@@ -1,57 +1,61 @@
-let btn = document.querySelector('#verPassword');
+let btn = document.querySelector('.fa-eye');
 
-let email = document.querySelector('#email');
-let labelEmail = document.querySelector('#emailLabel');
-let validEmail = false;
-
-let password = document.querySelector('#password');
-let labelPassword = document.querySelector('#labelPassword');
-let validPassword = false;
-
-let msgError = document.querySelector('#msgError');
-
-email.addEventListener("keyup", () => {
-  if (!email.value.includes("@")) {
-    labelEmail.setAttribute("style", "color: red");
-    labelEmail.innerHTML = "Email *Insira um email válido (deve conter @)";
-    email.setAttribute("style", "border-color: red");
-    validEmail = false;
+btn.addEventListener('click', () => {
+  let inputPassword = document.querySelector('#password');
+  
+  if (inputPassword.getAttribute('type') == 'password') {
+    inputPassword.setAttribute('type', 'text');
   } else {
-    labelEmail.setAttribute("style", "color: green");
-    labelEmail.innerHTML = "Email";
-    email.setAttribute("style", "border-color: green");
-    validEmail = true;
+    inputPassword.setAttribute('type', 'password');
   }
 });
 
-password.addEventListener('keyup', () => {
-  if(password.value.length <= 5){
-    labelPassword.setAttribute('style', 'color: red');
-    labelPassword.innerHTML = 'Palavra-Passe *Insira no mínimo 6 caracteres';
+function logar() {
+  let email = document.querySelector('#email');
+  let emailLabel = document.querySelector('#emailLabel');
+  
+  let password = document.querySelector('#password');
+  let passwordLabel = document.querySelector('#passwordLabel');
+  
+  let msgError = document.querySelector('#msgError');
+  let listaUser = [];
+  
+  let userValid = {
+    nome: '',
+    email: '',
+    password: ''
+  };
+  
+  listaUser = JSON.parse(localStorage.getItem('listaUser'));
+  
+  listaUser.forEach((item) => {
+    if (email.value == item.emailCad && password.value == item.passwordCad) {
+      userValid = {
+        nome: item.nomeCad,
+        email: item.emailCad,
+        password: item.passwordCad
+      };
+    }
+  });
+   
+  if (email.value == userValid.email && password.value == userValid.password) {
+    window.location.href = 'perfil.html';
+    
+    let mathRandom = Math.random().toString(16).substr(2);
+    let token = mathRandom + mathRandom;
+    
+    localStorage.setItem('token', token);
+    localStorage.setItem('userLogado', JSON.stringify(userValid));
+  } else {
+    // Corrigido de userLabel para emailLabel
+    emailLabel.setAttribute('style', 'color: red');
+    email.setAttribute('style', 'border-color: red');
+    passwordLabel.setAttribute('style', 'color: red');
     password.setAttribute('style', 'border-color: red');
-    validPassword = false;
-  } else {
-    labelPassword.setAttribute('style', 'color: green');
-    labelPassword.innerHTML = 'Palavra-Passe';
-    password.setAttribute('style', 'border-color: green');
-    validPassword = true;
-  }
-});
-
-function entrar(){
-  if(validEmail && validPassword){
-    msgError.setAttribute('style', 'display: none');
-    msgError.innerHTML = '';
-  } else {
     msgError.setAttribute('style', 'display: block');
-    msgError.innerHTML = '<strong>Preencha todos os campos corretamente antes de entrar</strong>';
+    msgError.innerHTML = 'Email ou Password incorretos';
+    email.focus();
   }
 }
 
-btn.addEventListener('click', ()=>{
-  if(password.getAttribute('type') == 'password'){
-    password.setAttribute('type', 'text');
-  } else {
-    password.setAttribute('type', 'password');
-  }
-});
+
