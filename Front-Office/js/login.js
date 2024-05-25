@@ -1,60 +1,57 @@
-let btn = document.querySelector('#verPassword');  // Atualizado para corresponder ao novo ID
+let btn = document.querySelector('#verPassword');
 
-btn.addEventListener('click', ()=>{
-  let inputSenha = document.querySelector('#password');  // Atualizado para corresponder ao novo ID
-  
-  if(inputSenha.getAttribute('type') == 'password'){
-    inputSenha.setAttribute('type', 'text');
+let email = document.querySelector('#email');
+let labelEmail = document.querySelector('#emailLabel');
+let validEmail = false;
+
+let password = document.querySelector('#password');
+let labelPassword = document.querySelector('#labelPassword');
+let validPassword = false;
+
+let msgError = document.querySelector('#msgError');
+
+email.addEventListener("keyup", () => {
+  if (!email.value.includes("@")) {
+    labelEmail.setAttribute("style", "color: red");
+    labelEmail.innerHTML = "Email *Insira um email válido (deve conter @)";
+    email.setAttribute("style", "border-color: red");
+    validEmail = false;
   } else {
-    inputSenha.setAttribute('type', 'password');
+    labelEmail.setAttribute("style", "color: green");
+    labelEmail.innerHTML = "Email";
+    email.setAttribute("style", "border-color: green");
+    validEmail = true;
+  }
+});
+
+password.addEventListener('keyup', () => {
+  if(password.value.length <= 5){
+    labelPassword.setAttribute('style', 'color: red');
+    labelPassword.innerHTML = 'Palavra-Passe *Insira no mínimo 6 caracteres';
+    password.setAttribute('style', 'border-color: red');
+    validPassword = false;
+  } else {
+    labelPassword.setAttribute('style', 'color: green');
+    labelPassword.innerHTML = 'Palavra-Passe';
+    password.setAttribute('style', 'border-color: green');
+    validPassword = true;
   }
 });
 
 function entrar(){
-  let email = document.querySelector('#email');
-  let emailLabel = document.querySelector('#emailLabel');
-  
-  let senha = document.querySelector('#password');  // Atualizado para corresponder ao novo ID
-  let senhaLabel = document.querySelector('#labelPassword');  // Atualizado para corresponder ao novo ID
-  
-  let msgError = document.querySelector('#msgError');
-  let listaUser = [];
-  
-  let userValid = {
-    nome: '',
-    email: '',
-    senha: ''
-  };
-  
-  listaUser = JSON.parse(localStorage.getItem('listaUser'));
-  
-  listaUser.forEach((item) => {
-    if(email.value == item.emailCad && senha.value == item.senhaCad){
-       
-      userValid = {
-         nome: item.nomeCad,
-         email: item.emailCad,
-         senha: item.senhaCad
-       };
-      
-    }
-  });
-   
-  if(email.value == userValid.email && senha.value == userValid.senha){
-    window.location.href = '../../index.html';
-    
-    let mathRandom = Math.random().toString(16).substr(2);
-    let token = mathRandom + mathRandom;
-    
-    localStorage.setItem('token', token);
-    localStorage.setItem('userLogado', JSON.stringify(userValid));
+  if(validEmail && validPassword){
+    msgError.setAttribute('style', 'display: none');
+    msgError.innerHTML = '';
   } else {
-    emailLabel.setAttribute('style', 'color: red');
-    email.setAttribute('style', 'border-color: red');
-    senhaLabel.setAttribute('style', 'color: red');
-    senha.setAttribute('style', 'border-color: red');
     msgError.setAttribute('style', 'display: block');
-    msgError.innerHTML = 'Email ou senha incorretos';
-    email.focus();
+    msgError.innerHTML = '<strong>Preencha todos os campos corretamente antes de entrar</strong>';
   }
 }
+
+btn.addEventListener('click', ()=>{
+  if(password.getAttribute('type') == 'password'){
+    password.setAttribute('type', 'text');
+  } else {
+    password.setAttribute('type', 'password');
+  }
+});

@@ -1,5 +1,5 @@
-let btn = document.querySelector('#verPassword');  // Atualizado para corresponder ao novo ID
-let btnConfirm = document.querySelector('#verConfirmSenha');
+let btn = document.querySelector('#verPassword');
+let btnConfirm = document.querySelector('#verConfirmPassword');
 
 let nome = document.querySelector('#nome');
 let labelNome = document.querySelector('#labelNome');
@@ -9,13 +9,13 @@ let email = document.querySelector('#email');
 let labelEmail = document.querySelector('#labelEmail');
 let validEmail = false;
 
-let senha = document.querySelector('#password');  // Atualizado para corresponder ao novo ID
-let labelSenha = document.querySelector('#labelPassword');  // Atualizado para corresponder ao novo ID
-let validSenha = false;
+let password = document.querySelector('#password');
+let labelPassword = document.querySelector('#labelPassword');
+let validPassword = false;
 
-let confirmSenha = document.querySelector('#confirmSenha');
-let labelConfirmSenha = document.querySelector('#labelConfirmSenha');
-let validConfirmSenha = false;
+let confirmPassword = document.querySelector('#confirmPassword');
+let labelConfirmPassword = document.querySelector('#labelConfirmPassword');
+let validConfirmPassword = false;
 
 let msgError = document.querySelector('#msgError');
 let msgSuccess = document.querySelector('#msgSuccess');
@@ -23,12 +23,12 @@ let msgSuccess = document.querySelector('#msgSuccess');
 nome.addEventListener('keyup', () => {
   if(nome.value.length <= 2){
     labelNome.setAttribute('style', 'color: red');
-    labelNome.innerHTML = 'Nome *Insira no mínimo 3 caracteres';
+    labelNome.innerHTML = 'Nome Completo *Insira no mínimo 3 caracteres';
     nome.setAttribute('style', 'border-color: red');
     validNome = false;
   } else {
     labelNome.setAttribute('style', 'color: green');
-    labelNome.innerHTML = 'Nome';
+    labelNome.innerHTML = 'Nome Completo';
     nome.setAttribute('style', 'border-color: green');
     validNome = true;
   }
@@ -48,43 +48,42 @@ email.addEventListener("keyup", () => {
   }
 });
 
-senha.addEventListener('keyup', () => {
-  if(senha.value.length <= 5){
-    labelSenha.setAttribute('style', 'color: red');
-    labelSenha.innerHTML = 'Senha *Insira no mínimo 6 caracteres';
-    senha.setAttribute('style', 'border-color: red');
-    validSenha = false;
+password.addEventListener('keyup', () => {
+  if(password.value.length <= 5){
+    labelPassword.setAttribute('style', 'color: red');
+    labelPassword.innerHTML = 'Palavra-Passe *Insira no mínimo 6 caracteres';
+    password.setAttribute('style', 'border-color: red');
+    validPassword = false;
   } else {
-    labelSenha.setAttribute('style', 'color: green');
-    labelSenha.innerHTML = 'Senha';
-    senha.setAttribute('style', 'border-color: green');
-    validSenha = true;
+    labelPassword.setAttribute('style', 'color: green');
+    labelPassword.innerHTML = 'Palavra-Passe';
+    password.setAttribute('style', 'border-color: green');
+    validPassword = true;
   }
 });
 
-confirmSenha.addEventListener('keyup', () => {
-  if(senha.value != confirmSenha.value){
-    labelConfirmSenha.setAttribute('style', 'color: red');
-    labelConfirmSenha.innerHTML = 'Confirmar Senha *As senhas não conferem';
-    confirmSenha.setAttribute('style', 'border-color: red');
-    validConfirmSenha = false;
+confirmPassword.addEventListener('keyup', () => {
+  if(password.value != confirmPassword.value){
+    labelConfirmPassword.setAttribute('style', 'color: red');
+    labelConfirmPassword.innerHTML = 'Repita a palavra-passe *As senhas não conferem';
+    confirmPassword.setAttribute('style', 'border-color: red');
+    validConfirmPassword = false;
   } else {
-    labelConfirmSenha.setAttribute('style', 'color: green');
-    labelConfirmSenha.innerHTML = 'Confirmar Senha';
-    confirmSenha.setAttribute('style', 'border-color: green');
-    validConfirmSenha = true;
+    labelConfirmPassword.setAttribute('style', 'color: green');
+    labelConfirmPassword.innerHTML = 'Repita a palavra-passe';
+    confirmPassword.setAttribute('style', 'border-color: green');
+    validConfirmPassword = true;
   }
 });
 
 function cadastrar(){
-  if(validNome && validEmail && validSenha && validConfirmSenha){
+  if(validNome && validEmail && validPassword && validConfirmPassword){
     let listaUser = JSON.parse(localStorage.getItem('listaUser') || '[]');
     
-    listaUser.push(
-    {
+    listaUser.push({
       nomeCad: nome.value,
       emailCad: email.value,
-      senhaCad: senha.value
+      senhaCad: password.value
     });
     
     localStorage.setItem('listaUser', JSON.stringify(listaUser));
@@ -95,10 +94,9 @@ function cadastrar(){
     msgError.innerHTML = '';
     
     setTimeout(()=>{
-        window.location.href = '../html/login.html';
+      window.location.href = '../html/login.html';
     }, 2000);
   
-    
   } else {
     msgError.setAttribute('style', 'display: block');
     msgError.innerHTML = '<strong>Preencha todos os campos corretamente antes de cadastrar</strong>';
@@ -108,21 +106,21 @@ function cadastrar(){
 }
 
 btn.addEventListener('click', ()=>{
-  let inputSenha = document.querySelector('#password');  // Atualizado para corresponder ao novo ID
+  let inputPassword = document.querySelector('#password');
   
-  if(inputSenha.getAttribute('type') == 'password'){
-    inputSenha.setAttribute('type', 'text');
+  if(inputPassword.getAttribute('type') == 'password'){
+    inputPassword.setAttribute('type', 'text');
   } else {
-    inputSenha.setAttribute('type', 'password');
+    inputPassword.setAttribute('type', 'password');
   }
 });
 
 btnConfirm.addEventListener('click', ()=>{
-  let inputConfirmSenha = document.querySelector('#confirmSenha');
+  let inputConfirmPassword = document.querySelector('#confirmPassword');
   
-  if(inputConfirmSenha.getAttribute('type') == 'password'){
-    inputConfirmSenha.setAttribute('type', 'text');
+  if(inputConfirmPassword.getAttribute('type') == 'password'){
+    inputConfirmPassword.setAttribute('type', 'text');
   } else {
-    inputConfirmSenha.setAttribute('type', 'password');
+    inputConfirmPassword.setAttribute('type', 'password');
   }
 });
