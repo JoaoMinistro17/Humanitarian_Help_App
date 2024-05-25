@@ -280,6 +280,8 @@
   };
 </script>
 
+<div id="galleryContainer" class="image-grid"></div>
+
 <!-- /.Guardar em Local Storage -->
 <script>
   function handleUpload(fileInputId, uploadedImageId, index) {
@@ -313,6 +315,7 @@
       // Guarde a galeria atualizada no localStorage
       localStorage.setItem('initiatives', JSON.stringify(initiatives));
     };
+
     // Leia o arquivo como URL de dados
     reader.readAsDataURL(fileInput.files[0]);
   }

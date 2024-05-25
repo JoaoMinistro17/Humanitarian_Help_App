@@ -125,162 +125,152 @@
     <!-- /.sidebar -->
   </aside>
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Materiais</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
-              <li class="breadcrumb-item active">Materiais</li>
-            </ol>
-          </div>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Materiais</h1>
         </div>
-      </div><!-- /.container-fluid -->
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-      <div class="col-12">
-        <div class="card">
-          <div class="card-header">
-            <h3 class="card-title">Materiais</h3>
-            <div class="card-tools">
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addMaterialModal">
-                Adicionar Material
-              </button>
-            </div>
-          </div>
-          <!-- /.card-header -->
-          <div class="card-body">
-            <table id="decorrer" class="table table-bordered table-hover">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Nome</th>
-                  <th>Quantidade em Uso</th>
-                  <th>Quantidade</th>
-                  <th>Ações</th> <!-- Nova coluna para ações -->
-                </tr>
-              </thead>
-              <tbody id="materialTableBody"></tbody> <!-- Usaremos este corpo da tabela para adicionar linhas dinamicamente -->
-            </table>
-          </div>
-          <!-- /.card-body -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+            <li class="breadcrumb-item active">Materiais</li>
+          </ol>
         </div>
-        <!-- /.card -->
       </div>
-      <!-- /.col -->
-    </section>
-    <!-- /.content -->
+    </div><!-- /.container-fluid -->
+  </section>
 
-    <!-- Modal para adicionar material -->
-    <div class="modal fade" id="addMaterialModal" tabindex="-1" aria-labelledby="addMaterialModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="addMaterialModalLabel">Adicionar Material</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-              <span aria-hidden="true">&times;</span>
+  <!-- Main content -->
+  <section class="content">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Materiais</h3>
+          <div class="card-tools">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addMaterialModal">
+              Adicionar Material
             </button>
           </div>
-          <div class="modal-body">
-            <form id="addMaterialForm">
-              <div class="form-group">
-                <label for="nome">Nome</label>
-                <input type="text" class="form-control" id="nome" name="nome" required>
-              </div>
-              <div class="form-group">
-                <label for="quantidade">Quantidade</label>
-                <input type="number" class="form-control" id="quantidade" name="quantidade" required>
-              </div>
-              <div class="form-group">
-                <label for="quantidade_disponivel">Quantidade Disponível</label>
-                <input type="number" class="form-control" id="quantidade_disponivel" name="quantidade_disponivel" required>
-              </div>
-              <button type="submit" class="btn btn-primary">Adicionar</button>
-            </form>
-          </div>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          <table id="decorrer" class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Quantidade</th>
+                <th>Quantidade em uso</th>
+                <th>Ações</th> <!-- Nova coluna para ações -->
+              </tr>
+            </thead>
+            <tbody id="materialTableBody"></tbody> <!-- Usaremos este corpo da tabela para adicionar linhas dinamicamente -->
+          </table>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+    </div>
+    <!-- /.col -->
+  </section>
+  <!-- /.content -->
+
+  <!-- Modal para adicionar material -->
+  <div class="modal fade" id="addMaterialModal" tabindex="-1" aria-labelledby="addMaterialModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addMaterialModalLabel">Adicionar Material</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="addMaterialForm">
+            <div class="form-group">
+              <label for="nome">Nome</label>
+              <input type="text" class="form-control" id="nome" name="nome" required>
+            </div>
+            <div class="form-group">
+              <label for="quantidade">Quantidade</label>
+              <input type="number" class="form-control" id="quantidade" name="quantidade" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Adicionar</button>
+          </form>
         </div>
       </div>
     </div>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const form = document.getElementById("addMaterialForm");
-        const tabela = document.getElementById("materialTableBody");
-        const materialsData = JSON.parse(localStorage.getItem("materials")) || [];
-
-        // Função para renderizar os materiais na tabela
-        function renderMaterials() {
-          tabela.innerHTML = "";
-          materialsData.forEach((material, index) => {
-            const newRow = tabela.insertRow();
-            newRow.innerHTML = `
-              <td>${index + 1}</td>
-              <td>${material.nome}</td>
-              <td>${material.quantidade_disponivel}</td>
-              <td>${material.quantidade}</td>
-              <td><button class="btn btn-danger btn-sm" onclick="deleteMaterial(${index})">Excluir</button></td>
-            `;
-          });
-        }
-
-        // Renderizar materiais ao carregar a página
-        renderMaterials();
-
-        form.addEventListener("submit", function (event) {
-          event.preventDefault();
-
-          // Obter os valores dos campos do formulário
-          const nome = form.nome.value;
-          const quantidade = form.quantidade.value;
-          const quantidade_disponivel = form.quantidade_disponivel.value;
-
-          // Verificar se a quantidade disponível é maior que a quantidade total
-          if (parseInt(quantidade_disponivel) > parseInt(quantidade)) {
-            alert("A quantidade disponível não pode ser superior que a quantidade total.");
-            return;
-          }
-
-          // Adicionar o novo material aos dados
-          const newMaterial = { nome, quantidade, quantidade_disponivel };
-          materialsData.push(newMaterial);
-
-          // Atualizar os dados no localStorage
-          localStorage.setItem("materials", JSON.stringify(materialsData));
-
-          // Renderizar materiais na tabela
-          renderMaterials();
-
-          // Limpar os campos do formulário após adicionar o material
-          form.reset();
-
-          // Fechar o modal após adicionar o material
-          $('#addMaterialModal').modal('hide');
-        });
-
-        // Função para excluir material
-        window.deleteMaterial = function (index) {
-          materialsData.splice(index, 1);
-          localStorage.setItem("materials", JSON.stringify(materialsData));
-          renderMaterials();
-        };
-      });
-    </script>
-
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-      <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
   </div>
-  <!-- ./wrapper -->
+</div>
+<!-- /.content-wrapper -->
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("addMaterialForm");
+    const tabela = document.getElementById("materialTableBody");
+    const materialsData = JSON.parse(localStorage.getItem("materials")) || [];
+
+    // Função para renderizar os materiais na tabela
+    function renderMaterials() {
+      tabela.innerHTML = "";
+      materialsData.forEach((material, index) => {
+        const newRow = tabela.insertRow();
+        newRow.innerHTML = `
+          <td>${index + 1}</td>
+          <td>${material.nome}</td>
+          <td>${material.quantidade}</td>
+          <td>${material.quantidade_emUso}</td>
+          <td><button class="btn btn-danger btn-sm" onclick="deleteMaterial(${index})">Excluir</button></td>
+        `;
+      });
+    }
+
+    // Adicionar material com os dados do formulário
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      // Obter os valores dos campos do formulário
+      const nome = form.nome.value;
+      const quantidade = form.quantidade.value;
+
+      // Adicionar o novo material aos dados
+      const newMaterial = { nome, quantidade, quantidade_emUso:'0'};
+      materialsData.push(newMaterial);
+
+      // Atualizar os dados no localStorage
+      localStorage.setItem("materials", JSON.stringify(materialsData));
+
+      // Renderizar materiais na tabela
+      renderMaterials();
+
+      // Limpar os campos do formulário após adicionar o material
+      form.reset();
+
+      // Fechar o modal após adicionar o material
+      $('#addMaterialModal').modal('hide');
+    });
+
+    // Renderizar materiais na tabela IMPORTANTE
+    renderMaterials();
+
+    // Função para excluir material
+    window.deleteMaterial = function (index) {
+      materialsData.splice(index, 1);
+      localStorage.setItem("materials", JSON.stringify(materialsData));
+      renderMaterials();
+    };
+  });
+</script>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
 
   <!-- jQuery -->
   <script src="../plugins/jquery/jquery.min.js"></script>

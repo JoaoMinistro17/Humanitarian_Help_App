@@ -143,10 +143,7 @@
                   <p>Voluntários</p>
                 </a>
               <li class="nav-item"> 
-  
-              <!-- Apagar a treta que está para baixo e 
-                escolher sempre o nav-link active ná página que estamos a usar -->
-      
+   
               </ul>
             </nav>
             <!-- /.sidebar-menu -->
@@ -738,8 +735,30 @@
             estado: "aceite",
             voluntarios: "aa",
             profissionais: "bb",
-            materiais: ['Cadeira', 'bb', 'cc']
-        }
+            materiais:  materiais = [
+            { nome: "Cadeira", quantidade_emUso: 1 },
+            { nome: "bb", quantidade_emUso: 0 },
+            { nome: "cc", quantidade_emUso: 0 }
+            ]
+          },
+          {
+            nome: "Iniciativa 4",
+            email: "iniciativa4@example.com",
+            data: "2023-05-22",
+            hora_inicio: "10:00",
+            hora_fim: "12:00",
+            tipo: "Ensaio",
+            imagem: "https://via.placeholder.com/50",
+            local: "Local 3",
+            descricao: "Descrição da Iniciativa 3",
+            galeria: '',
+            estado: "aceite",
+            voluntarios: "",
+            profissionais: "",
+            materiais:  materiais = [
+            { nome: "Cadeira", quantidade_emUso: 1 }
+            ]
+          }
     ];
     // Armazenar os dados no Local Storage
     localStorage.setItem('initiatives', JSON.stringify(initiatives));
@@ -751,17 +770,27 @@
     const materials = [
         {
             nome: "Cadeira",
-            quantidade: "100",
-            quantidade_emUso: "10"
+            quantidade: "10",
+            quantidade_emUso: "0"
         },
         {
             nome: "Mesa",
-            quantidade: "200",
-            quantidade_emUso: "20"
+            quantidade: "20",
+            quantidade_emUso: "0"
         },
         {
             nome: "Tenda",
-            quantidade: "300",
+            quantidade: "30",
+            quantidade_emUso: "0"
+        },
+        {
+            nome: "Coluna de som",
+            quantidade: "40",
+            quantidade_emUso: "0"
+        },
+        {
+            nome: "Microfone",
+            quantidade: "50",
             quantidade_emUso: "30"
         }
     ];
