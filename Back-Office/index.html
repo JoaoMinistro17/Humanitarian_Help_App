@@ -374,7 +374,7 @@
               <!--STRIPED FULL WIDTH TABLE -->
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Doações Em Andamento</h3>
+                  <h3 class="card-title">Causas Em Andamento</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body p-0">
@@ -401,6 +401,8 @@
                   const causes = JSON.parse(localStorage.getItem("causes")) || [];
                   const causesTable = document.querySelector(".table-striped tbody");
                   causes.forEach((cause, index) => {
+                    // Only process causes where the state is "em andamento"
+                    if (cause.estado === "em andamento") {
                       const row = document.createElement("tr");
                       row.innerHTML = `
                           <td>${index + 1}</td>
@@ -410,11 +412,13 @@
                                   <div class="progress-bar bg-primary" style="width: ${cause.valor_atual / cause.valor_objetivo * 100}%"></div>
                               </div>
                           </td>
-                          <td><span class="badge bg-primary">${cause.valor_atual / cause.valor_objetivo * 100}%</span></td>
+                          <td><span class="badge bg-primary">${cause.valor_atual / cause.valor_objetivo * 100}% (${cause.valor_atual}$) </span></td>
                       `;
                       causesTable.appendChild(row);
+                    }
                   });
-              });
+
+                });
               </script>
             </body>
           </section>
@@ -628,7 +632,17 @@
             valor_objetivo: "1000",
             imagem: "https://via.placeholder.com/50",
             descricao: "Descrição da causa 3",
-            estado: "pendente",
+            estado: "em andamento",
+        },
+        {
+            nome: "causa 4",
+            email: "causa4@gmail.com",
+            data_conclusao: "2024-05-26",
+            valor_atual: "150",
+            valor_objetivo: "200",
+            imagem: "https://via.placeholder.com/50",
+            descricao: "Descrição da causa 4",
+            estado: "em andamento",
         }
     ];
       // Armazenar os dados no Local Storage
