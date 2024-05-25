@@ -210,19 +210,35 @@
     uploadButton.className = 'btn btn-primary mt-2';
     uploadButton.textContent = 'Guardar';
 
-    const uploadedImage = document.createElement('img');
-    uploadedImage.id = 'uploadedImage' + index;
-    uploadedImage.className = 'img-fluid mb-2';
-    uploadedImage.alt = 'Imagem carregada';
-    uploadedImage.style.display = 'none';
-    uploadedImage.style.width = '50px';
-    uploadedImage.style.height = '50px';
+    // Create the delete button
+    const deleteButton = document.createElement('button');
+    deleteButton.id = 'deleteButton' + index;
+    deleteButton.className = 'btn btn-danger mt-2';
+    deleteButton.textContent = 'Eliminar tudo';
 
-    // Adicione o input, o botão e a imagem ao corpo do cartão
+    // Adicione o input, os botões ao corpo do cartão
     cardBody.appendChild(fileInput);
     cardBody.appendChild(uploadButton);
-    cardBody.appendChild(uploadedImage);
-    
+    cardBody.appendChild(deleteButton);
+
+    // Set the onclick event of the delete button
+    deleteButton.onclick = function() {
+      // Retrieve all the initiatives from the local storage
+      let initiatives = JSON.parse(localStorage.getItem('initiatives') || '[]');
+
+      // Check if the initiative has a galeria property
+      if (initiatives[index].galeria) {
+        // Delete all the images from the gallery
+        initiatives[index].galeria = [];
+
+        // Save the updated initiatives to the local storage
+        localStorage.setItem('initiatives', JSON.stringify(initiatives));
+
+        // Call the function that loads the images from the local storage and displays them
+        window.onload();
+      }
+    };
+
     // Verifique se a iniciativa tem uma propriedade galeria
     if (initiative.galeria) {
       // Crie um novo elemento de imagem para cada imagem em galeria
@@ -231,8 +247,8 @@
         img.src = image;
         img.className = 'img-fluid mb-2';
         img.alt = 'Imagem da galeria';
-        img.style.width = '50px';
-        img.style.height = '50px';
+        img.style.width = '80px';
+        img.style.height = '80px';
 
         // Adicione a imagem ao corpo do cartão
         cardBody.appendChild(img);
@@ -251,8 +267,11 @@
     });
   });
 
-  // Carregar a imagem do localStorage ao carregar a página
+  // Carregar as imagens do localStorage ao carregar a página
   window.onload = function() {
+  // Clear the gallery container
+  document.getElementById('galleryContainer').innerHTML = '';
+
     // Recupere todas as iniciativas do localStorage
     let initiatives = JSON.parse(localStorage.getItem('initiatives') || '[]');
 
@@ -269,8 +288,8 @@
 
           // Definir outros atributos do elemento de imagem
           img.style.display = 'block';
-          img.style.width = '50px';
-          img.style.height = 'auto';
+          img.style.width = '80px';
+          img.style.height = '80px';
 
           // Adicionar o elemento de imagem ao corpo do documento
           document.body.appendChild(img);
@@ -282,8 +301,8 @@
 
 <div id="galleryContainer" class="image-grid"></div>
 
-<!-- /.Guardar em Local Storage -->
 <script>
+  // Função para lidar com o upload de imagens     
   function handleUpload(fileInputId, uploadedImageId, index) {
     const fileInput = document.getElementById(fileInputId);
     const uploadedImage = document.getElementById(uploadedImageId);
@@ -297,43 +316,30 @@
     // Defina o evento onload do FileReader
     reader.onload = function(e) {
 
-      // Defina o src da imagem carregada para o resultado do FileReader
-      uploadedImage.src = e.target.result;
+      //uploadedImage.src = e.target.result; // Defina o src da imagem carregada para o resultado do FileReader
 
-      // Recupere todas as iniciativas do localStorage
-      let initiatives = JSON.parse(localStorage.getItem('initiatives') || '[]');
+      let initiatives = JSON.parse(localStorage.getItem('initiatives') || '[]'); // Recupere todas as iniciativas do localStorage
 
-      // Acesse a galeria da iniciativa específica
-      let galeria = initiatives[index].galeria || [];
+      let galeria = initiatives[index].galeria || []; // Acesse a galeria da iniciativa específica
 
-      // Adicione a nova imagem à galeria
-      galeria.push(e.target.result);
+      galeria.push(e.target.result); // Adicione a nova imagem à galeria
 
-      // Atualize a galeria na estrutura de dados initiatives
-      initiatives[index].galeria = galeria;
+      initiatives[index].galeria = galeria; // Atualize a galeria na estrutura de dados initiatives
 
-      // Guarde a galeria atualizada no localStorage
-      localStorage.setItem('initiatives', JSON.stringify(initiatives));
+      localStorage.setItem('initiatives', JSON.stringify(initiatives)); // Guarde a galeria atualizada no localStorage 
+
+      window.onload(); // Carregar as imagens do localStorage
     };
 
-    // Leia o arquivo como URL de dados
-    reader.readAsDataURL(fileInput.files[0]);
+    reader.readAsDataURL(fileInput.files[0]); // Leia o arquivo como URL de dados
   }
-    
-  document.getElementById('uploadButton').addEventListener('click', function() {
-    handleUpload(fileInput, uploadedImage);
-  });
 </script>
-      
-    </div>
 
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-      <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
-  </div>
-  <!-- ./wrapper -->
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
 
   <!-- jQuery -->
   <script src="../plugins/jquery/jquery.min.js"></script>
