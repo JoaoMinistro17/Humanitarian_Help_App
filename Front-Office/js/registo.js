@@ -23,12 +23,12 @@ let msgSuccess = document.querySelector('#msgSuccess');
 nome.addEventListener('keyup', () => {
   if(nome.value.length <= 2){
     labelNome.setAttribute('style', 'color: red');
-    labelNome.innerHTML = 'Nome Completo *Insira no mínimo 3 caracteres';
+    labelNome.innerHTML = 'Nome *Insira no minimo 3 caracteres';
     nome.setAttribute('style', 'border-color: red');
     validNome = false;
   } else {
     labelNome.setAttribute('style', 'color: green');
-    labelNome.innerHTML = 'Nome Completo';
+    labelNome.innerHTML = 'Nome';
     nome.setAttribute('style', 'border-color: green');
     validNome = true;
   }
@@ -51,12 +51,12 @@ email.addEventListener("keyup", () => {
 password.addEventListener('keyup', () => {
   if(password.value.length <= 5){
     labelPassword.setAttribute('style', 'color: red');
-    labelPassword.innerHTML = 'Palavra-Passe *Insira no mínimo 6 caracteres';
+    labelPassword.innerHTML = 'Password *Insira no minimo 6 caracteres';
     password.setAttribute('style', 'border-color: red');
     validPassword = false;
   } else {
     labelPassword.setAttribute('style', 'color: green');
-    labelPassword.innerHTML = 'Palavra-Passe';
+    labelPassword.innerHTML = 'Password';
     password.setAttribute('style', 'border-color: green');
     validPassword = true;
   }
@@ -65,41 +65,40 @@ password.addEventListener('keyup', () => {
 confirmPassword.addEventListener('keyup', () => {
   if(password.value != confirmPassword.value){
     labelConfirmPassword.setAttribute('style', 'color: red');
-    labelConfirmPassword.innerHTML = 'Repita a palavra-passe *As senhas não conferem';
+    labelConfirmPassword.innerHTML = 'Confirmar Password *Passwords Diferentes';
     confirmPassword.setAttribute('style', 'border-color: red');
     validConfirmPassword = false;
   } else {
     labelConfirmPassword.setAttribute('style', 'color: green');
-    labelConfirmPassword.innerHTML = 'Repita a palavra-passe';
+    labelConfirmPassword.innerHTML = 'Confirmar Password';
     confirmPassword.setAttribute('style', 'border-color: green');
     validConfirmPassword = true;
   }
 });
 
-function cadastrar(){
+function registo(){
   if(validNome && validEmail && validPassword && validConfirmPassword){
     let listaUser = JSON.parse(localStorage.getItem('listaUser') || '[]');
     
     listaUser.push({
       nomeCad: nome.value,
       emailCad: email.value,
-      senhaCad: password.value
+      passwordCad: password.value
     });
     
     localStorage.setItem('listaUser', JSON.stringify(listaUser));
     
     msgSuccess.setAttribute('style', 'display: block');
-    msgSuccess.innerHTML = '<strong>Cadastrando usuário...</strong>';
+    msgSuccess.innerHTML = '<strong>Registo Efetuado...</strong>';
     msgError.setAttribute('style', 'display: none');
     msgError.innerHTML = '';
     
     setTimeout(()=>{
-      window.location.href = '../html/login.html';
-    }, 2000);
-  
+        window.location.href = '../login.html';
+    }, 1500);
   } else {
     msgError.setAttribute('style', 'display: block');
-    msgError.innerHTML = '<strong>Preencha todos os campos corretamente antes de cadastrar</strong>';
+    msgError.innerHTML = '<strong>Preencha todos os campos corretamente antes de efetuar registo</strong>';
     msgSuccess.innerHTML = '';
     msgSuccess.setAttribute('style', 'display: none');
   }
@@ -108,7 +107,7 @@ function cadastrar(){
 btn.addEventListener('click', ()=>{
   let inputPassword = document.querySelector('#password');
   
-  if(inputPassword.getAttribute('type') == 'password'){
+  if(inputPassword.getAttribute('type') === 'password'){
     inputPassword.setAttribute('type', 'text');
   } else {
     inputPassword.setAttribute('type', 'password');
@@ -118,7 +117,7 @@ btn.addEventListener('click', ()=>{
 btnConfirm.addEventListener('click', ()=>{
   let inputConfirmPassword = document.querySelector('#confirmPassword');
   
-  if(inputConfirmPassword.getAttribute('type') == 'password'){
+  if(inputConfirmPassword.getAttribute('type') === 'password'){
     inputConfirmPassword.setAttribute('type', 'text');
   } else {
     inputConfirmPassword.setAttribute('type', 'password');

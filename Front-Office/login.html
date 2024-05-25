@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Welfare - Free Bootstrap 4 Template by Colorlib</title>
+    <title>Login</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Overpass:300,400,400i,600,700" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="css/animate.css">
@@ -26,7 +27,7 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="scss/style.css">
-    <link rel="stylesheet" href="css/registo.css">
+    <link rel="stylesheet" href="css/login.css">
   </head>
   <body>
     
@@ -46,7 +47,7 @@
           <li class="nav-item"><a href="gallery.html" class="nav-link">Galeria</a></li>
           <li class="nav-item"><a href="event.html" class="nav-link">Eventos</a></li>
           <li class="nav-item"><a href="contact.html" class="nav-link">Contactos</a></li>
-          <li class="nav-item active"><a href="login.html" class="nav-link">Login/Registo</a></li>
+          <li class="nav-item active"><a href="login.html" class="nav-link">Login</a></li>
         </ul>
       </div>
     </div>
@@ -57,45 +58,48 @@
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
-          <h1 class="col-md-7 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">Registo</h1>
-            
-
+          <h1 class="col-md-7 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">Login</h1>
           </div>
         </div>
       </div>
     </div>
 
     <section class="ftco-section">
-        <div class="justify-center">
-            <div class='card'>
-              <h1>Login</h1>
-      
-              <div id="msgError"></div>
-      
-              <div class="label-float">
-                <input type="email" id="email" placeholder="" required />
-                <label id="emailLabel" for="email">Email</label>
-              </div>
-      
-              <div class="label-float">
-                <input type="password" id="password" placeholder=" " required />
-                <label id="labelPassword" for="password">Palavra-Passe</label>
-                <i id="verPassword" class="fa fa-eye" aria-hidden="true"></i>
-              </div>
-      
-              <div class="justify-center">
-                <button onclick="entrar()">Entrar</button>
-              </div>
-      
-              <p>
-                Não tem uma conta?
-                <a href="./registo.html">
-                  Registe-se
-                </a>
-              </p>
-            </div>
+      <div class="container_login">
+        <div class="card">
+          <h1>Login</h1>
+  
+          <div id="msgError"></div>
+  
+          <div class="label-float">
+            <input type="email" id="email" paceholder="" required />
+            <label id="emailLabel" for="email">Email</label>
           </div>
+  
+          <div class="label-float">
+            <input type="password" id="password" paceholder="" required />
+            <label id="passwordLabel" for="password">Password</label>
+            <i class="fa fa-eye" aria-hidden="true"></i>
+          </div>
+  
+          <div class="justify-center">
+            <button onclick="logar()">Logar</button>
+          </div>
+  
+          <div class="justify-center">
+            <hr />
+          </div>
+  
+          <p>
+            Não tem uma conta?
+            <a href="./registo.html">
+              Registe-se
+            </a>
+          </p>
+        </div>
+      </div>
     </section>
+    
 
  <section class="ftco-section-3 img" style="background-image: url(images/bg_3.jpg);">
     <div class="overlay"></div>
@@ -226,7 +230,7 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
-  <script src="js/registo.js"></script>
+  <script src="js/login.js"></script>
     
   </body>
 </html>

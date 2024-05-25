@@ -1,0 +1,45 @@
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.profile {
+    background-color: #004d40;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: #fff;
+}
+
+.card {
+    background-color: #424242;
+    color: #fff;
+    border: none;
+}
+
+.card img {
+    border-bottom: 1px solid #ddd;
+}
+
+.card-title {
+    margin-bottom: 20px;
+}
+
+.list-group-item {
+    background-color: #424242;
+    border: none;
+    color: #fff;
+}
+
+.badge-danger {
+    background-color: #d32f2f;
+}
+
+.badge-success {
+    background-color: #388e3c;
+}

@@ -17,18 +17,17 @@
   background-color: #ffffff80;
   padding: 30px;
   border-radius: 4%;
-  box-shadow: 3px 3px 1px 0px #00000060;
+  box-shadow: 0px 0px 15px 5px #00000060;
   width: 400px;
-  border: 2px solid #006063; /* Adicionado contorno */
 }
 
-h1 {
+h1{
   text-align: center;
   margin-bottom: 20px;
-  color: #006063; /* Alterado para nova cor */
+  color: #006063
 }
 
-.label-float input {
+.label-float input{
   width: 100%;
   padding: 5px 5px;
   display: inline-block;
@@ -40,22 +39,23 @@ h1 {
   font-size: 16px;
   transition: all .3s ease-out;
   border-radius: 0;
+  
 }
 
-.label-float {
+.label-float{
   position: relative;
   padding-top: 13px;
   margin-top: 5%;
   margin-bottom: 5%;
 }
 
-.label-float input:focus {
+.label-float input:focus{
   border-bottom: 2px solid #4038a0;
 }
 
-.label-float label {
+.label-float label{
   color: #006063;
-  pointer-events: none;
+  pointer-event: none;
   position: absolute;
   top: 0;
   left: 0;
@@ -64,13 +64,13 @@ h1 {
 }
 
 .label-float input:focus + label,
-.label-float input:valid + label {
+.label-float input:valid + label{
   font-size: 13px;
   margin-top: 0;
-  color: #4038a0;
+  color: #4038a0
 }
 
-button {
+button{
   background-color: transparent;
   border-color: #006063;
   color: #006063;
@@ -84,17 +84,36 @@ button {
   transition: all .4s ease-out;
 }
 
-button:hover {
+button:hover{
   background-color: #006063;
   color: #fff;
 }
 
-.justify-center {
+.justify-center{
   display: flex;
   justify-content: center;
 }
 
-.fa-eye {
+hr{
+  margin-top: 10%;
+  margin-bottom: 10%;
+  width: 60%;
+}
+
+p{
+  color: #272262;
+  font-size: 14pt;
+  text-align: center;
+}
+
+a{
+  color: #006063;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all .3s ease-out;
+}
+
+.fa-eye{
   position: absolute;
   top: 15px;
   right: 10px;
@@ -102,7 +121,7 @@ button:hover {
   color: #006063;
 }
 
-#msgError {
+#msgError{
   text-align: center;
   color: #ff0000;
   background-color: #ffbbbb;
@@ -111,7 +130,7 @@ button:hover {
   display: none;
 }
 
-#msgSuccess {
+#msgSuccess{
   text-align: center;
   color: #00bb00;
   background-color: #bbffbe;
@@ -119,3 +138,5 @@ button:hover {
   border-radius: 4px;
   display: none;
 }
+
+
