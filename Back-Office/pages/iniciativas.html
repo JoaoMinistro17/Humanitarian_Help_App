@@ -525,7 +525,7 @@
         const descricao = form.descricao.value;
 
         // Adicionar a nova iniciativa aos dados (COM OS DADOS QUE NÃO PRECISAM DE APARECER NO FORMS)
-        const newInitiative = { nome, email, data, hora_inicio, hora_fim, tipo, imagem, local, descricao, estado: 'pendente', voluntarios, profissionais, materiais };
+        const newInitiative = { nome, email, data, hora_inicio, hora_fim, tipo, imagem, local, descricao, estado: 'pendente', galeria, voluntarios, profissionais, materiais };
         initiativesData.push(newInitiative);
 
         // Atualizar os dados no localStorage

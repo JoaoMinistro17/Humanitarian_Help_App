@@ -151,7 +151,7 @@
         <!-- Seção para carregar fotos do dispositivo -->
         <div class="card">
           <div class="card-header">
-            <h4 class="card-title">Carregar Fotografia</h4>
+            <h4 class="card-title">Nome da iniciativa</h4>
             <div class="card-tools">
               <button type="button" class="btn btn-tool" data-toggle="collapse" data-target="#carregarFoto1" title="Expand">
                 <i class="fas fa-plus"></i>
@@ -160,70 +160,10 @@
           </div>
           <div class="collapse" id="carregarFoto1">
             <div class="card-body">
-              <input type="file" id="fileInput1" accept="image/*">
-              <button id="uploadButton1" class="btn btn-primary mt-2">Guardar</button>
+              <input type="file" id="fileInput" accept="image/*">
+              <button id="uploadButton" class="btn btn-primary mt-2">Guardar</button>
               <div class="mt-4">
-                <img id="uploadedImage1" class="img-fluid mb-2" alt="Imagem carregada" style="display:none;"/>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <h4 class="card-title">Carregar Fotografia 2</h4>
-            <div class="card-tools">
-              <button type="button" class="btn btn-tool" data-toggle="collapse" data-target="#carregarFoto2" title="Expand">
-                <i class="fas fa-plus"></i>
-              </button>
-            </div>
-          </div>
-          <div class="collapse" id="carregarFoto2">
-            <div class="card-body">
-              <input type="file" id="fileInput2" accept="image/*">
-              <button id="uploadButton2" class="btn btn-primary mt-2">Guardar</button>
-              <div class="mt-4">
-                <img id="uploadedImage2" class="img-fluid mb-2" alt="Imagem carregada" style="display:none;"/>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <h4 class="card-title">Carregar Fotografia 3</h4>
-            <div class="card-tools">
-              <button type="button" class="btn btn-tool" data-toggle="collapse" data-target="#carregarFoto3" title="Expand">
-                <i class="fas fa-plus"></i>
-              </button>
-            </div>
-          </div>
-          <div class="collapse" id="carregarFoto3">
-            <div class="card-body">
-              <input type="file" id="fileInput3" accept="image/*">
-              <button id="uploadButton3" class="btn btn-primary mt-2">Guardar</button>
-              <div class="mt-4">
-                <img id="uploadedImage3" class="img-fluid mb-2" alt="Imagem carregada" style="display:none;"/>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <h4 class="card-title">Carregar Fotografia 4</h4>
-            <div class="card-tools">
-              <button type="button" class="btn btn-tool" data-toggle="collapse" data-target="#carregarFoto4" title="Expand">
-                <i class="fas fa-plus"></i>
-              </button>
-            </div>
-          </div>
-          <div class="collapse" id="carregarFoto4">
-            <div class="card-body">
-              <input type="file" id="fileInput4" accept="image/*">
-              <button id="uploadButton4" class="btn btn-primary mt-2">Guardar</button>
-              <div class="mt-4">
-                <img id="uploadedImage4" class="img-fluid mb-2" alt="Imagem carregada" style="display:none;"/>
+                <img id="uploadedImage" class="img-fluid mb-2" alt="Imagem carregada" style="display:none;"/>
               </div>
             </div>
           </div>
@@ -231,56 +171,156 @@
       </section>
       <!-- /.content -->
 
-      <!-- /.Guardar em Local Storage -->
-      <script>
-        function handleUpload(fileInputId, uploadedImageId) {
-          const fileInput = document.getElementById(fileInputId);
-          const uploadedImage = document.getElementById(uploadedImageId);
+<script>
+  // Suponha que você tenha seus dados de causas assim
+  const initiativesData = JSON.parse(localStorage.getItem("initiatives") || '[]');
     
-          if (fileInput.files.length === 0) {
-            alert('Por favor, selecione uma imagem para carregar.');
-            return;
-          }
-          const file = fileInput.files[0];
-          const reader = new FileReader();
-          
-          reader.onload = function(e) {
-            const base64Image = e.target.result;
-            uploadedImage.src = base64Image;
-            uploadedImage.style.display = 'block';
+  // Selecione o elemento onde você deseja inserir os cartões
+  const contentSection = document.querySelector('.content');
+
+  initiativesData.forEach((initiative, index) => {
+    // Crie os elementos do cartão
+    const card = document.createElement('div');
+    card.className = 'card';
+
+    const cardHeader = document.createElement('div');
+    cardHeader.className = 'card-header';
+
+    const cardTitle = document.createElement('h4');
+    cardTitle.className = 'card-title';
+    cardTitle.textContent = initiative.nome;
+
+    // Adicione o título ao cabeçalho do cartão
+    cardHeader.appendChild(cardTitle);
+
+    // Adicione o cabeçalho ao cartão
+    card.appendChild(cardHeader);
+
+    // Crie o corpo do cartão
+    const cardBody = document.createElement('div');
+    cardBody.className = 'card-body';
+
+    const fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.id = 'fileInput' + index;
+    fileInput.accept = 'image/*';
+
+    const uploadButton = document.createElement('button');
+    uploadButton.id = 'uploadButton' + index;
+    uploadButton.className = 'btn btn-primary mt-2';
+    uploadButton.textContent = 'Guardar';
+
+    const uploadedImage = document.createElement('img');
+    uploadedImage.id = 'uploadedImage' + index;
+    uploadedImage.className = 'img-fluid mb-2';
+    uploadedImage.alt = 'Imagem carregada';
+    uploadedImage.style.display = 'none';
+    uploadedImage.style.width = '50px';
+    uploadedImage.style.height = '50px';
+
+    // Adicione o input, o botão e a imagem ao corpo do cartão
+    cardBody.appendChild(fileInput);
+    cardBody.appendChild(uploadButton);
+    cardBody.appendChild(uploadedImage);
     
-            // Salvar a imagem em localStorage
-            localStorage.setItem(uploadedImageId, base64Image);
-          };
-          reader.readAsDataURL(file);
-        }
+    // Verifique se a iniciativa tem uma propriedade galeria
+    if (initiative.galeria) {
+      // Crie um novo elemento de imagem para cada imagem em galeria
+      initiative.galeria.forEach((image) => {
+        const img = document.createElement('img');
+        img.src = image;
+        img.className = 'img-fluid mb-2';
+        img.alt = 'Imagem da galeria';
+        img.style.width = '50px';
+        img.style.height = '50px';
+
+        // Adicione a imagem ao corpo do cartão
+        cardBody.appendChild(img);
+      });
+    }
+
+    // Adicione o corpo ao cartão
+    card.appendChild(cardBody);
+
+    // Adicione o cartão à seção de conteúdo
+    contentSection.appendChild(card);
+
+    // Adicione um evento de clique ao botão de upload
+    uploadButton.addEventListener('click', function() {
+      handleUpload(fileInput.id, uploadedImage.id, index);
+    });
+  });
+
+  // Carregar a imagem do localStorage ao carregar a página
+  window.onload = function() {
+    // Recupere todas as iniciativas do localStorage
+    let initiatives = JSON.parse(localStorage.getItem('initiatives') || '[]');
+
+    initiatives.forEach((initiative, index) => {
+      // Verificar se a iniciativa tem uma propriedade galeria
+      if (initiative.galeria) {
+        // Para cada imagem na galeria
+        initiative.galeria.forEach((imgSrc) => {
+          // Criar um novo elemento de imagem
+          const img = document.createElement('img');
+
+          // Definir o atributo src do elemento de imagem para a string base64
+          img.src = imgSrc;
+
+          // Definir outros atributos do elemento de imagem
+          img.style.display = 'block';
+          img.style.width = '50px';
+          img.style.height = 'auto';
+
+          // Adicionar o elemento de imagem ao corpo do documento
+          document.body.appendChild(img);
+        });
+      }
+    });
+  };
+</script>
+
+<!-- /.Guardar em Local Storage -->
+<script>
+  function handleUpload(fileInputId, uploadedImageId, index) {
+    const fileInput = document.getElementById(fileInputId);
+    const uploadedImage = document.getElementById(uploadedImageId);
+
+    if (fileInput.files.length === 0) {
+      alert('Por favor, selecione uma imagem para carregar.');
+      return;
+    }
+    // Crie um novo FileReader
+    const reader = new FileReader();
+    // Defina o evento onload do FileReader
+    reader.onload = function(e) {
+
+      // Defina o src da imagem carregada para o resultado do FileReader
+      uploadedImage.src = e.target.result;
+
+      // Recupere todas as iniciativas do localStorage
+      let initiatives = JSON.parse(localStorage.getItem('initiatives') || '[]');
+
+      // Acesse a galeria da iniciativa específica
+      let galeria = initiatives[index].galeria || [];
+
+      // Adicione a nova imagem à galeria
+      galeria.push(e.target.result);
+
+      // Atualize a galeria na estrutura de dados initiatives
+      initiatives[index].galeria = galeria;
+
+      // Guarde a galeria atualizada no localStorage
+      localStorage.setItem('initiatives', JSON.stringify(initiatives));
+    };
+    // Leia o arquivo como URL de dados
+    reader.readAsDataURL(fileInput.files[0]);
+  }
     
-        document.getElementById('uploadButton1').addEventListener('click', function() {
-          handleUpload('fileInput1', 'uploadedImage1');
-        });
-        document.getElementById('uploadButton2').addEventListener('click', function() {
-          handleUpload('fileInput2', 'uploadedImage2');
-        });
-        document.getElementById('uploadButton3').addEventListener('click', function() {
-          handleUpload('fileInput3', 'uploadedImage3');
-        });
-        document.getElementById('uploadButton4').addEventListener('click', function() {
-          handleUpload('fileInput4', 'uploadedImage4');
-        });
-    
-        // Carregar a imagem do localStorage ao carregar a página
-        window.onload = function() {
-          ['uploadedImage1', 'uploadedImage2', 'uploadedImage3', 'uploadedImage4'].forEach(function(imageId) {
-            const savedImage = localStorage.getItem(imageId);
-            const uploadedImage = document.getElementById(imageId);
-      
-            if (savedImage) {
-              uploadedImage.src = savedImage;
-              uploadedImage.style.display = 'block';
-            }
-          });
-        };
-      </script>
+  document.getElementById('uploadButton').addEventListener('click', function() {
+    handleUpload(fileInput, uploadedImage);
+  });
+</script>
       
     </div>
 
