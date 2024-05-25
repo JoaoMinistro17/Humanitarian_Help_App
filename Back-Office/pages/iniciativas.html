@@ -449,16 +449,14 @@
               }
               totalMaterialsUsed[material.nome] += material.quantidade_emUso;
 
-              //agora para cada destes materiais é preciso atualizar o valor de material.quantidade_emUso no local storage
-
               // Retrieve the materials from the local storage
               let materials = JSON.parse(localStorage.getItem('materials'));
 
               // Update the quantidade_emUso of each material
               materials.forEach(material => {
-                  if (totalMaterialsUsed[material.nome]) {                              
-                      material.quantidade_emUso = totalMaterialsUsed[material.nome];
-                  }
+                if (totalMaterialsUsed[material.nome]) {                              
+                    material.quantidade_emUso = totalMaterialsUsed[material.nome];
+                }
               });
 
               // Save the updated materials back to the local storage
