@@ -256,17 +256,31 @@
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
-                <p>Bounce Rate</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <div class="small-box bg-info">
+                <div class="inner">
+                    <h3 id="field-professionals-count">0</h3>
+                    <p>Profissionais no Terreno</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                </div>
+                <a href="pages/profissionais.html" class="small-box-footer">Mais Info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
-          </div>
+        </div>
+        <!-- ./col -->
+        
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Fetch the professionals data from localStorage or initialize if empty
+                let professionals = JSON.parse(localStorage.getItem("professionals")) || [];
+        
+                // Count the number of field professionals
+                const fieldProfessionalsCount = professionals.length;
+        
+                // Update the count in the small box
+                document.getElementById("field-professionals-count").innerText = fieldProfessionalsCount;
+            });
+        </script>        
           <!-- ./col -->
           
           <div class="col-lg-3 col-6">
