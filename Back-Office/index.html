@@ -239,9 +239,10 @@
                     document.getElementById("pending-initiatives-count").innerText = pendingCount;
                 });
             </script>
+
         </body>
+          <!--Causas ativas -->
           <div class="col-lg-3 col-6">
-            <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
                 <h3 id="active-causes-count">0</h3>
@@ -253,9 +254,9 @@
               <a href="pages/causas.html" class="small-box-footer">Mais info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
-          <!-- ./col -->
+
+          <!--Profissionais no terreno -->
           <div class="col-lg-3 col-6">
-            <!-- small box -->
             <div class="small-box bg-info">
                 <div class="inner">
                     <h3 id="field-professionals-count">0</h3>
@@ -267,7 +268,7 @@
                 <a href="pages/profissionais.html" class="small-box-footer">Mais Info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
-        <!-- ./col -->
+        
         <script>
             document.addEventListener("DOMContentLoaded", function () {
                 // Fetch the professionals data from localStorage or initialize if empty
@@ -280,21 +281,20 @@
                 document.getElementById("field-professionals-count").innerText = fieldProfessionalsCount;
             });
         </script>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-                <div class="inner">
-                    <h3 id="field-volunteers-count">0</h3>
-                    <p>Voluntários no Terreno</p>
-                </div>
-                <div class="icon">
-                    <i class="ion ion-person-add"></i>
-                </div>
-                <a href="pages/voluntarios.html" class="small-box-footer">Mais Info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
+
+        <!--Voluntários no terreno -->
+        <div class="col-lg-3 col-6">
+          <div class="small-box bg-info">
+              <div class="inner">
+                  <h3 id="field-volunteers-count">0</h3>
+                  <p>Voluntários no Terreno</p>
+              </div>
+              <div class="icon">
+                  <i class="ion ion-person-add"></i>
+              </div>
+              <a href="pages/voluntarios.html" class="small-box-footer">Mais Info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
         </div>
-        <!-- ./col -->
         <script>
             document.addEventListener("DOMContentLoaded", function () {
                 // Fetch the volunteers data from localStorage or initialize if empty
@@ -307,10 +307,7 @@
                 document.getElementById("field-volunteers-count").innerText = fieldVolunteersCount;
             });
         </script>
-        
-          <!-- ./col -->
-        </div>
-        <!-- /.row -->
+        </div> <!-- /.row -->
         <!-- Main row -->
         <div class="row">
           <!-- right col (We are only adding the ID to make the widgets sortable)-->

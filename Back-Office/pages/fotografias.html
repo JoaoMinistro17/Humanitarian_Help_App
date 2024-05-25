@@ -269,8 +269,6 @@
 
   // Carregar as imagens do localStorage ao carregar a página
   window.onload = function() {
-  // Clear the gallery container
-  document.getElementById('galleryContainer').innerHTML = '';
 
     // Recupere todas as iniciativas do localStorage
     let initiatives = JSON.parse(localStorage.getItem('initiatives') || '[]');
@@ -291,15 +289,14 @@
           img.style.width = '80px';
           img.style.height = '80px';
 
-          // Adicionar o elemento de imagem ao corpo do documento
-          document.body.appendChild(img);
+          // Adicionar o elemento de imagem ao corpo do cartão
+          const cardBody = document.querySelector('.card-body');
+          cardBody.appendChild(img);
         });
       }
     });
   };
 </script>
-
-<div id="galleryContainer" class="image-grid"></div>
 
 <script>
   // Função para lidar com o upload de imagens     
@@ -316,7 +313,7 @@
     // Defina o evento onload do FileReader
     reader.onload = function(e) {
 
-      //uploadedImage.src = e.target.result; // Defina o src da imagem carregada para o resultado do FileReader
+      uploadedImage.src = e.target.result; // Defina o src da imagem carregada para o resultado do FileReader
 
       let initiatives = JSON.parse(localStorage.getItem('initiatives') || '[]'); // Recupere todas as iniciativas do localStorage
 
@@ -354,69 +351,5 @@
   <!-- AdminLTE for demo purposes -->
   <script src="../dist/js/demo.js"></script>
   <!-- Page specific script -->
-  <script>
-    $(function () {
-      // Script para carregar a imagem do dispositivo e exibi-la
-      $('#uploadButton1').on('click', function() {
-        const fileInput = document.getElementById('fileInput1');
-        const file = fileInput.files[0];
-        if (file) {
-          const reader = new FileReader();
-          reader.onload = function(e) {
-            const base64Image = e.target.result;
-            $('#uploadedImage1').attr('src', base64Image).show();
-          };
-          reader.readAsDataURL(file);
-        } else {
-          alert('Por favor, selecione um arquivo de imagem válido.');
-        }
-      });
-
-      $('#uploadButton2').on('click', function() {
-        const fileInput = document.getElementById('fileInput2');
-        const file = fileInput.files[0];
-        if (file) {
-          const reader = new FileReader();
-          reader.onload = function(e) {
-            const base64Image = e.target.result;
-            $('#uploadedImage2').attr('src', base64Image).show();
-          };
-          reader.readAsDataURL(file);
-        } else {
-          alert('Por favor, selecione um arquivo de imagem válido.');
-        }
-      });
-
-      $('#uploadButton3').on('click', function() {
-        const fileInput = document.getElementById('fileInput3');
-        const file = fileInput.files[0];
-        if (file) {
-          const reader = new FileReader();
-          reader.onload = function(e) {
-            const base64Image = e.target.result;
-            $('#uploadedImage3').attr('src', base64Image).show();
-          };
-          reader.readAsDataURL(file);
-        } else {
-          alert('Por favor, selecione um arquivo de imagem válido.');
-        }
-      });
-
-      $('#uploadButton4').on('click', function() {
-        const fileInput = document.getElementById('fileInput4');
-        const file = fileInput.files[0];
-        if (file) {
-          const reader = new FileReader();
-          reader.onload = function(e) {
-            const base64Image = e.target.result;
-            $('#uploadedImage4').attr('src', base64Image).show();
-          };
-          reader.readAsDataURL(file);
-        } else {
-          alert('Por favor, selecione um arquivo de imagem válido.');
-        }
-      });
-    });
-  </script>
 </body>
 </html>
