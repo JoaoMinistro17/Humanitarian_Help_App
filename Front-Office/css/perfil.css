@@ -1,45 +1,66 @@
 body {
-    background-color: #f8f9fa;
-    font-family: Arial, sans-serif;
+  font-family: Arial, sans-serif;
+  background-color: #006A6A;
+  color: white;
 }
 
-header {
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
+.profile-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  margin: 20px;
 }
 
-.profile {
-    background-color: #004d40;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    color: #fff;
+.avatar-section {
+  text-align: center;
 }
 
-.card {
-    background-color: #424242;
-    color: #fff;
-    border: none;
+.avatar {
+  border-radius: 50%;
+  width: 150px; /* Tamanho diminuído */
+  height: 150px; /* Tamanho diminuído */
 }
 
-.card img {
-    border-bottom: 1px solid #ddd;
+.info-section, .description-section, .events-section {
+  background-color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
 }
 
-.card-title {
-    margin-bottom: 20px;
+.info-box p, .description-section p {
+  margin: 10px 0;
 }
 
-.list-group-item {
-    background-color: #424242;
-    border: none;
-    color: #fff;
+.events-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
 }
 
-.badge-danger {
-    background-color: #d32f2f;
+.events-box {
+  background-color: #444;
+  padding: 15px;
+  border-radius: 10px;
 }
 
-.badge-success {
-    background-color: #388e3c;
+.status {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+.status.green {
+  background-color: green;
+}
+
+.status.red {
+  background-color: red;
 }
