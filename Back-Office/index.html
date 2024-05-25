@@ -374,7 +374,7 @@
               <!--STRIPED FULL WIDTH TABLE -->
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Doações</h3>
+                  <h3 class="card-title">Doações Em Andamento</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body p-0">
@@ -388,8 +388,6 @@
                       </tr>
                     </thead>
                     <tbody>
-                      
-
                     </tbody>
                   </table>
                 </div>
@@ -399,32 +397,32 @@
 
               <script>
                 document.addEventListener("DOMContentLoaded", function () {
-                    // Fetch the causes data from localStorage
-                    const causes = JSON.parse(localStorage.getItem("causes")) || [];
-                    const causesTable = document.querySelector(".table-striped tbody");
-                    causes.forEach((cause, index) => {
-                        const row = document.createElement("tr");
-                        row.innerHTML = `
-                            <td>${index + 1}</td>
-                            <td>${cause.nome}</td>
-                            <td>
-                                <div class="progress progress-xs">
-                                    <div class="progress-bar bg-primary" style="width: ${cause.valor_atual / cause.valor_objetivo * 100}%"></div>
-                                </div>
-                            </td>
-                            <td><span class="badge bg-primary">${cause.valor_atual / cause.valor_objetivo * 100}%</span></td>
-                        `;
-                        causesTable.appendChild(row);
-                    });
-                });
-
+                  // Fetch the causes data from localStorage
+                  const causes = JSON.parse(localStorage.getItem("causes")) || [];
+                  const causesTable = document.querySelector(".table-striped tbody");
+                  causes.forEach((cause, index) => {
+                      const row = document.createElement("tr");
+                      row.innerHTML = `
+                          <td>${index + 1}</td>
+                          <td>${cause.nome}</td>
+                          <td>
+                              <div class="progress progress-xs">
+                                  <div class="progress-bar bg-primary" style="width: ${cause.valor_atual / cause.valor_objetivo * 100}%"></div>
+                              </div>
+                          </td>
+                          <td><span class="badge bg-primary">${cause.valor_atual / cause.valor_objetivo * 100}%</span></td>
+                      `;
+                      causesTable.appendChild(row);
+                  });
+              });
               </script>
             </body>
           </section>
           <!-- right col -->
         </div>
         <!-- /.row (main row) -->
-      </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
   </div>
