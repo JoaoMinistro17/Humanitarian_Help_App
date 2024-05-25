@@ -20,8 +20,8 @@ body {
 
 .avatar {
   border-radius: 50%;
-  width: 150px; /* Tamanho diminuído */
-  height: 150px; /* Tamanho diminuído */
+  width: 150px; 
+  height: 150px; 
 }
 
 .info-section, .description-section, .events-section {
@@ -34,7 +34,11 @@ body {
 }
 
 .info-box p, .description-section p {
-  margin: 10px 0;
+  margin: 20px 0; 
+}
+
+.info-box div {
+  margin-bottom: 15px; 
 }
 
 .events-section {
@@ -55,12 +59,4 @@ body {
   height: 10px;
   border-radius: 50%;
   margin-left: 10px;
-}
-
-.status.green {
-  background-color: green;
-}
-
-.status.red {
-  background-color: red;
 }

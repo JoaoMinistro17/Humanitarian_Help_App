@@ -25,7 +25,7 @@ function logar() {
     email: '',
     password: ''
   };
-  
+
   listaUser = JSON.parse(localStorage.getItem('listaUser'));
   
   listaUser.forEach((item) => {
@@ -47,7 +47,6 @@ function logar() {
     localStorage.setItem('token', token);
     localStorage.setItem('userLogado', JSON.stringify(userValid));
   } else {
-    // Corrigido de userLabel para emailLabel
     emailLabel.setAttribute('style', 'color: red');
     email.setAttribute('style', 'border-color: red');
     passwordLabel.setAttribute('style', 'color: red');
