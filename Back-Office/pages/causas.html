@@ -372,27 +372,27 @@
     }
 
     $('#addCauseForm').submit(function(event) {
-      event.preventDefault();
+  event.preventDefault();
 
-      const formData = new FormData(this);
-      const cause = {
-        nome: formData.get('nome'),
-        email: formData.get('email'),
-        data_conclusao: formData.get('data_conclusao'),
-        valor_recebido: formData.get('valor_recebido'),
-        valor_angariado: formData.get('valor_angariado'),
-        descricao: formData.get('descricao'),
-        estado: formData.get('estado')
-      };
+  const formData = new FormData(this);
+  const cause = {
+    nome: formData.get('nome'),
+    email: formData.get('email'),
+    data_conclusao: formData.get('data_conclusao'),
+    valor_recebido: 0, // Definindo o valor recebido inicialmente como 0
+    valor_angariado: formData.get('valor_angariado'),
+    descricao: formData.get('descricao'),
+    estado: formData.get('estado')
+  };
 
-      const imageFile = formData.get('imagem');
-      convertToBase64(imageFile, (base64Image) => {
-        cause.imagem = base64Image;
-        saveCause(cause);
-        $('#addCauseModal').modal('hide');
-        this.reset();
-      });
-    });
+  const imageFile = formData.get('imagem');
+  convertToBase64(imageFile, (base64Image) => {
+    cause.imagem = base64Image;
+    saveCause(cause);
+    $('#addCauseModal').modal('hide');
+    this.reset();
+  });
+});
 
     $('#editCauseForm').submit(function(event) {
       event.preventDefault();
