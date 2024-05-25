@@ -4,7 +4,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>GO HELP | Página Inicial</title>
-
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -28,12 +27,10 @@
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
-
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
   </div>
-
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -48,7 +45,6 @@
     
   </nav>
   <!-- /.navbar -->
-
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -56,18 +52,14 @@
       <img src="dist/img/go_help.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">GO HELP</span>
     </a>
-
     <!-- Sidebar -->
     <div class="sidebar">
-
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-
-
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -95,7 +87,6 @@
                 </a>
               </li>
             </ul>
-
              <!-- Iniciativas -->
              <li class="nav-item">
                 <a href="pages/iniciativas.html" class="nav-link"> 
@@ -150,7 +141,6 @@
     </div>
     <!-- /.sidebar -->
   </aside>
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -170,12 +160,12 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
+
           <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -250,8 +240,6 @@
                 });
             </script>
         </body>
-
-
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-warning">
@@ -266,13 +254,11 @@
             </div>
           </div>
           <!-- ./col -->
-
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
                 <h3>53<sup style="font-size: 20px">%</sup></h3>
-
                 <p>Bounce Rate</p>
               </div>
               <div class="icon">
@@ -288,7 +274,6 @@
             <div class="small-box bg-danger">
               <div class="inner">
                 <h3>65</h3>
-
                 <p>Unique Visitors</p>
               </div>
               <div class="icon">
@@ -302,16 +287,12 @@
         <!-- /.row -->
         <!-- Main row -->
         <div class="row">
-
-
           <!-- right col (We are only adding the ID to make the widgets sortable)-->
           <section class="col-lg-5 connectedSortable">
-
             <head>
               <meta charset="UTF-8">
               <meta name="viewport" content="width=device-width, initial-scale=1.0">
               <title>Bar Chart</title>
-
               <!-- Include necessary CSS and JavaScript libraries -->
               <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css">
               <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -324,71 +305,120 @@
               <script src="plugins/chart.js/Chart.min.js"></script>
               <!-- AdminLTE App -->
               <script src="dist/js/adminlte.min.js"></script>
+              <!-- AdminLTE for demo purposes -->
+              <script src="dist/js/demo.js"></script>
+
             </head>
             <body>
-
-            <!-- BAR CHART -->
-            <div class="card card-success">
-              <div class="card-header">
-                <h3 class="card-title">Materiais</h3>
-
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                  <button type="button" class="btn btn-tool" data-card-widget="remove">
-                    <i class="fas fa-times"></i>
-                  </button>
+              <!-- BAR CHART -->
+              <div class="card card-success">
+                <div class="card-header">
+                  <h3 class="card-title">Materiais</h3>
+                  <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                      <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </div>
                 </div>
-              </div>
-              <div class="card-body">
-                <div class="chart">
-                  <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                <div class="card-body">
+                  <div class="chart">
+                    <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                  </div>
                 </div>
+                <!-- /.card-body -->
               </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
+              <!-- /.card -->
           
-            <script>              
-              $(document).ready(function() {
-                const material = JSON.parse(localStorage.getItem('materials')) || [];
-                const materialList = material.map(function(material) { return material.nome; });
-                const materialQuant = material.map(function(material) { return material.quantidade; });
-                const materialAvaQuant = material.map(function(material) { return material.quantidade_emUso; });
-            
-                // Define your area chart data
-                const areaChartData = {
-                    labels: materialList,
-                    datasets: [{
-                        label: 'Disponível',
-                        backgroundColor: 'rgba(54, 162, 235, 0.5)',
-                        borderColor: 'rgba(54, 162, 235, 1)',
-                        borderWidth: 1,
-                        data: materialQuant,
-                    }, {
-                        label: 'Em uso',
-                        backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                        borderColor: 'rgba(255, 99, 132, 1)',
-                        borderWidth: 1,
-                        data: materialAvaQuant,
-                    }]
-                };
-    
-                // Initialize the bar chart
-                const barChartCanvas = $('#barChart');
-                const barChart = new Chart(barChartCanvas, {
-                    type: 'bar',
-                    data: areaChartData,
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        datasetFill: false
-                    }
+              <script>              
+                $(document).ready(function() {
+                  const material = JSON.parse(localStorage.getItem('materials')) || [];
+                  const materialList = material.map(function(material) { return material.nome; });
+                  const materialQuant = material.map(function(material) { return material.quantidade; });
+                  const materialAvaQuant = material.map(function(material) { return material.quantidade_emUso; });
+              
+                  // Define your area chart data
+                  const areaChartData = {
+                      labels: materialList,
+                      datasets: [{
+                          label: 'Disponível',
+                          backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                          borderColor: 'rgba(54, 162, 235, 1)',
+                          borderWidth: 1,
+                          data: materialQuant,
+                      }, {
+                          label: 'Em uso',
+                          backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                          borderColor: 'rgba(255, 99, 132, 1)',
+                          borderWidth: 1,
+                          data: materialAvaQuant,
+                      }]
+                  };
+      
+                  // Initialize the bar chart
+                  const barChartCanvas = $('#barChart');
+                  const barChart = new Chart(barChartCanvas, {
+                      type: 'bar',
+                      data: areaChartData,
+                      options: {
+                          responsive: true,
+                          maintainAspectRatio: false,
+                          datasetFill: false
+                      }
+                  });
                 });
-              });
-            </script>
-            <!-- Calendar -->
+              </script>
+
+              <!--STRIPED FULL WIDTH TABLE -->
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Doações</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body p-0">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th style="width: 10px">ID</th>
+                        <th>Nome</th>
+                        <th>Progresso</th>
+                        <th style="width: 40px"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      
+
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+
+              <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    // Fetch the causes data from localStorage
+                    const causes = JSON.parse(localStorage.getItem("causes")) || [];
+                    const causesTable = document.querySelector(".table-striped tbody");
+                    causes.forEach((cause, index) => {
+                        const row = document.createElement("tr");
+                        row.innerHTML = `
+                            <td>${index + 1}</td>
+                            <td>${cause.nome}</td>
+                            <td>
+                                <div class="progress progress-xs">
+                                    <div class="progress-bar bg-primary" style="width: ${cause.valor_atual / cause.valor_objetivo * 100}%"></div>
+                                </div>
+                            </td>
+                            <td><span class="badge bg-primary">${cause.valor_atual / cause.valor_objetivo * 100}%</span></td>
+                        `;
+                        causesTable.appendChild(row);
+                    });
+                });
+
+              </script>
             </body>
           </section>
           <!-- right col -->
@@ -399,7 +429,6 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
@@ -407,7 +436,6 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-
 <!-- SCRIPT QUE INSERE DADOS AUTOMATICOS INICIATIVAS/MATERIAIS PARA JÁ-->
 <script>
   // Verificar se já existem iniciativas no Local Storage
@@ -439,7 +467,6 @@
             descricao: "Descrição da Iniciativa 2",
             galeria: '',
             estado: "rejeitado"
-
         },
         {
             nome: "Iniciativa 3",
@@ -483,7 +510,6 @@
     // Armazenar os dados no Local Storage
     localStorage.setItem('initiatives', JSON.stringify(initiatives));
   } 
-
   // Verificar se já existem materiais no Local Storage
   if (!localStorage.getItem('materials')) {
       // Exemplo de materiais
@@ -517,7 +543,6 @@
     // Armazenar os dados no Local Storage
     localStorage.setItem('materials', JSON.stringify(materials));
   } 
-
   // Verificar se já existem voluntários no Local Storage
   if (!localStorage.getItem('volunteers')) {
       // Exemplo de materiais
@@ -544,7 +569,6 @@
     // Armazenar os dados no Local Storage
     localStorage.setItem('volunteers', JSON.stringify(volunteers));
   } 
-
   // Verificar se já existem voluntários no Local Storage
   if (!localStorage.getItem('professionals')) {
       // Exemplo de materiais
@@ -571,12 +595,48 @@
             profissao: "Osteopata"
         }
     ];
-    // Armazenar os dados no Local Storage
-    localStorage.setItem('professionals', JSON.stringify(professionals));
+      // Armazenar os dados no Local Storage
+      localStorage.setItem('professionals', JSON.stringify(professionals));
   } 
-
+  // Verificar se já existem voluntários no Local Storage
+  if (!localStorage.getItem('causes')) {
+      // Exemplo de materiais
+    const causes = [
+        {
+            nome: "causa 1",
+            email: "causa1@gmail.com",
+            data_conclusao: "2024-05-24",
+            valor_atual: "0",
+            valor_objetivo: "1000",
+            imagem: "https://via.placeholder.com/50",
+            descricao: "Descrição da causa 1",
+            estado: "pendente",
+        },
+        {
+            nome: "causa 2",
+            email: "causa2@gmail.com",
+            data_conclusao: "2024-05-25",
+            valor_atual: "500",
+            valor_objetivo: "1000",
+            imagem: "https://via.placeholder.com/50",
+            descricao: "Descrição da causa 2",
+            estado: "pendente",
+        },
+        {
+            nome: "causa 3",
+            email: "causa3@gmail.com",
+            data_conclusao: "2024-05-26",
+            valor_atual: "0",
+            valor_objetivo: "1000",
+            imagem: "https://via.placeholder.com/50",
+            descricao: "Descrição da causa 3",
+            estado: "pendente",
+        }
+    ];
+      // Armazenar os dados no Local Storage
+      localStorage.setItem('causes', JSON.stringify(causes));
+  } 
 </script>
-
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -607,6 +667,10 @@
 <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="dist/js/pages/dashboard.js"></script>
 
 </body>
 </html>

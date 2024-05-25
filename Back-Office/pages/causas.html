@@ -171,10 +171,9 @@
                 <tr>
                   <th>ID</th>
                   <th>Nome</th>
-                  <th>Email</th>
                   <th>Data de Conclusão</th>
-                  <th>Valor Recebido</th>
-                  <th>Valor Angariado</th>
+                  <th>Valor Atual</th>
+                  <th>Valor a Angariar</th>
                   <th>Imagem</th>
                   <th>Descrição</th>
                   <th>Estado</th>
@@ -213,12 +212,8 @@
                 <input type="date" class="form-control" id="data_conclusao" name="data_conclusao" required>
               </div>
               <div class="form-group">
-                <label for="valor_recebido">Valor Recebido</label>
-                <input type="number" class="form-control" id="valor_recebido" name="valor_recebido" required>
-              </div>
-              <div class="form-group">
-                <label for="valor_angariado">Valor Angariado</label>
-                <input type="number" class="form-control" id="valor_angariado" name="valor_angariado" required>
+                <label for="valor_objetivo">Valor a Angariar</label>
+                <input type="number" class="form-control" id="valor_objetivo" name="valor_objetivo" required>
               </div>
               <div class="form-group">
                 <label for="imagem">Imagem</label>
@@ -269,12 +264,12 @@
                 <input type="date" class="form-control" id="edit-data_conclusao" name="data_conclusao" required>
               </div>
               <div class="form-group">
-                <label for="edit-valor_recebido">Valor Recebido</label>
-                <input type="number" class="form-control" id="edit-valor_recebido" name="valor_recebido" required>
+                <label for="edit-valor_atual">Valor Atual</label>
+                <input type="number" class="form-control" id="edit-valor_atual" name="valor_atual" required>
               </div>
               <div class="form-group">
-                <label for="edit-valor_angariado">Valor Angariado</label>
-                <input type="number" class="form-control" id="edit-valor_angariado" name="valor_angariado" required>
+                <label for="edit-valor_objetivo">Valor a Angariar</label>
+                <input type="number" class="form-control" id="edit-valor_objetivo" name="valor_objetivo" required>
               </div>
               <div class="form-group">
                 <label for="edit-imagem">Imagem</label>
@@ -330,10 +325,9 @@
           <tr>
             <td>${index + 1}</td>
             <td>${cause.nome}</td>
-            <td>${cause.email}</td>
             <td>${cause.data_conclusao}</td>
-            <td>${cause.valor_recebido}</td>
-            <td>${cause.valor_angariado}</td>
+            <td>${cause.valor_atual}</td>
+            <td>${cause.valor_objetivo}</td>
             <td><img src="${cause.imagem}" alt="Imagem da causa" style="width: 50px; height: 50px;"></td>
             <td>${cause.descricao}</td>
             <td>${cause.estado}</td>
@@ -379,8 +373,8 @@
         nome: formData.get('nome'),
         email: formData.get('email'),
         data_conclusao: formData.get('data_conclusao'),
-        valor_recebido: formData.get('valor_recebido'),
-        valor_angariado: formData.get('valor_angariado'),
+        valor_atual: formData.get('valor_atual'),
+        valor_objetivo: formData.get('valor_objetivo'),
         descricao: formData.get('descricao'),
         estado: formData.get('estado')
       };
@@ -403,8 +397,8 @@
         nome: formData.get('nome'),
         email: formData.get('email'),
         data_conclusao: formData.get('data_conclusao'),
-        valor_recebido: formData.get('valor_recebido'),
-        valor_angariado: formData.get('valor_angariado'),
+        valor_atual: formData.get('valor_atual'),
+        valor_objetivo: formData.get('valor_objetivo'),
         descricao: formData.get('descricao'),
         estado: formData.get('estado')
       };
@@ -431,8 +425,8 @@
       $('#edit-nome').val(cause.nome);
       $('#edit-email').val(cause.email);
       $('#edit-data_conclusao').val(cause.data_conclusao);
-      $('#edit-valor_recebido').val(cause.valor_recebido);
-      $('#edit-valor_angariado').val(cause.valor_angariado);
+      $('#edit-valor_atual').val(cause.valor_atual);
+      $('#edit-valor_objetivo').val(cause.valor_objetivo);
       $('#edit-descricao').val(cause.descricao);
       $('#edit-estado').val(cause.estado);
     });
