@@ -150,6 +150,7 @@
                 <tr>
                   <th>ID</th>
                   <th>Nome</th>
+                  <th>Email</th>
                   <th>Data de Conclusão</th>
                   <th>Valor Atual</th>
                   <th>Valor a Angariar</th>
@@ -181,6 +182,10 @@
               <div class="form-group">
                 <label for="nome">Nome</label>
                 <input type="text" class="form-control" id="nome" name="nome" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
               </div>
               <div class="form-group">
                 <label for="data_conclusao">Data de Conclusão</label>
@@ -229,6 +234,10 @@
               <div class="form-group">
                 <label for="edit-nome">Nome</label>
                 <input type="text" class="form-control" id="edit-nome" name="nome" required>
+              </div>
+              <div class="form-group">
+                <label for="edit-nome">Email</label>
+                <input type="email" class="form-control" id="edit-email" name="email" required>
               </div>
               <div class="form-group">
                 <label for="edit-data_conclusao">Data de Conclusão</label>
@@ -292,13 +301,11 @@
       causesTable.empty();
 
       causes.forEach((cause, index) => {
-        // Use '|| 0' to set valor_atual to 0 if it's null or undefined
-        cause.valor_atual = cause.valor_atual || 0;
-
         const row = `
           <tr>
             <td>${index + 1}</td>
             <td>${cause.nome}</td>
+            <td>${cause.email}</td>
             <td>${cause.data_conclusao}</td>
             <td>${cause.valor_atual}</td>
             <td>${cause.valor_objetivo}</td>
@@ -316,6 +323,7 @@
     }
 
     function saveCause(cause) {
+      cause.valor_atual = 0;
       causes.push(cause);
       localStorage.setItem('causes', JSON.stringify(causes));
       displayCauses();
@@ -345,6 +353,7 @@
       const formData = new FormData(this);
       const cause = {
         nome: formData.get('nome'),
+        email: formData.get('email'),
         data_conclusao: formData.get('data_conclusao'),
         valor_atual: formData.get('valor_atual'),
         valor_objetivo: formData.get('valor_objetivo'),
@@ -368,6 +377,7 @@
       const formData = new FormData(this);
       const updatedCause = {
         nome: formData.get('nome'),
+        email: formData.get('email'),
         data_conclusao: formData.get('data_conclusao'),
         valor_atual: formData.get('valor_atual'),
         valor_objetivo: formData.get('valor_objetivo'),
@@ -395,6 +405,7 @@
 
       $('#edit-id').val(index);
       $('#edit-nome').val(cause.nome);
+      $('#edit-email').val(cause.email);
       $('#edit-data_conclusao').val(cause.data_conclusao);
       $('#edit-valor_atual').val(cause.valor_atual);
       $('#edit-valor_objetivo').val(cause.valor_objetivo);

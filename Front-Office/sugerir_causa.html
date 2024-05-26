@@ -85,20 +85,16 @@
                         <input type="email" class="form-control" id="inputEmail" placeholder="Email">
                     </div>
                     <div class="form-group">
-                        <label for="inputValor">Valor</label>
-                        <input type="number" class="form-control" id="inputValor" placeholder="Valor a angariar">
+                        <label for="inputvalor_objetivo">Valor Objetivo</label>
+                        <input type="number" class="form-control" id="inputvalor_objetivo" placeholder="Valor a angariar">
                     </div>
                     <div class="form-group">
                         <label for="inputDescricao">Descrição</label>
                         <textarea class="form-control" id="inputDescricao" rows="3" placeholder="Descrição"></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="inputDataInicio">Data de Início</label>
-                        <input type="date" class="form-control" id="inputDataInicio">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputDataFim">Data de Término</label>
-                        <input type="date" class="form-control" id="inputDataFim">
+                        <label for="inputdata_conclusao">Data de Término</label>
+                        <input type="date" class="form-control" id="inputdata_conclusao">
                     </div>
                     <button type="submit" class="btn btn-white btn-lg btn-block">Sugerir</button>
                 </form>                
@@ -139,29 +135,31 @@
         // Get the values from the form fields
         const nome = document.getElementById('inputNome').value;
         const email = document.getElementById('inputEmail').value;
-        const valor = document.getElementById('inputValor').value;
+        const valor_atual = '0';
+        const valor_objetivo = document.getElementById('inputvalor_objetivo').value;
         const descricao = document.getElementById('inputDescricao').value;
-        const dataInicio = document.getElementById('inputDataInicio').value;
-        const dataFim = document.getElementById('inputDataFim').value;
+        const data_conclusao = document.getElementById('inputdata_conclusao').value;
+        const estado = 'pendente';
     
         // Create an object to store the current form submission
         const formSubmission = {
             nome: nome,
             email: email,
-            valor: valor,
+            valor_atual: valor_atual,
+            valor_objetivo: valor_objetivo,
             descricao: descricao,
-            dataInicio: dataInicio,
-            dataFim: dataFim
+            data_conclusao: data_conclusao,
+            estado: 'pendente'
         };
     
         // Get the existing form submissions from local storage
-        let formSubmissions = JSON.parse(localStorage.getItem('formSubmissions')) || [];
+        let formSubmissions = JSON.parse(localStorage.getItem('causes')) || [];
     
         // Add the new submission to the array
         formSubmissions.push(formSubmission);
     
         // Save the updated array back to local storage
-        localStorage.setItem('formSubmissions', JSON.stringify(formSubmissions));
+        localStorage.setItem('causes', JSON.stringify(formSubmissions));
     
         // Optionally, you can provide feedback to the user that the data has been saved
         alert('Formulário enviado!');
