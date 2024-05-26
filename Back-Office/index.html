@@ -228,16 +228,16 @@
           </div>
           <!-- ./col -->
           <script>
-              document.addEventListener("DOMContentLoaded", function () {
-                  // Fetch the initiatives data from localStorage
-                  const initiatives = JSON.parse(localStorage.getItem("initiatives")) || [];
-      
-                  // Count the pending initiatives
-                  const pendingCount = initiatives.filter(initiative => initiative.estado === 'pendente').length;
-      
-                  // Update the count in the small box
-                  document.getElementById("pending-initiatives-count").innerText = pendingCount;
-              });
+            document.addEventListener("DOMContentLoaded", function () {
+              // Fetch the initiatives data from localStorage
+              const initiatives = JSON.parse(localStorage.getItem("initiatives")) || [];
+  
+              // Count the pending initiatives
+              const pendingCount = initiatives.filter(initiative => initiative.estado === 'pendente').length;
+  
+              // Update the count in the small box
+              document.getElementById("pending-initiatives-count").innerText = pendingCount;
+            });
           </script>
 
           <!--Causas ativas -->
@@ -255,14 +255,14 @@
           </div>
           <script>
             document.addEventListener("DOMContentLoaded", function () {
-                // Fetch the causes data from localStorage or initialize if empty
-                let causes = JSON.parse(localStorage.getItem("causes")) || [];
-            
-                // Count the number of active causes
-                const activeCausesCount = causes.filter(cause => cause.estado === 'em andamento').length;
-            
-                // Update the count in the small box
-                document.getElementById("active-causes-count").innerText = activeCausesCount;
+              // Fetch the causes data from localStorage or initialize if empty
+              let causes = JSON.parse(localStorage.getItem("causes")) || [];
+          
+              // Count the number of active causes
+              const activeCausesCount = causes.filter(cause => cause.estado === 'em andamento').length;
+          
+              // Update the count in the small box
+              document.getElementById("active-causes-count").innerText = activeCausesCount;
             });
           </script>
 
@@ -287,10 +287,10 @@
           
               // Count the number of professionals in initiatives
               let professionalsInInitiativesCount = 0;
-          
+
               // Object to track counted professional names
               let countedProfessionalNames = {};
-          
+
               professionals.forEach(professional => {
                   initiatives.forEach(initiative => {
                     if (initiative.profissionais) {
@@ -308,7 +308,6 @@
               document.getElementById("professionals-in-initiatives-count").innerText = professionalsInInitiativesCount;
             });
           </script>
-
 
           <!--Voluntários no terreno -->
           <div class="col-lg-3 col-6">
@@ -686,7 +685,6 @@
     const causes = [
         {
             nome: "causa 1",
-            email: "causa1@gmail.com",
             data_conclusao: "2024-05-24",
             valor_atual: "0",
             valor_objetivo: "1000",
@@ -696,7 +694,6 @@
         },
         {
             nome: "causa 2",
-            email: "causa2@gmail.com",
             data_conclusao: "2024-05-25",
             valor_atual: "500",
             valor_objetivo: "1000",
@@ -706,7 +703,6 @@
         },
         {
             nome: "causa 3",
-            email: "causa3@gmail.com",
             data_conclusao: "2024-05-26",
             valor_atual: "500",
             valor_objetivo: "1000",
@@ -716,7 +712,6 @@
         },
         {
             nome: "causa 4",
-            email: "causa4@gmail.com",
             data_conclusao: "2024-05-26",
             valor_atual: "150",
             valor_objetivo: "200",
