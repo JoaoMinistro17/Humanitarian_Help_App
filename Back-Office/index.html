@@ -298,8 +298,25 @@
 
               // Update the count in the small box
               document.getElementById("professionals-in-initiatives-count").innerText = professionalsInInitiativesCount;
+                // Fetch the professionals data from localStorage or initialize if empty
+                let professionals = JSON.parse(localStorage.getItem("professionals")) || [];
+                let initiatives = JSON.parse(localStorage.getItem("initiatives")) ||  [];
+
+                // Count the number of professionals in initiatives
+                let professionalsInInitiativesCount = 0;
+
+                professionals.forEach(professional => {
+                    initiatives.forEach(initiative => {
+                        if (initiative.professionals && initiative.professionals.includes(professional.nome)) {
+                            professionalsInInitiativesCount++;
+                        }
+                    });
+                });
+
+                // Update the count in the small box
+                document.getElementById("professionals-in-initiatives-count").innerText = professionalsInInitiativesCount;
             });
-          </script>
+        </script>
 
           <!--Voluntários no terreno -->
           <div class="col-lg-3 col-6">
