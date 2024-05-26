@@ -46,34 +46,13 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item">
 
-
+            <!-- Página Inicial -->
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Página Inicial
-                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="../index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v1</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../index2.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v2</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../index3.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v3</p>
-                </a>
-              </li>
-            </ul>
             <!-- Iniciativas -->
             <li class="nav-item">
               <a href="iniciativas.html" class="nav-link"> 
@@ -204,10 +183,6 @@
                 <input type="text" class="form-control" id="nome" name="nome" required>
               </div>
               <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email" required>
-              </div>
-              <div class="form-group">
                 <label for="data_conclusao">Data de Conclusão</label>
                 <input type="date" class="form-control" id="data_conclusao" name="data_conclusao" required>
               </div>
@@ -254,10 +229,6 @@
               <div class="form-group">
                 <label for="edit-nome">Nome</label>
                 <input type="text" class="form-control" id="edit-nome" name="nome" required>
-              </div>
-              <div class="form-group">
-                <label for="edit-email">Email</label>
-                <input type="email" class="form-control" id="edit-email" name="email" required>
               </div>
               <div class="form-group">
                 <label for="edit-data_conclusao">Data de Conclusão</label>
@@ -374,7 +345,6 @@
       const formData = new FormData(this);
       const cause = {
         nome: formData.get('nome'),
-        email: formData.get('email'),
         data_conclusao: formData.get('data_conclusao'),
         valor_atual: formData.get('valor_atual'),
         valor_objetivo: formData.get('valor_objetivo'),
@@ -398,7 +368,6 @@
       const formData = new FormData(this);
       const updatedCause = {
         nome: formData.get('nome'),
-        email: formData.get('email'),
         data_conclusao: formData.get('data_conclusao'),
         valor_atual: formData.get('valor_atual'),
         valor_objetivo: formData.get('valor_objetivo'),
@@ -426,7 +395,6 @@
 
       $('#edit-id').val(index);
       $('#edit-nome').val(cause.nome);
-      $('#edit-email').val(cause.email);
       $('#edit-data_conclusao').val(cause.data_conclusao);
       $('#edit-valor_atual').val(cause.valor_atual);
       $('#edit-valor_objetivo').val(cause.valor_objetivo);
