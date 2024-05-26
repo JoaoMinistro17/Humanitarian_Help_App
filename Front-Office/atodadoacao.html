@@ -106,7 +106,7 @@
             </div>
             <div class="form-group">
               <label for="inputTelemovel">Telemóvel</label>
-              <input type="text" class="form-control" id="inputTelemovel" placeholder="Telemóvel">
+              <input type="number" class="form-control" id="inputTelemovel" placeholder="Telemóvel">
             </div>
             <div class="form-group">
               <label for="inputEmail">Email</label>
@@ -114,11 +114,15 @@
             </div>
             <div class="form-group">
               <label for="inputNIF">NIF</label>
-              <input type="text" class="form-control" id="inputNIF" placeholder="NIF">
+              <input type="number" class="form-control" id="inputNIF" placeholder="NIF">
             </div>
             <div class="form-group">
-              <label for="inputCausa">Causa</label>
-              <input type="text" class="form-control" id="inputCausa" placeholder="Causa">
+              <label for="inputValor">Valor a doar</label>
+              <input type="number" class="form-control" id="inputValor" placeholder="Valor a doar">
+            </div>
+            <div class="form-group">
+              <label for="causeName">Causa</label>
+              <p id="causeName" class="form-control"></p>
             </div>
             <div class="payment-methods">
               <div class="payment-method">
@@ -175,15 +179,35 @@
   <script src="js/main.js"></script>
 
   <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      // Get the URL parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const causeName = urlParams.get('cause');
+      // Find the element where you want to display the cause's name
+      const causeNameElement = document.getElementById('causeName');
+      // Set the cause's name
+      causeNameElement.textContent = decodeURIComponent(causeName);
+    });
+
     document.getElementById('volunteerForm').addEventListener('submit', function(event) {
       event.preventDefault(); // Previna o envio do formulário
+
+      // Get the URL parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const causeName = urlParams.get('cause');
+      // Find the element where you want to display the cause's name
+      const causeNameElement = document.getElementById('causeName');
+      // Set the cause's name
+      causeNameElement.textContent = decodeURIComponent(causeName);
+
 
       // Get the values from the form fields
       const nome = document.getElementById('inputNome').value;
       const telemovel = document.getElementById('inputTelemovel').value;
       const email = document.getElementById('inputEmail').value;
       const nif = document.getElementById('inputNIF').value;
-      const causa = document.getElementById('inputCausa').value;
+      const causa = causeNameElement.textContent;
+      const valor = document.getElementById('inputValor').value;
 
       // Get the selected payment method
       const paymentMethod = document.querySelector('input[name="payment-method"]:checked')?.value;
@@ -194,18 +218,24 @@
         telemovel: telemovel,
         email: email,
         nif: nif,
-        causa: causa,
+        valor: valor,
+        nome_causa: causa,
         paymentMethod: paymentMethod
       };
 
       // Get the existing form submissions from local storage
-      let volunteerSubmissions = JSON.parse(localStorage.getItem('volunteerSubmissions')) || [];
+      let volunteerSubmissions = localStorage.getItem('donation');
+      if (volunteerSubmissions) {
+        volunteerSubmissions = JSON.parse(volunteerSubmissions);
+      } else {
+        volunteerSubmissions = [];
+      }
 
       // Add the new submission to the array
       volunteerSubmissions.push(formSubmission);
 
       // Save the updated array back to local storage
-      localStorage.setItem('volunteerSubmissions', JSON.stringify(volunteerSubmissions));
+      localStorage.setItem('donation', JSON.stringify(volunteerSubmissions));
 
       // Optionally, provide feedback to the user
       alert('Guardado no Local Storage! Obrigado pela sua doação');

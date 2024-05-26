@@ -253,7 +253,7 @@
           <div class="form-group">
             <label for="imagem">Imagem</label>
             <input type="file" class="form-control" id="imagem" name="imagem" required onchange="encodeImageFileAsURL(this)">
-        </div>
+          </div>
           <div class="form-group">
             <label for="local">Local</label>
             <input type="text" class="form-control" id="local" name="local" required>
@@ -348,7 +348,6 @@
 </script>
 
 <script>
-
   //Ir buscar os dados das tabelas inciativas
   document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("addInitiativeForm");
@@ -386,7 +385,7 @@
                   ` : ''}
               </td>
           `;
-              
+
           //Caso Aceite preenche um forms para indicar os voluntarios/profissionais/materiais com base nos existentes
 
           //Sempre que se aceita uma iniciativa o valor dos materiais selecionados emUso no formulário que irá preencher deve ser atualizado no local storage para cada material
@@ -454,17 +453,24 @@
               rejectedTable.appendChild(newRow);
           }
 
-          // Defina a função no escopo global
           window.encodeImageFileAsURL = function(element) {
-            var file = element.files[0];
-            var reader = new FileReader();
+            const file = element.files[0];
+            const reader = new FileReader();
+
             reader.onloadend = function() {
-              console.log('RESULT ', reader.result)
-                // Aqui a imagem é convertida para base64 e armazenada em initiatives.imagem
-                initiativesData[index].imagem = reader.result;
-                // Atualiza os dados no localStorage
-                localStorage.setItem("initiatives", JSON.stringify(initiativesData));
+              // Quando o carregamento estiver concluído, atualize a imagem da iniciativa
+              const base64Image = reader.result;
+
+              initiativesData[index].imagem = base64Image;
+              initiativesData[index].imageName = file.name; // Adiciona o nome do arquivo
+
+              // Atualize os dados no localStorage
+              localStorage.setItem("initiatives", JSON.stringify(initiativesData));
+
+              // Renderizar iniciativas na tabela
+              renderInitiatives();
             }
+
             reader.readAsDataURL(file);
           }
       });
@@ -535,34 +541,34 @@
     renderInitiatives();
 
     form.addEventListener("submit", function (event) {
-        event.preventDefault();
+      event.preventDefault();
 
-        // Obter os valores dos campos do formulário
-        const nome = form.nome.value;
-        const email = form.email.value;
-        const data = form.data.value;
-        const hora_inicio = form.hora_inicio.value;
-        const hora_fim = form.hora_fim.value;
-        const tipo = form.tipo.value;
-        const imagem = form.imagem.value;
-        const local = form.local.value;
-        const descricao = form.descricao.value;
+      // Obter os valores dos campos do formulário
+      const nome = form.nome.value;
+      const email = form.email.value;
+      const data = form.data.value;
+      const hora_inicio = form.hora_inicio.value;
+      const hora_fim = form.hora_fim.value;
+      const tipo = form.tipo.value;
+      const imagem = form.imagem.value;
+      const local = form.local.value;
+      const descricao = form.descricao.value;
 
-        // Adicionar a nova iniciativa aos dados (COM OS DADOS QUE NÃO PRECISAM DE APARECER NO FORMS)
-        const newInitiative = { nome, email, data, hora_inicio, hora_fim, tipo, imagem, local, descricao, estado:'pendente', galeria, voluntarios, profissionais, materiais };
-        initiativesData.push(newInitiative);
+      // Adicionar a nova iniciativa aos dados (COM OS DADOS QUE NÃO PRECISAM DE APARECER NO FORMS)
+      const newInitiative = { nome, email, data, hora_inicio, hora_fim, tipo, imagem, local, descricao, estado:'pendente', galeria, voluntarios, profissionais, materiais };
+      initiativesData.push(newInitiative);
 
-        // Atualizar os dados no localStorage
-        localStorage.setItem("initiatives", JSON.stringify(initiativesData));
+      // Atualizar os dados no localStorage
+      localStorage.setItem("initiatives", JSON.stringify(initiativesData));
 
-        // Renderizar iniciativas na tabela
-        renderInitiatives();
+      // Renderizar iniciativas na tabela
+      renderInitiatives();
 
-        // Limpar os campos do formulário após adicionar a iniciativa
-        form.reset();
+      // Limpar os campos do formulário após adicionar a iniciativa
+      form.reset();
 
-        // Fechar o modal após adicionar a iniciativa
-        $('#addInitiativeModal').modal('hide');
+      // Fechar o modal após adicionar a iniciativa
+      $('#addInitiativeModal').modal('hide');
     });
   });
 </script>

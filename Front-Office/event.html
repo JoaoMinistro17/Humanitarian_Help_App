@@ -169,7 +169,7 @@
     <script>
       document.addEventListener('DOMContentLoaded', function () {
         // Retrieve the event data from local storage
-        const event = JSON.parse(localStorage.getItem('event')) || [];
+        const event = JSON.parse(localStorage.getItem('initiatives')) || [];
       
         const eventsContainer = document.getElementById('events-container');
       
@@ -185,7 +185,7 @@
           const eventLink = document.createElement('a');
           eventLink.href = 'blog-single.html';
           eventLink.className = 'block-20';
-          eventLink.style.backgroundImage = `url(${event.image})`; // Change this line
+          eventLink.style.backgroundImage = `url(${event.imagem})`;
       
           const textDiv = document.createElement('div');
           textDiv.className = 'text p-4 d-block';
@@ -203,8 +203,8 @@
       
           const timeLoc = document.createElement('p');
           timeLoc.className = 'time-loc';
-          timeLoc.innerHTML = `<span class="mr-2"><i class="icon-clock-o"></i> ${event.time}</span> <span><i class="icon-map-o"></i> ${event.location}</span>`;
-      
+          timeLoc.innerHTML = `<span class="mr-2"><i class="icon-clock-o"></i> ${event.hora_inicio} - ${event.hora_fim}</span> <br> <span><i class="icon-map-o"></i> ${event.local}</span>`;
+                
           const descricao = document.createElement('p');
           descricao.textContent = event.descricao;
       
