@@ -16,12 +16,14 @@ body {
 
 .avatar-section {
   text-align: center;
+  padding-top: 40px; /* Adjust the padding to move the avatar down */
 }
 
 .avatar {
   border-radius: 50%;
   width: 150px; 
   height: 150px; 
+  margin-bottom: 20px; /* Add margin to move the user name down */
 }
 
 .info-section, .description-section, .events-section {
@@ -39,6 +41,14 @@ body {
 
 .info-box div {
   margin-bottom: 15px; 
+}
+
+.description-section {
+  grid-column: span 2; /* Span across two columns */
+}
+
+.description-section h2, .description-section p {
+  color: white; /* Change the color to white */
 }
 
 .events-section {
@@ -60,3 +70,4 @@ body {
   border-radius: 50%;
   margin-left: 10px;
 }
+
