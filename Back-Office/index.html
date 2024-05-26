@@ -240,13 +240,12 @@
                 });
             </script>
 
-        </body>
           <!--Causas ativas -->
           <div class="col-lg-3 col-6">
             <div class="small-box bg-warning">
               <div class="inner">
                 <h3 id="active-causes-count">0</h3>
-                <p>Causas Ativas</p>
+                <p>Causas em Andamento</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
@@ -254,10 +253,22 @@
               <a href="pages/causas.html" class="small-box-footer">Mais info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
+          <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Fetch the causes data from localStorage or initialize if empty
+                let causes = JSON.parse(localStorage.getItem("causes")) || [];
+            
+                // Count the number of active causes
+                const activeCausesCount = causes.filter(cause => cause.estado === 'em andamento').length;
+            
+                // Update the count in the small box
+                document.getElementById("active-causes-count").innerText = activeCausesCount;
+            });
+          </script>
 
           <!--Profissionais no terreno -->
           <div class="col-lg-3 col-6">
-            <div class="small-box bg-info">
+            <div class="small-box bg-danger">
                 <div class="inner">
                     <h3 id="field-professionals-count">0</h3>
                     <p>Profissionais no Terreno</p>
@@ -267,47 +278,66 @@
                 </div>
                 <a href="pages/profissionais.html" class="small-box-footer">Mais Info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
-        </div>
-        
-        <script>
+          </div>
+          <script>
             document.addEventListener("DOMContentLoaded", function () {
                 // Fetch the professionals data from localStorage or initialize if empty
                 let professionals = JSON.parse(localStorage.getItem("professionals")) || [];
-        
-                // Count the number of field professionals
-                const fieldProfessionalsCount = professionals.length;
-        
+                let initiatives = JSON.parse(localStorage.getItem("initiatives")) ||  [];
+
+                // Count the number of professionals in initiatives
+                let professionalsInInitiativesCount = 0;
+
+                professionals.forEach(professional => {
+                    initiatives.forEach(initiative => {
+                        if (initiative.professionals && initiative.professionals.includes(professional.nome)) {
+                            professionalsInInitiativesCount++;
+                        }
+                    });
+                });
+
                 // Update the count in the small box
-                document.getElementById("field-professionals-count").innerText = fieldProfessionalsCount;
+                document.getElementById("professionals-in-initiatives-count").innerText = professionalsInInitiativesCount;
             });
         </script>
 
-        <!--Voluntários no terreno -->
-        <div class="col-lg-3 col-6">
-          <div class="small-box bg-info">
-              <div class="inner">
-                  <h3 id="field-volunteers-count">0</h3>
-                  <p>Voluntários no Terreno</p>
-              </div>
-              <div class="icon">
-                  <i class="ion ion-person-add"></i>
-              </div>
-              <a href="pages/voluntarios.html" class="small-box-footer">Mais Info <i class="fas fa-arrow-circle-right"></i></a>
+          <!--Voluntários no terreno -->
+          <div class="col-lg-3 col-6">
+            <div class="small-box bg-">
+                <div class="inner">
+                    <h3 id="volunteers-in-initiatives-count">0</h3>
+                    <p>Voluntários no Terreno</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                </div>
+                <a href="pages/voluntarios.html" class="small-box-footer">Mais Info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
           </div>
-        </div>
-        <script>
+          <script>
             document.addEventListener("DOMContentLoaded", function () {
-                // Fetch the volunteers data from localStorage or initialize if empty
-                let volunteers = JSON.parse(localStorage.getItem("volunteers")) || [];
-                
-                // Count the number of field volunteers
-                const fieldVolunteersCount = volunteers.length;
-                
-                // Update the count in the small box
-                document.getElementById("field-volunteers-count").innerText = fieldVolunteersCount;
+              // Fetch the volunteers data from localStorage or initialize if empty
+              let volunteers = JSON.parse(localStorage.getItem("volunteers")) || [];
+              let initiatives = JSON.parse(localStorage.getItem("initiatives")) || [];
+
+              // Count the number of volunteers in initiatives
+              let volunteersInInitiativesCount = 0;
+
+              volunteers.forEach(volunteer => {
+                  initiatives.forEach(initiative => {
+                      if (initiative.voluntarios && initiative.voluntarios.includes(volunteer.nome)) {
+                          volunteersInInitiativesCount++;
+                      }
+                  });
+              });
+          
+              // Update the count in the small box
+              document.getElementById("volunteers-in-initiatives-count").innerText = volunteersInInitiativesCount;
             });
-        </script>
-        </div> <!-- /.row -->
+            </script>
+
+          </body>
+        </div> 
         <!-- Main row -->
         <div class="row">
           <!-- right col (We are only adding the ID to make the widgets sortable)-->
