@@ -205,30 +205,30 @@
           dateDiv.className = 'meta mb-3';
           dateDiv.innerHTML = `<div><a href="#">${event.date}</a></div>`;
       
-          const title = document.createElement('h3');
-          title.className = 'heading mb-4';
-          const titleLink = document.createElement('a');
-          titleLink.href = '#';
-          titleLink.textContent = event.title;
-          title.appendChild(titleLink);
+          const nome = document.createElement('h3');
+          nome.className = 'heading mb-4';
+          const nomeLink = document.createElement('a');
+          nomeLink.href = '#';
+          nomeLink.textContent = event.nome;
+          nome.appendChild(nomeLink);
       
           const timeLoc = document.createElement('p');
           timeLoc.className = 'time-loc';
           timeLoc.innerHTML = `<span class="mr-2"><i class="icon-clock-o"></i> ${event.time}</span> <span><i class="icon-map-o"></i> ${event.location}</span>`;
       
-          const description = document.createElement('p');
-          description.textContent = event.description;
+          const descricao = document.createElement('p');
+          descricao.textContent = event.descricao;
       
           const joinLink = document.createElement('a');
-          joinLink.href = 'event.html';
+          joinLink.href = 'login.html'; // Changed this line to point to login.html
           joinLink.textContent = 'Juntar-me';
           joinLink.innerHTML += '<i class="ion-ios-arrow-forward"></i>';
       
           // Append elements to construct the event entry
           textDiv.appendChild(dateDiv);
-          textDiv.appendChild(title);
+          textDiv.appendChild(nome);
           textDiv.appendChild(timeLoc);
-          textDiv.appendChild(description);
+          textDiv.appendChild(descricao);
           textDiv.appendChild(joinLink);
       
           eventEntry.appendChild(eventLink);
@@ -240,9 +240,6 @@
           eventsContainer.appendChild(eventDiv);
         });
       });
-      </script>
-      
-
     </script>
   </body>
   </html>

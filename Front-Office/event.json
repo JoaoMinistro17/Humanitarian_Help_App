@@ -1,15 +1,15 @@
 [
     {
-        "title": "Caminhada Solidária",
-        "description": "Evento organizado com o objetivo de ajudar uma instituição de caridade apoiando pessoas em situação de vulnerabilidade.",
+        "nome": "Caminhada Solidária",
+        "descricao": "Evento organizado com o objetivo de ajudar uma instituição de caridade apoiando pessoas em situação de vulnerabilidade.",
         "date": "Ago.12, 2024",
         "time": "9:30AM-04:00PM",
         "location": "Porto",
         "image": "images/event-1.jpg"
     },
     {
-        "title": "Gala Solidária",
-        "description": "Gala para angariar fundos para ajudar as pessoas do continente africano.",
+        "nome": "Gala Solidária",
+        "descricao": "Gala para angariar fundos para ajudar as pessoas do continente africano.",
         "date": "Jan.1, 2025",
         "time": "10:30AM-03:30PM",
         "location": "Guimarães",
