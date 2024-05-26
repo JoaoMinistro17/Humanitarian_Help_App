@@ -1,40 +1,28 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // Load user data from local storage
-    const userData = JSON.parse(localStorage.getItem('userData')) || {
-        fullName: 'João Pedro da Rocha Fernandes',
-        email: 'example@example.com',
-        phone: '',
-        country: '',
-        address: '',
-        description: 'Exemplo de Descrição'
-    };
+document.addEventListener('DOMContentLoaded', (event) => {
+    let userLogado = JSON.parse(localStorage.getItem('userLogado'));
 
-    // Populate fields with user data
-    document.getElementById('fullName').textContent = `Nome Completo: ${userData.fullName}`;
-    document.getElementById('email').textContent = `Email: ${userData.email}`;
-    document.getElementById('phone').value = userData.phone;
-    document.getElementById('country').value = userData.country;
-    document.getElementById('address').value = userData.address;
-    document.getElementById('description').value = userData.description;
-    document.getElementById('descriptionDisplay').textContent = userData.description;
+    if (userLogado) {
+        document.getElementById('userName').textContent = userLogado.nome;
+        document.getElementById('userEmail').textContent = userLogado.email;
+        document.getElementById('userNameHeader').textContent = userLogado.nome;
+        document.getElementById('userPhone').textContent = userLogado.telemovel;
+        document.getElementById('userCountry').textContent = userLogado.pais;
+        document.getElementById('userAddress').textContent = userLogado.morada;
+    }
 
-    // Save user data to local storage on form submit
-    document.getElementById('profileForm').addEventListener('submit', function (event) {
-        event.preventDefault();
-        
-        const updatedUserData = {
-            ...userData,
-            phone: document.getElementById('phone').value,
-            country: document.getElementById('country').value,
-            address: document.getElementById('address').value,
-            description: document.getElementById('description').value
-        };
-
-        localStorage.setItem('userData', JSON.stringify(updatedUserData));
-
-        // Update description display
-        document.getElementById('descriptionDisplay').textContent = updatedUserData.description;
-
-        alert('Dados guardados com sucesso!');
-    });
+    document.getElementById('editPhone').addEventListener('click', () => editField('userPhone', 'telemovel'));
+    document.getElementById('editCountry').addEventListener('click', () => editField('userCountry', 'pais'));
+    document.getElementById('editAddress').addEventListener('click', () => editField('userAddress', 'morada'));
 });
+
+function editField(elementId, localStorageKey) {
+    const element = document.getElementById(elementId);
+    const currentValue = element.textContent;
+    const newValue = prompt('Edit value:', currentValue);
+    if (newValue !== null && newValue !== currentValue) {
+        element.textContent = newValue;
+        let userLogado = JSON.parse(localStorage.getItem('userLogado'));
+        userLogado[localStorageKey] = newValue;
+        localStorage.setItem('userLogado', JSON.stringify(userLogado));
+    }
+}
