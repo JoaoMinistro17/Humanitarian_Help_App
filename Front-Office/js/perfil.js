@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     document.getElementById('editCountry').addEventListener('click', () => editField('userCountry', 'pais'));
     document.getElementById('editAddress').addEventListener('click', () => editField('userAddress', 'morada'));
     document.getElementById('editdescricao').addEventListener('click', () => editField('descricao', 'descricao'));
+    
+    document.getElementById('logoutButton').addEventListener('click', logout);
 });
 
 function editField(elementId, localStorageKey) {
@@ -35,4 +37,10 @@ function editField(elementId, localStorageKey) {
         } : user);
         localStorage.setItem('listaUser', JSON.stringify(listaUser));
     }
+}
+
+function logout() {
+    localStorage.removeItem('userLogado');
+    localStorage.removeItem('token');
+    window.location.href = 'login.html';
 }

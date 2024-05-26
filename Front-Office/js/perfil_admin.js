@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     document.getElementById('editAdminCountry').addEventListener('click', () => editAdminField('adminCountry', 'pais'));
     document.getElementById('editAdminAddress').addEventListener('click', () => editAdminField('adminAddress', 'morada'));
     document.getElementById('editAdminDescricao').addEventListener('click', () => editAdminField('adminDescricao', 'descricao'));
+    
+    document.getElementById('logoutButton').addEventListener('click', logout);
 });
 
 function editAdminField(elementId, localStorageKey) {
@@ -45,4 +47,10 @@ function editAdminField(elementId, localStorageKey) {
 
         localStorage.setItem('adminCredentials', JSON.stringify(updatedAdminCredentials));
     }
+}
+
+function logout() {
+    localStorage.removeItem('userLogado');
+    localStorage.removeItem('token');
+    window.location.href = 'login.html';
 }

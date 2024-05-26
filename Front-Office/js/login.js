@@ -70,3 +70,4 @@ function logar() {
     email.focus();
   }
 }
+
