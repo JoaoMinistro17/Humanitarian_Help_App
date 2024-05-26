@@ -1,22 +1,18 @@
 [
     {
-        "title": "Combate à Discriminação",
-        "description": "Apoiar iniciativas que combatam o racismo, a xenofobia, a homofobia, a intolerância religiosa e promovam a igualdade e a justiça social.",
-        "lastDonationTime": "1 semana atrás",
-        "totalDonations": 24000,
-        "donationsGoal": 30000,
-        "imageUrl": "images/cause-6.jpg",
-        "data_inicio": "2022-05-04",
-        "data_fim": "2024-12-25"
+        "nome": "Combate à Discriminação",
+        "descricao": "Apoiar iniciativas que combatam o racismo, a xenofobia, a homofobia, a intolerância religiosa e promovam a igualdade e a justiça social.",
+        "valor_atual": 24000,
+        "valor_objetivo": 30000,
+        "image": "images/cause-6.jpg",
+        "data_conclusao": "2024-12-25"
     },
     {
-        "title": "Cuidados de Saúde",
-        "description": "Garantir o acesso a cuidados de saúde básicos e essenciais, apoiando clínicas médicas, hospitais, campanhas de vacinação.",
-        "lastDonationTime": "2 semana atrás",
-        "totalDonations": 10000,
-        "donationsGoal": 50000,
-        "imageUrl": "images/cause-1.jpg",
-        "data_inicio": "2023-09-01",
-        "data_fim": "2025-12-31"
+        "nome": "Cuidados de Saúde",
+        "descricao": "Garantir o acesso a cuidados de saúde básicos e essenciais, apoiando clínicas médicas, hospitais, campanhas de vacinação.",
+        "valor_atual": 10000,
+        "valor_objetivo": 50000,
+        "image": "images/cause-1.jpg",
+        "data_conclusao": "2025-12-31"
     }
 ]

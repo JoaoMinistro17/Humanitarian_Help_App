@@ -217,7 +217,7 @@
   <script src="js/main.js"></script>
 
   <script>
-document.addEventListener("DOMContentLoaded", function() {
+  document.addEventListener("DOMContentLoaded", function() {
     // Check if there's any donation data in local storage
     if(localStorage.getItem("donation")) {
         // Parse the donation data from local storage
@@ -226,32 +226,38 @@ document.addEventListener("DOMContentLoaded", function() {
         // Get the donation container element
         var donationContainer = document.getElementById("donationContainer");
         
-        // Iterate through each donation
-        donations.forEach(function(donation) {
-            // Create donation element
-            var donationElement = document.createElement("div");
-            donationElement.classList.add("col-lg-4", "d-flex", "mb-sm-4");
-            donationElement.innerHTML = `
-                <div class="staff">
-                    <div class="d-flex mb-4">
-                        <div class="info ml-4">
-                            <h3><a href="teacher-single.html">${donation.nome}</a></h3>
-                            <span class="position">${donation.doacao}</span>
-                            <div class="text">
-                                <p>${donation.doacao} <span>${donation.valor}</span> para <a href="#">${donation.nome_causa}</a></p>
+        // Check if donationContainer exists
+        if (donationContainer) {
+            // Iterate through each donation
+            donations.forEach(function(donation) {
+                // Create donation element
+                var donationElement = document.createElement("div");
+                donationElement.classList.add("col-lg-4", "d-flex", "mb-sm-4");
+                donationElement.innerHTML = `
+                    <div class="staff">
+                        <div class="d-flex mb-4">
+                            <div class="info ml-4">
+                                <h3><a href="teacher-single.html">${donation.nome}</a></h3>
+                                <span class="position">${donation.doacao}</span>
+                                <div class="text">
+                                    <p>${donation.doacao} <span>${donation.valor}</span> para <a href="#">${donation.nome_causa}</a></p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            `;
-            
-            // Append donation element to container
-            donationContainer.appendChild(donationElement);
-        });
+                `;
+                
+                // Append donation element to container
+                donationContainer.appendChild(donationElement);
+            });
+        } else {
+            console.error("Donation container element not found!");
+        }
+    } else {
+        console.error("No donation data found in local storage!");
     }
 });
 
-</script>
-    
+</script> 
   </body>
 </html>

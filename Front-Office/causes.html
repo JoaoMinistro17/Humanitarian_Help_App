@@ -241,82 +241,77 @@
     document.addEventListener('DOMContentLoaded', function () {
       // Retrieve the data from local storage
       const causes = JSON.parse(localStorage.getItem('causes')) || [];
-
+  
       const causesContainer = document.getElementById('causes-container');
-
+  
       // Iterate through the array of causes
       causes.forEach(causeData => {
         // Create the HTML elements dynamically
         const causeCol = document.createElement('div');
         causeCol.className = 'col-md-4';
-
+  
         const causeEntry = document.createElement('div');
         causeEntry.className = 'cause-entry';
-
+  
         const imgLink = document.createElement('a');
         imgLink.href = '#';
         imgLink.className = 'img';
-        imgLink.style.backgroundImage = `url(${causeData.imageUrl})`;
-
+        imgLink.style.backgroundImage = `url(${causeData.image})`;
+  
         const textDiv = document.createElement('div');
         textDiv.className = 'text p-3 p-md-4';
-
-        const title = document.createElement('h3');
-        const titleLink = document.createElement('a');
-        titleLink.href = '#';
-        titleLink.textContent = causeData.title;
-        title.appendChild(titleLink);
-
-        const description = document.createElement('p');
-        description.textContent = causeData.description;
-
+  
+        const nome = document.createElement('h3');
+        const nomeLink = document.createElement('a');
+        nomeLink.href = '#';
+        nomeLink.textContent = causeData.nome;
+        nome.appendChild(nomeLink);
+  
+        const descricao = document.createElement('p');
+        descricao.textContent = causeData.descricao;
+  
         const dates = document.createElement('p');
-        dates.innerHTML = `<strong>Data de Início:</strong> ${causeData.data_inicio} <br> <strong>Data de Fim:</strong> ${causeData.data_fim}`;
-
-        const lastDonation = document.createElement('span');
-        lastDonation.className = 'donation-time mb-3 d-block';
-        lastDonation.textContent = `Última doação ${causeData.lastDonationTime}`;
-
+        dates.innerHTML = `<strong>Data de Fim:</strong> ${causeData.data_fim}`;
+  
         const progressDiv = document.createElement('div');
         progressDiv.className = 'progress custom-progress-success';
-
+  
         const progressBar = document.createElement('div');
         progressBar.className = 'progress-bar bg-primary';
         progressBar.role = 'progressbar';
-        const progressPercentage = (causeData.totalDonations / causeData.donationsGoal) * 100;
+        const progressPercentage = (causeData.valor_atual / causeData.valor_objetivo) * 100;
         progressBar.style.width = `${progressPercentage}%`;
         progressBar.setAttribute('aria-valuenow', progressPercentage);
         progressBar.setAttribute('aria-valuemin', '0');
         progressBar.setAttribute('aria-valuemax', '100');
         progressDiv.appendChild(progressBar);
-
+  
         const fundRaised = document.createElement('span');
         fundRaised.className = 'fund-raised d-block';
-        fundRaised.textContent = `${causeData.totalDonations.toLocaleString()}€ angariados de ${causeData.donationsGoal.toLocaleString()}€`;
-
+        fundRaised.textContent = `${causeData.valor_atual.toLocaleString()}€ angariados de ${causeData.valor_objetivo.toLocaleString()}€`;
+  
         const donateButton = document.createElement('a');
         donateButton.href = 'atodadoacao.html';
         donateButton.className = 'btn btn-primary mt-3';
         donateButton.textContent = 'Doar';
-
+  
         // Append all elements to the cause entry
-        textDiv.appendChild(title);
-        textDiv.appendChild(description);
+        textDiv.appendChild(nome);
+        textDiv.appendChild(descricao);
         textDiv.appendChild(dates);
-        textDiv.appendChild(lastDonation);
         textDiv.appendChild(progressDiv);
         textDiv.appendChild(fundRaised);
         textDiv.appendChild(donateButton);
-
+  
         causeEntry.appendChild(imgLink);
         causeEntry.appendChild(textDiv);
-
+  
         causeCol.appendChild(causeEntry);
         causesContainer.appendChild(causeCol);
       });
     });
   </script>
-
+  
 </body>
 
 </html>
