@@ -44,13 +44,16 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item">
-            <a href="../index.html" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Página Inicial
-              </p>
-            </a>
+            
+               <!-- Página Inicial -->
+            <li class="nav-item">
+              <a href="../index.html" class="nav-link">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                  Página Inicial
+                </p>
+              </a>
+            </li>
             <!-- Iniciativas -->
             <li class="nav-item">
               <a href="iniciativas.html" class="nav-link active"> 
@@ -58,7 +61,6 @@
                 <p>Iniciativas</p>
               </a>
             </li>
-
             <!-- Causas -->
             <li class="nav-item">
               <a href="causas.html" class="nav-link">   
@@ -66,7 +68,6 @@
                 <p>Causas</p>
               </a>
             </li>
-
             <!-- Profissionais -->
             <li class="nav-item">
               <a href="profissionais.html" class="nav-link"> 
@@ -74,7 +75,6 @@
                 <p>Profissionais</p>
               </a>
             </li>  
-
             <!-- Materiais -->
             <li class="nav-item">
               <a href="materiais.html" class="nav-link">  
@@ -82,7 +82,6 @@
                 <p>Materiais</p>
               </a>
             </li> 
-
             <!-- Fotografias -->
             <li class="nav-item">
               <a href="fotografias.html" class="nav-link">
@@ -90,7 +89,6 @@
                 <p>Galeria</p>
               </a>
             </li>
-
             <!-- Voluntários -->
             <li class="nav-item">
               <a href="voluntarios.html" class="nav-link"> 
@@ -98,7 +96,13 @@
                 <p>Voluntários</p>
               </a>
             <li class="nav-item"> 
-
+            <!-- Log Out -->
+            <li class="nav-item">
+              <a href="../../Front-Office/index.html" class="nav-link"> 
+                <i class="nav-icon fas fa-sign-out-alt"></i>              
+                <p>Log Out</p>
+              </a>
+            </li>
             <!-- Apagar a treta que está para baixo e 
               escolher sempre o nav-link active ná página que estamos a usar -->
     
@@ -252,7 +256,7 @@
           </div>
           <div class="form-group">
             <label for="imagem">Imagem</label>
-            <input type="file" class="form-control" id="imagem" name="imagem" required onchange="encodeImageFileAsURL(this)">
+            <input type="file" class="form-control" id="imagem" name="imagem">
           </div>
           <div class="form-group">
             <label for="local">Local</label>
@@ -453,27 +457,23 @@
               rejectedTable.appendChild(newRow);
           }
 
-          window.encodeImageFileAsURL = function(element) {
-            const file = element.files[0];
+      /*    document.getElementById('imagem').addEventListener('change', function() {
+            const file = this.files[0];
             const reader = new FileReader();
 
             reader.onloadend = function() {
-              // Quando o carregamento estiver concluído, atualize a imagem da iniciativa
+              // Quando o carregamento estiver concluído, exiba a imagem
               const base64Image = reader.result;
+              console.log(base64Image); // Isto deve exibir a imagem como uma string base64 no console
 
               initiativesData[index].imagem = base64Image;
-              initiativesData[index].imageName = file.name; // Adiciona o nome do arquivo
 
-              // Atualize os dados no localStorage
-              localStorage.setItem("initiatives", JSON.stringify(initiativesData));
-
-              // Renderizar iniciativas na tabela
-              renderInitiatives();
+              // Salve os dados atualizados de volta no localStorage
+              localStorage.setItem('initiatives', JSON.stringify(initiativesData));
             }
-
-            reader.readAsDataURL(file);
-          }
-      });
+            reader.readAsDataURL(file); // Inicie a leitura do arquivo
+          });*/
+        }); 
     }
 
     /*  AO ACEITAR INICIATIVA VEM PARA O acceptInitiative QUE ACEITA A INICIATIVA E REDIRECIONA PARA O FORM aditionalInitiativeModal PARA ESCOLHER OS VOLUNTARIOS/PROFISSIONAIS/MATERIAIS
@@ -556,10 +556,25 @@
 
       // Adicionar a nova iniciativa aos dados (COM OS DADOS QUE NÃO PRECISAM DE APARECER NO FORMS)
       const newInitiative = { nome, email, data, hora_inicio, hora_fim, tipo, imagem, local, descricao, estado:'pendente', galeria, voluntarios, profissionais, materiais };
-      initiativesData.push(newInitiative);
+      
+      const file = form.imagem.files[0];
+      const reader = new FileReader();
 
-      // Atualizar os dados no localStorage
-      localStorage.setItem("initiatives", JSON.stringify(initiativesData));
+      reader.onloadend = function() {
+        // Quando o carregamento estiver concluído, exiba a imagem
+        const base64Image = reader.result;
+
+        console.log(base64Image); // Isto deve exibir a imagem como uma string base64 no console
+
+        // Agora você pode armazenar a imagem base64 em outra variável
+        newInitiative.imagem = base64Image;
+
+        initiativesData.push(newInitiative);
+
+        // Atualizar os dados no localStorage
+        localStorage.setItem("initiatives", JSON.stringify(initiativesData));
+      }
+      reader.readAsDataURL(file); // Inicie a leitura do arquivo
 
       // Renderizar iniciativas na tabela
       renderInitiatives();
