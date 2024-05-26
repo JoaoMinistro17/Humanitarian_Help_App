@@ -321,6 +321,9 @@
       causesTable.empty();
 
       causes.forEach((cause, index) => {
+        // Use '|| 0' to set valor_atual to 0 if it's null or undefined
+        cause.valor_atual = cause.valor_atual || 0;
+
         const row = `
           <tr>
             <td>${index + 1}</td>
