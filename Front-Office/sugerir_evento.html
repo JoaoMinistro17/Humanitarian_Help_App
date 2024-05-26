@@ -247,14 +247,14 @@
   <script src="js/jquery.timepicker.min.js"></script>
   <script src="js/scrollax.min.js"></script>
   <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&sensor=false"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
 
   <script>
     document.getElementById('formularioSugerirEventos').addEventListener('submit', function(event) {
         event.preventDefault(); // Prevent the form from submitting in the traditional way
-    
+
         // Get the values from the form fields
         const nome = document.getElementById('inputNome').value;
         const email = document.getElementById('inputEmail').value;
@@ -264,7 +264,13 @@
         const dataInicio = document.getElementById('inputDataInicio').value;
         const tipo = document.getElementById('inputTipo').value;
         const descricao = document.getElementById('inputDescricao').value;
-    
+
+        // Check if email is valid
+        if (!validateEmail(email)) {
+            alert('Por favor, insira um endereço de e-mail válido.');
+            return;
+        }
+
         // Create an object to store the form submission
         const formSubmission = {
             nome: nome,
@@ -276,20 +282,36 @@
             tipo: tipo,
             descricao: descricao
         };
-    
+
         // Get the existing submissions from local storage
         let volunteerSubmissions = JSON.parse(localStorage.getItem('formularioSugerirEventos')) || [];
-    
+
         // Add the new submission to the array
         volunteerSubmissions.push(formSubmission);
-    
+
         // Save the updated array back to local storage
         localStorage.setItem('formularioSugerirEventos', JSON.stringify(volunteerSubmissions));
-    
+
         // Optionally, provide feedback to the user
-        alert('Evento enviado com sucesso!');
+        alert('Sugestão enviada!');
+
+        // Clear the form fields
+        document.getElementById('inputNome').value = '';
+        document.getElementById('inputEmail').value = '';
+        document.getElementById('inputLocal').value = '';
+        document.getElementById('inputDuracao').value = '';
+        document.getElementById('inputHora').value = '';
+        document.getElementById('inputDataInicio').value = '';
+        document.getElementById('inputTipo').value = '';
+        document.getElementById('inputDescricao').value = '';
     });
-    </script>
+
+    // Function to validate email format
+    function validateEmail(email) {
+        const re = /\S+@\S+\.\S+/;
+        return re.test(email);
+    }
+</script>
 
 </body>
 
