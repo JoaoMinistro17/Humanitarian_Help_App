@@ -73,7 +73,7 @@
           <li class="nav-item"><a href="gallery.html" class="nav-link">Galeria</a></li>
           <li class="nav-item"><a href="event.html" class="nav-link">Eventos</a></li>
           <li class="nav-item"><a href="contact.html" class="nav-link">Contactos</a></li>
-          <li class="nav-item"><a href="login.html" class="nav-link">Login</a></li>
+          <li class="nav-item"><a href="login.html" class="nav-link" id="loginMenu">Login</a></li>
         </ul>
       </div>
     </div>
@@ -210,6 +210,16 @@
       // Optionally, provide feedback to the user
       alert('Guardado no Local Storage! Obrigado pela sua doação');
     });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    let userLogado = JSON.parse(localStorage.getItem('userLogado'));
+    if (userLogado) {
+      let loginMenu = document.getElementById('loginMenu');
+      loginMenu.textContent = 'Perfil';
+      loginMenu.href = 'perfil.html'; 
+    }
+  });
+
   </script>
 
 </body>

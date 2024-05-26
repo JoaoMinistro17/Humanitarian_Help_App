@@ -48,7 +48,7 @@
           <li class="nav-item"><a href="gallery.html" class="nav-link">Galeria</a></li>
           <li class="nav-item"><a href="event.html" class="nav-link">Eventos</a></li>
           <li class="nav-item"><a href="contact.html" class="nav-link">Contactos</a></li>
-          <li class="nav-item"><a href="login.html" class="nav-link">Login</a></li>
+          <li class="nav-item"><a href="login.html" class="nav-link" id="loginMenu">Login</a></li>
         </ul>
       </div>
     </div>
@@ -184,6 +184,16 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
-    
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      let userLogado = JSON.parse(localStorage.getItem('userLogado'));
+      if (userLogado) {
+        let loginMenu = document.getElementById('loginMenu');
+        loginMenu.textContent = 'Perfil';
+        loginMenu.href = 'perfil.html';
+      }
+    });
+  </script>
+   
   </body>
 </html>
