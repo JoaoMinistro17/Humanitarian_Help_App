@@ -111,7 +111,7 @@
             <li class="nav-item">
               <a href="fotografias.html" class="nav-link">
                 <i class="nav-icon fas fa-image"></i>
-                <p>Fotografias</p>
+                <p>Galeria</p>
               </a>
             </li>
 
@@ -282,10 +282,6 @@
             <label for="local">Local</label>
             <input type="text" class="form-control" id="local" name="local" required>
           </div>
-          <div class="form-group">
-            <label for="descricao">Descrição</label>
-            <textarea class="form-control" id="descricao" name="descricao" required></textarea>
-          </div>
           <button type="submit" class="btn btn-primary">Adicionar</button>
         </form>
       </div>
@@ -321,6 +317,10 @@
           <div class="form-group">
               <label for="materiais">Materiais</label>
               <select class="form-control" id="materiais" name="materiais" multiple required></select>
+          </div>
+          <div class="form-group">
+            <label for="quantidade-materiais">Quantidade de Material</label>
+            <input type="number" class="form-control" id="quantidade-materiais" name="quantidade-materiais" required>
           </div>
           <button type="submit" class="btn btn-primary">Adicionar</button>
         </form>
@@ -371,112 +371,110 @@
 
   //Ir buscar os dados das tabelas inciativas
   document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("addInitiativeForm");
+    const form = document.getElementById("addInitiativeForm");
 
-  const pendingTable = document.getElementById("pendingTable");
-  const acceptedTable = document.getElementById("acceptedTable");
-  const rejectedTable = document.getElementById("rejectedTable");
+    const pendingTable = document.getElementById("pendingTable");
+    const acceptedTable = document.getElementById("acceptedTable");
+    const rejectedTable = document.getElementById("rejectedTable");
+    
+    const initiativesData = JSON.parse(localStorage.getItem("initiatives")) || [];
 
-  const initiativesData = JSON.parse(localStorage.getItem("initiatives")) || [];
+    // Função para renderizar as iniciativas na tabela correspondente
+    function renderInitiatives() {
+      pendingTable.innerHTML = "";
+      acceptedTable.innerHTML = "";
+      rejectedTable.innerHTML = "";
 
-  // Função para renderizar as iniciativas na tabela correspondente
-  function renderInitiatives() {
-    pendingTable.innerHTML = "";
-    acceptedTable.innerHTML = "";
-    rejectedTable.innerHTML = "";
+      // Calculate total quantity of each material used
+      let totalMaterialsUsed = {};
 
-    // Calculate total quantity of each material used
-    let totalMaterialsUsed = {};
-
-    initiativesData.forEach((initiative, index) => {
-        const newRow = document.createElement('tr');
-        newRow.innerHTML = `
-            <td>${index + 1}</td>
-            <td>${initiative.nome}</td>
-            <td>${initiative.data}</td>
-            <td>${initiative.hora_inicio}</td>
-            <td>${initiative.hora_fim}</td>
-            <td><img src="${initiative.imagem}" alt="${initiative.nome}" style="width: 50px; height: auto;"></td>
-            <td>${initiative.local}</td>
-            <td>${initiative.descricao}</td>
-            <td>
-                ${initiative.estado === 'pendente' ? `
-                <button class="btn btn-success btn-sm" onclick="acceptInitiative(${index})" >Aceitar</button>
-                <button class="btn btn-danger btn-sm" onclick="rejectInitiative(${index})">Rejeitar</button>
-                ` : ''}
-            </td>
-        `;
-            
-        //Caso Aceite preenche um forms para indicar os voluntarios/profissionais/materiais com base nos existentes
-
-        //Sempre que se aceita uma iniciativa o valor dos materiais selecionados emUso no formulário que irá preencher deve ser atualizado no local storage para cada material
-
-        if(initiative.estado === 'aceite'){
-
-          // Adiciona evento de clique para exibir informações adicionais
-          newRow.addEventListener("click", function() {
-
-            // Remove a linha expandida anteriormente exibida
-            const acceptedExpandedRow = acceptedTable.querySelector(".expanded-row");
-            if (acceptedExpandedRow) {
-              acceptedExpandedRow.parentNode.removeChild(acceptedExpandedRow);
-            } 
-
-            // Cria uma nova linha expandida
-            const expandedRow = document.createElement("tr");
-            expandedRow.classList.add("expanded-row");
-            expandedRow.innerHTML = `
-              <td colspan="10">
-                <h4 class="display-6">Voluntários</h4>
-                  <ul>${initiative.voluntarios}</ul>
-                <h4 class="display-6">Profissionais</h4>
-                  <ul>${initiative.profissionais}</ul>
-                <h4 class="display-6">Materiais</h4>
-                  <ul>${initiative.materiais.map(material => `<li>${material.nome}: ${material.quantidade_emUso}</li>`).join('')}</ul>
+      initiativesData.forEach((initiative, index) => {
+          const newRow = document.createElement('tr');
+          newRow.innerHTML = `
+              <td>${index + 1}</td>
+              <td>${initiative.nome}</td>
+              <td>${initiative.data}</td>
+              <td>${initiative.hora_inicio}</td>
+              <td>${initiative.hora_fim}</td>
+              <td><img src="${initiative.imagem}" alt="${initiative.nome}" style="width: 50px; height: auto;"></td>
+              <td>${initiative.local}</td>
+              <td>${initiative.descricao}</td>
+              <td>
+                  ${initiative.estado === 'pendente' ? `
+                  <button class="btn btn-success btn-sm" onclick="acceptInitiative(${index})" >Aceitar</button>
+                  <button class="btn btn-danger btn-sm" onclick="rejectInitiative(${index})">Rejeitar</button>
+                  ` : ''}
               </td>
-            `;
-          
-            // Insere a linha expandida após a linha clicada
-            newRow.parentNode.insertBefore(expandedRow, newRow.nextSibling);
-          });
+          `;
+              
+          //Caso Aceite preenche um forms para indicar os voluntarios/profissionais/materiais com base nos existentes
 
-          if (initiative.materiais) {  // Check if initiative.materiais exists
-            // Calculate total quantity of each material used
-            initiative.materiais.forEach(material => {
+          //Sempre que se aceita uma iniciativa o valor dos materiais selecionados emUso no formulário que irá preencher deve ser atualizado no local storage para cada material
 
-              if (!totalMaterialsUsed[material.nome]) {
-                  totalMaterialsUsed[material.nome] = 0;
-              }
-              totalMaterialsUsed[material.nome] += material.quantidade_emUso;
+          if(initiative.estado === 'aceite'){
 
-              // Retrieve the materials from the local storage
-              let materials = JSON.parse(localStorage.getItem('materials'));
+            // Adiciona evento de clique para exibir informações adicionais
+            newRow.addEventListener("click", function() {
 
-              // Update the quantidade_emUso of each material
-              materials.forEach(material => {
-                if (totalMaterialsUsed[material.nome]) {                              
-                    material.quantidade_emUso = totalMaterialsUsed[material.nome];
+              // Remove a linha expandida anteriormente exibida
+              const acceptedExpandedRow = acceptedTable.querySelector(".expanded-row");
+              if (acceptedExpandedRow) {
+                acceptedExpandedRow.parentNode.removeChild(acceptedExpandedRow);
+              } 
+
+              // Cria uma nova linha expandida
+              const expandedRow = document.createElement("tr");
+              expandedRow.classList.add("expanded-row");
+              expandedRow.innerHTML = `
+                <td colspan="10">
+                  <h4 class="display-6">Voluntários</h4>
+                    <ul>${initiative.voluntarios ? initiative.voluntarios.map(voluntario => `<li>${voluntario.nome}</li>`).join('') : ''}</ul>
+                  <h4 class="display-6">Profissionais</h4>
+                    <ul>${initiative.profissionais ? initiative.profissionais.map(profissional => `<li>${profissional.nome}</li>`).join('') : ''}</ul>
+                  <h4 class="display-6">Materiais</h4>
+                    <ul>${initiative.materiais ? initiative.materiais.map(material => `<li>${material.nome}: ${material.quantidade_emUso}</li>`).join('') : ''}</ul>
+                </td>
+              `;
+            
+              // Insere a linha expandida após a linha clicada
+              newRow.parentNode.insertBefore(expandedRow, newRow.nextSibling);
+            });
+
+            if (initiative.materiais) {  // Check if initiative.materiais exists
+              // Calculate total quantity of each material used
+              initiative.materiais.forEach(material => {
+
+                if (!totalMaterialsUsed[material.nome]) {
+                    totalMaterialsUsed[material.nome] = 0;
                 }
+                totalMaterialsUsed[material.nome] += material.quantidade_emUso;
+
+                // Retrieve the materials from the local storage
+                let materials = JSON.parse(localStorage.getItem('materials'));
+
+                // Update the quantidade_emUso of each material
+                materials.forEach(material => {
+                  if (totalMaterialsUsed[material.nome]) {                              
+                      material.quantidade_emUso = totalMaterialsUsed[material.nome];
+                  }
+                });
+
+                // Save the updated materials back to the local storage
+                localStorage.setItem('materials', JSON.stringify(materials));
               });
+            }
+          }
 
-              // Save the updated materials back to the local storage
-              localStorage.setItem('materials', JSON.stringify(materials));
-
-          });
-        }
-
-        }
-
-        //Load das tabelas
-        if (initiative.estado === 'pendente') {
-            pendingTable.appendChild(newRow);
-        } else if (initiative.estado === 'aceite') {
-            acceptedTable.appendChild(newRow);
-        } else if (initiative.estado === 'rejeitado') {
-            rejectedTable.appendChild(newRow);
-        }
-    });
-  }
+          //Load das tabelas
+          if (initiative.estado === 'pendente') {
+              pendingTable.appendChild(newRow);
+          } else if (initiative.estado === 'aceite') {
+              acceptedTable.appendChild(newRow);
+          } else if (initiative.estado === 'rejeitado') {
+              rejectedTable.appendChild(newRow);
+          }
+      });
+    }
 
     /*  AO ACEITAR INICIATIVA VEM PARA O acceptInitiative QUE ACEITA A INICIATIVA E REDIRECIONA PARA O FORM aditionalInitiativeModal PARA ESCOLHER OS VOLUNTARIOS/PROFISSIONAIS/MATERIAIS
         QUANDO ESSE FORM FECHA COMEÇA O addDataToInitiative QUE ADICIONA O QUE ESCOLHEMOS À INICIATIVA. AINDA NAO ESTA A FUNCIONAR, 
@@ -502,9 +500,12 @@
         event.preventDefault();
 
         // Obter os valores dos campos do formulário
-        let voluntarios = Array.from(document.getElementById('voluntarios').selectedOptions).map(option => option.value);
-        let profissionais = Array.from(document.getElementById('profissionais').selectedOptions).map(option => option.value);
-        let materiais = Array.from(document.getElementById('materiais').selectedOptions).map(option => option.value);
+        let voluntarios = Array.from(document.getElementById('voluntarios').selectedOptions).map(option => ({ nome: option.value }));
+        let profissionais = Array.from(document.getElementById('profissionais').selectedOptions).map(option => ({ nome: option.value }));
+        let materiais = Array.from(document.getElementById('materiais').selectedOptions).map(option => ({
+          nome: option.value,
+          quantidade_emUso: Number(document.getElementById('quantidade-materiais').value)
+        }));
 
         // Adiciona os valores à iniciativa
         initiativesData[index].voluntarios = voluntarios;

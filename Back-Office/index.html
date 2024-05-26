@@ -123,7 +123,7 @@
               <li class="nav-item">
                 <a href="pages/fotografias.html" class="nav-link">
                   <i class="nav-icon fas fa-image"></i>
-                  <p>Fotografias</p>
+                  <p>Galeria</p>
                 </a>
               </li>
   
@@ -212,33 +212,33 @@
             </style>
         </head>
         <body>
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-info">
-                    <div class="inner">
-                        <h3 id="pending-initiatives-count">0</h3>
-                        <p>Pedidos de Iniciativa</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-person-add"></i>
-                    </div>
-                    <a href="pages/iniciativas.html" class="small-box-footer">Mais Info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-            <!-- ./col -->
-        
-            <script>
-                document.addEventListener("DOMContentLoaded", function () {
-                    // Fetch the initiatives data from localStorage
-                    const initiatives = JSON.parse(localStorage.getItem("initiatives")) || [];
-        
-                    // Count the pending initiatives
-                    const pendingCount = initiatives.filter(initiative => initiative.estado === 'pendente').length;
-        
-                    // Update the count in the small box
-                    document.getElementById("pending-initiatives-count").innerText = pendingCount;
-                });
-            </script>
+          <!--Pedidos de Iniciativa -->
+          <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-info">
+                  <div class="inner">
+                      <h3 id="pending-initiatives-count">0</h3>
+                      <p>Pedidos de Iniciativa</p>
+                  </div>
+                  <div class="icon">
+                      <i class="ion ion-person-add"></i>
+                  </div>
+                  <a href="pages/iniciativas.html" class="small-box-footer">Mais Info <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+          </div>
+          <!-- ./col -->
+          <script>
+              document.addEventListener("DOMContentLoaded", function () {
+                  // Fetch the initiatives data from localStorage
+                  const initiatives = JSON.parse(localStorage.getItem("initiatives")) || [];
+      
+                  // Count the pending initiatives
+                  const pendingCount = initiatives.filter(initiative => initiative.estado === 'pendente').length;
+      
+                  // Update the count in the small box
+                  document.getElementById("pending-initiatives-count").innerText = pendingCount;
+              });
+          </script>
 
           <!--Causas ativas -->
           <div class="col-lg-3 col-6">
@@ -270,7 +270,7 @@
           <div class="col-lg-3 col-6">
             <div class="small-box bg-danger">
                 <div class="inner">
-                    <h3 id="field-professionals-count">0</h3>
+                    <h3 id="professionals-in-initiatives-count">0</h3>
                     <p>Profissionais no Terreno</p>
                 </div>
                 <div class="icon">
@@ -281,14 +281,23 @@
           </div>
           <script>
             document.addEventListener("DOMContentLoaded", function () {
-                // Fetch the professionals data from localStorage or initialize if empty
-                let professionals = JSON.parse(localStorage.getItem("professionals")) || [];
-        
-                // Count the number of field professionals
-                const fieldProfessionalsCount = professionals.length;
-        
-                // Update the count in the small box
-                document.getElementById("field-professionals-count").innerText = fieldProfessionalsCount;
+              // Fetch the professionals data from localStorage or initialize if empty
+              let professionals = JSON.parse(localStorage.getItem("professionals")) || [];
+              let initiatives = JSON.parse(localStorage.getItem("initiatives")) || [];
+
+              // Count the number of professionals in initiatives
+              let professionalsInInitiativesCount = 0;
+
+              professionals.forEach(professional => {
+                  initiatives.forEach(initiative => {
+                      if (initiative.professionals && initiative.professionals.includes(professional.nome)) {
+                          professionalsInInitiativesCount++;
+                      }
+                  });
+              });
+
+              // Update the count in the small box
+              document.getElementById("professionals-in-initiatives-count").innerText = professionalsInInitiativesCount;
             });
           </script>
 
@@ -296,8 +305,8 @@
           <div class="col-lg-3 col-6">
             <div class="small-box bg-">
                 <div class="inner">
-                    <h3 id="volunteers-in-initiatives-count">0</h3>
-                    <p>Voluntários no Terreno</p>
+                  <h3 id="volunteers-in-initiatives-count">0</h3>
+                  <p>Voluntários no Terreno</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-person-add"></i>
@@ -310,22 +319,25 @@
               // Fetch the volunteers data from localStorage or initialize if empty
               let volunteers = JSON.parse(localStorage.getItem("volunteers")) || [];
               let initiatives = JSON.parse(localStorage.getItem("initiatives")) || [];
-
+          
               // Count the number of volunteers in initiatives
               let volunteersInInitiativesCount = 0;
-
+          
               volunteers.forEach(volunteer => {
                   initiatives.forEach(initiative => {
+                    console.log("INI ", initiative.voluntarios);
+
+                      // Check if initiative.voluntarios exists before trying to use it
                       if (initiative.voluntarios && initiative.voluntarios.includes(volunteer.nome)) {
                           volunteersInInitiativesCount++;
+                          console.log("COUNT ", volunteersInInitiativesCount);
                       }
                   });
               });
-          
               // Update the count in the small box
               document.getElementById("volunteers-in-initiatives-count").innerText = volunteersInInitiativesCount;
             });
-            </script>
+          </script>
 
           </body>
         </div> 
@@ -354,7 +366,7 @@
 
             </head>
             <body>
-              <!-- BAR CHART -->
+              <!-- MATERIAIS BAR CHART -->
               <div class="card card-success">
                 <div class="card-header">
                   <h3 class="card-title">Materiais</h3>
@@ -381,7 +393,7 @@
                   const material = JSON.parse(localStorage.getItem('materials')) || [];
                   const materialList = material.map(function(material) { return material.nome; });
                   const materialQuant = material.map(function(material) { return material.quantidade; });
-                  const materialAvaQuant = material.map(function(material) { return material.quantidade_emUso; });
+                  const materialUsedQuant = material.map(function(material) { return material.quantidade_emUso; }); 
               
                   // Define your area chart data
                   const areaChartData = {
@@ -397,7 +409,7 @@
                           backgroundColor: 'rgba(255, 99, 132, 0.5)',
                           borderColor: 'rgba(255, 99, 132, 1)',
                           borderWidth: 1,
-                          data: materialAvaQuant,
+                          data: materialUsedQuant,
                       }]
                   };
       
@@ -526,12 +538,16 @@
             descricao: "Descrição da Iniciativa 3",
             galeria: '',
             estado: "aceite",
-            voluntarios: "aa",
-            profissionais: "bb",
+            voluntarios: voluntarios = [
+            { nome: "Voluntario 1" },
+            { nome: "Voluntario 2" }
+            ],
+            profissionais: profissionais = [
+            { nome: "Profissional 1" },
+            ],
             materiais:  materiais = [
-            { nome: "Cadeira", quantidade_emUso: 1 },
-            { nome: "bb", quantidade_emUso: 0 },
-            { nome: "cc", quantidade_emUso: 0 }
+            { nome: "Cadeira", quantidade_emUso: 2 },
+            { nome: "Mesa", quantidade_emUso: 1 }
             ]
           },
           {
@@ -546,10 +562,17 @@
             descricao: "Descrição da Iniciativa 3",
             galeria: '',
             estado: "aceite",
-            voluntarios: "",
-            profissionais: "",
+            voluntarios: voluntarios = [
+            { nome: "Voluntario 1" },
+            { nome: "Voluntario 2" }
+            ],
+            profissionais: profissionais = [
+            { nome: "Profissional 1" },
+            { nome: "Profissional 2" }
+            ],
             materiais:  materiais = [
-            { nome: "Cadeira", quantidade_emUso: 1 }
+            { nome: "Cadeira", quantidade_emUso: 5 },
+            { nome: "Microfone", quantidade_emUso: 25 }
             ]
           }
     ];
@@ -583,7 +606,7 @@
         {
             nome: "Microfone",
             quantidade: "50",
-            quantidade_emUso: "30"
+            quantidade_emUso: "0"
         }
     ];
     // Armazenar os dados no Local Storage
@@ -594,20 +617,20 @@
       // Exemplo de materiais
     const volunteers = [
         {
-            nome: "Fernando",
-            idade: "100",
+            nome: "Voluntario 1",
+            idade: "20",
             telemovel: "91",
             email: "nando@gmail.com"
         },
         {
-            nome: "Paulo",
-            idade: "92",
+            nome: "Voluntario 2",
+            idade: "35",
             telemovel: "92",
             email: "paulo@gmail.com"
         },
         {
-            nome: "Gusto",
-            idade: "93",
+            nome: "Voluntario 3",
+            idade: "40",
             telemovel: "93",
             email: "gusto@gmail.com"
         }
@@ -620,21 +643,21 @@
       // Exemplo de materiais
     const professionals = [
         {
-            nome: "pro",
+            nome: "Profissional 1",
             idade: "91",
             telemovel: "91",
             email: "pro@gmail.com",
             profissao: "Regador"
         },
         {
-            nome: "fiss",
+            nome: "Profissional 2",
             idade: "92",
             telemovel: "92",
             email: "fiss@gmail.com",
             profissao: "Juiz"
         },
         {
-            nome: "ional",
+            nome: "Profissional 3",
             idade: "93",
             telemovel: "93",
             email: "ional@gmail.com",
