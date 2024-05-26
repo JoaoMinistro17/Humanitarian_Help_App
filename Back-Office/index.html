@@ -281,27 +281,34 @@
           </div>
           <script>
             document.addEventListener("DOMContentLoaded", function () {
-              // Update the count in the small box
-              document.getElementById("professionals-in-initiatives-count").innerText = professionalsInInitiativesCount;
               // Fetch the professionals data from localStorage or initialize if empty
               let professionals = JSON.parse(localStorage.getItem("professionals")) || [];
-              let initiatives = JSON.parse(localStorage.getItem("initiatives")) ||  [];
-
+              let initiatives = JSON.parse(localStorage.getItem("initiatives")) || [];
+          
               // Count the number of professionals in initiatives
               let professionalsInInitiativesCount = 0;
-
+          
+              // Object to track counted professional names
+              let countedProfessionalNames = {};
+          
               professionals.forEach(professional => {
                   initiatives.forEach(initiative => {
-                      if (initiative.professionals && initiative.professionals.includes(professional.nome)) {
+                    if (initiative.profissionais) {
+                      initiative.profissionais.forEach(profissional => {
+                        if (profissional.nome === professional.nome && !countedProfessionalNames[professional.nome]) {
                           professionalsInInitiativesCount++;
-                      }
+                          countedProfessionalNames[professional.nome] = true; // Mark this professional name as counted
+                        }
+                      });
+                    }
                   });
               });
-
+          
               // Update the count in the small box
               document.getElementById("professionals-in-initiatives-count").innerText = professionalsInInitiativesCount;
             });
-        </script>
+          </script>
+
 
           <!--Voluntários no terreno -->
           <div class="col-lg-3 col-6">
@@ -325,15 +332,19 @@
               // Count the number of volunteers in initiatives
               let volunteersInInitiativesCount = 0;
           
+              // Object to track counted volunteer names
+              let countedVolunteerNames = {};
+          
               volunteers.forEach(volunteer => {
                   initiatives.forEach(initiative => {
-                    console.log("INI ", initiative.voluntarios);
-
-                      // Check if initiative.voluntarios exists before trying to use it
-                      if (initiative.voluntarios && initiative.voluntarios.includes(volunteer.nome)) {
+                    if (initiative.voluntarios) {
+                      initiative.voluntarios.forEach(voluntario => {
+                        if (voluntario.nome === volunteer.nome && !countedVolunteerNames[volunteer.nome]) {
                           volunteersInInitiativesCount++;
-                          console.log("COUNT ", volunteersInInitiativesCount);
-                      }
+                          countedVolunteerNames[volunteer.nome] = true; // Mark this volunteer name as counted
+                        }
+                      });
+                    }
                   });
               });
               // Update the count in the small box
@@ -697,7 +708,7 @@
             nome: "causa 3",
             email: "causa3@gmail.com",
             data_conclusao: "2024-05-26",
-            valor_atual: "0",
+            valor_atual: "500",
             valor_objetivo: "1000",
             imagem: "https://via.placeholder.com/50",
             descricao: "Descrição da causa 3",
