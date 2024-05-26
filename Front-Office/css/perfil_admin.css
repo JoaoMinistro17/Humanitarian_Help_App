@@ -1,49 +1,64 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f8f9fa;
-  margin: 0;
-  padding: 0;
+  background-color: #006A6A;
+  color: white;
 }
 
-.ftco-navbar-light {
-  background: #333 !important;
-}
-
-.profile-card, .details-card, .description-card {
-  background: #333;
-  color: #fff;
-  margin-bottom: 1.5rem;
-  border-radius: 10px;
-}
-
-.profile-card img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  margin: 20px auto;
-}
-
-.profile-card .card-body {
-  padding: 0 20px 20px;
-}
-
-.details-card .card-body, .description-card .card-body {
+.profile-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
   padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  margin: 20px;
+  position: relative; /* Add this line to allow absolute positioning of the back button */
 }
 
-.card-title {
-  font-weight: bold;
-  margin-bottom: 10px;
+.avatar-section {
+  text-align: center;
+  padding-top: 40px; /* Adjust the padding to move the avatar down */
 }
 
-.card-text {
-  margin-bottom: 15px;
+.avatar {
+  border-radius: 50%;
+  width: 150px; 
+  height: 150px; 
+  margin-bottom: 20px; /* Add margin to move the user name down */
 }
 
-.container {
-  margin-top: 20px;
+.info-section, .description-section {
+  background-color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
 }
 
-.nav-link {
-  color: #fff !important;
+.info-box p, .description-section p {
+  margin: 20px 0; 
+}
+
+.info-box div {
+  margin-bottom: 15px; 
+}
+
+.description-section {
+  grid-column: span 2; /* Span across two columns */
+}
+
+.description-section h2, .description-section p {
+  color: white; /* Change the color to white */
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.back-icon {
+  width: 30px;
+  height: 30px;
 }

@@ -1,82 +1,117 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil de Utilizador</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
+  <title>Perfil Admin</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Overpass:300,400,400i,600,700" rel="stylesheet">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+  <link rel="stylesheet" href="css/animate.css">
+  
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="css/magnific-popup.css">
+
+  <link rel="stylesheet" href="css/aos.css">
+
+  <link rel="stylesheet" href="css/ionicons.min.css">
+
+  <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+  <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+  <link rel="stylesheet" href="css/flaticon.css">
+  <link rel="stylesheet" href="css/icomoon.css">
+  <link rel="stylesheet" href="scss/style.css">
+  <link rel="stylesheet" href="css/perfil_admin.css">
 </head>
 <body>
+  
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="images/Icon.png" style="height: 30px;">
+        Go Help
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
 
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-        <div class="container">
-          <a class="navbar-brand" href="index.html">
-            <img src="images/Icon.png" style="height: 30px;">
-            Go Help
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="oi oi-menu"></span> Menu
-          </button>
-
-            <div class="collapse navbar-collapse" id="ftco-nav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="about.html" class="nav-link">Sobre Nós</a></li>
-                    <li class="nav-item"><a href="causes.html" class="nav-link">Causas</a></li>
-                    <li class="nav-item"><a href="donate.html" class="nav-link">Doações</a></li>
-                    <li class="nav-item"><a href="gallery.html" class="nav-link">Galeria</a></li>
-                    <li class="nav-item"><a href="event.html" class="nav-link">Eventos</a></li>
-                    <li class="nav-item"><a href="contact.html" class="nav-link">Contactos</a></li>
-                    <li class="nav-item active"><a href="perfil.html" class="nav-link">Perfil</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Profile Content -->
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card profile-card">
-                    <img src="avatar.png" alt="João Fernandes" class="card-img-top">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">João Fernandes</h5>
-                        <p class="card-text">Utilizador<br>Guimarães, Portugal</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-8">
-                <div class="card details-card">
-                    <div class="card-body">
-                        <h5 class="card-title">Nome Completo</h5>
-                        <p class="card-text">João Pedro da Rocha Fernandes</p>
-                        <h5 class="card-title">Email</h5>
-                        <p class="card-text">example@example.com</p>
-                        <h5 class="card-title">Telémovel</h5>
-                        <p class="card-text">(097) 234-5678</p>
-                        <h5 class="card-title">País</h5>
-                        <p class="card-text">Portugal</p>
-                        <h5 class="card-title">Morada</h5>
-                        <p class="card-text">Campus de Azurém, Avda Universidade, 4800-058 Guimarães</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mt-4">
-            <div class="col-12">
-                <div class="card description-card">
-                    <div class="card-body">
-                        <h5 class="card-title">Descrição</h5>
-                        <p class="card-text">Exemplo de Descrição</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="collapse navbar-collapse" id="ftco-nav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="about.html" class="nav-link">Sobre Nós</a></li>
+        <li class="nav-item"><a href="causes.html" class="nav-link">Causas</a></li>
+        <li class="nav-item"><a href="donate.html" class="nav-link">Doações</a></li>
+        <li class="nav-item"><a href="gallery.html" class="nav-link">Galeria</a></li>
+        <li class="nav-item"><a href="event.html" class="nav-link">Eventos</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link">Contactos</a></li>
+        <li class="nav-item active"><a href="perfil.html" class="nav-link">Perfil</a></li>
+      </ul>
     </div>
+  </div>
+</nav>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<section class="ftco-section">
+  <div class="hero-wrap" data-stellar-background-ratio="0.5">
+    <div class="profile-container">
+      <div class="avatar-section">
+        <a href="../Back-Office/index.html">
+          <img src="images/user.png" alt="avatar" class="avatar">
+        </a>
+        <h2 id="userNameHeader">Berna</h2>
+      </div>
+      <div class="info-section">
+        <div class="info-box">
+          <div><span>Nome: </span><span id="userName">Berna</span></div>
+          <div><span>Email: </span><span id="userEmail">Berna@123</span></div>
+          <div>
+            <span>Telemóvel: </span><span id="userPhone"></span>
+            <i class="fa fa-pencil edit-icon" id="editPhone"></i>
+          </div>
+          <div>
+            <span>País: </span><span id="userCountry"></span>
+            <i class="fa fa-pencil edit-icon" id="editCountry"></i>
+          </div>
+          <div>
+            <span>Morada: </span><span id="userAddress"></span>
+            <i class="fa fa-pencil edit-icon" id="editAddress"></i>
+          </div>
+        </div>
+      </div>
+      <div class="description-section">
+        <h2>Descrição</h2>
+      </div>
+      <a href="../Back-Office/index.html" class="back-button">
+        <img src="images/back.png" alt="back" class="back-icon">
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-migrate-3.0.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/jquery.stellar.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/aos.js"></script>
+<script src="js/jquery.animateNumber.min.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script src="js/jquery.timepicker.min.js"></script>
+<script src="js/scrollax.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="js/google-map.js"></script>
+<script src="js/main.js"></script>
+<script src="js/perfil_admin.js"></script>
+  
 </body>
 </html>
