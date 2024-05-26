@@ -83,7 +83,11 @@ function registo(){
     listaUser.push({
       nomeCad: nome.value,
       emailCad: email.value,
-      passwordCad: password.value
+      passwordCad: password.value,
+      telemovel: '',
+      pais: '',
+      morada: '',
+      descricao: ''
     });
     
     localStorage.setItem('listaUser', JSON.stringify(listaUser));
@@ -94,7 +98,7 @@ function registo(){
     msgError.innerHTML = '';
     
     setTimeout(()=>{
-        window.location.href = '../login.html';
+        window.location.href = 'login.html'; 
     }, 1500);
   } else {
     msgError.setAttribute('style', 'display: block');
