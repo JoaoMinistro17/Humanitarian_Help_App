@@ -8,7 +8,8 @@
   <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Overpass:300,400,400i,600,700" rel="stylesheet">
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
   <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
   <link rel="stylesheet" href="css/animate.css">
@@ -60,31 +61,32 @@
   <div class="hero-wrap" data-stellar-background-ratio="0.5">
     <div class="profile-container">
       <div class="avatar-section">
-        <a href="../Back-Office/index.html">
-          <img src="images/user.png" alt="avatar" class="avatar">
-        </a>
-        <h2 id="userNameHeader">Berna</h2>
+        <img src="images/user.png" alt="avatar" class="avatar">
+        <h2 id="adminNameHeader"></h2>
+        <button id="logoutButton" class="logout-button">Logout</button>
       </div>
       <div class="info-section">
         <div class="info-box">
-          <div><span>Nome: </span><span id="userName">Berna</span></div>
-          <div><span>Email: </span><span id="userEmail">Berna@123</span></div>
+          <div><span>Nome: </span><span id="adminName"></span></div>
+          <div><span>Email: </span><span id="adminEmail"></span></div>
           <div>
-            <span>Telemóvel: </span><span id="userPhone"></span>
-            <i class="fa fa-pencil edit-icon" id="editPhone"></i>
+            <span>Telemóvel: </span><span id="adminPhone"></span>
+            <i class="fa fa-pencil edit-icon" id="editAdminPhone"></i>
           </div>
           <div>
-            <span>País: </span><span id="userCountry"></span>
-            <i class="fa fa-pencil edit-icon" id="editCountry"></i>
+            <span>País: </span><span id="adminCountry"></span>
+            <i class="fa fa-pencil edit-icon" id="editAdminCountry"></i>
           </div>
           <div>
-            <span>Morada: </span><span id="userAddress"></span>
-            <i class="fa fa-pencil edit-icon" id="editAddress"></i>
+            <span>Morada: </span><span id="adminAddress"></span>
+            <i class="fa fa-pencil edit-icon" id="editAdminAddress"></i>
           </div>
         </div>
       </div>
       <div class="description-section">
-        <h2>Descrição</h2>
+        <h2>Descrição:</h2>
+        <span id="adminDescricao"></span>
+        <i class="fa fa-pencil edit-icon" id="editAdminDescricao"></i>
       </div>
       <a href="../Back-Office/index.html" class="back-button">
         <img src="images/back.png" alt="back" class="back-icon">

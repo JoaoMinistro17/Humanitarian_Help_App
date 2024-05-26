@@ -12,19 +12,32 @@ body {
   background-color: #f0f0f0;
   border-radius: 10px;
   margin: 20px;
-  position: relative; /* Add this line to allow absolute positioning of the back button */
+  position: relative; 
 }
 
 .avatar-section {
   text-align: center;
-  padding-top: 40px; /* Adjust the padding to move the avatar down */
+  padding-top: 40px; 
+  position: relative;
 }
 
 .avatar {
   border-radius: 50%;
   width: 150px; 
   height: 150px; 
-  margin-bottom: 20px; /* Add margin to move the user name down */
+  margin-bottom: 20px; 
+}
+
+.logout-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 .info-section, .description-section {
@@ -41,15 +54,17 @@ body {
 }
 
 .info-box div {
-  margin-bottom: 15px; 
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center; 
 }
 
 .description-section {
-  grid-column: span 2; /* Span across two columns */
+  grid-column: span 2; 
 }
 
 .description-section h2, .description-section p {
-  color: white; /* Change the color to white */
+  color: white; 
 }
 
 .back-button {
@@ -61,4 +76,35 @@ body {
 .back-icon {
   width: 30px;
   height: 30px;
+}
+
+.events-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.events-box {
+  background-color: #444;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.status {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+.edit-icon {
+  margin-left: 10px;
+  cursor: pointer;
+  color: white; 
+  font-size: 1.2em; 
+}
+
+.edit-icon:hover {
+  color: #00ccff; 
 }
