@@ -1,28 +1,48 @@
 document.addEventListener('DOMContentLoaded', (event) => {
-    let userLogado = JSON.parse(localStorage.getItem('userLogado'));
+    let adminLogado = JSON.parse(localStorage.getItem('userLogado'));
 
-    if (userLogado) {
-        document.getElementById('userName').textContent = userLogado.nome;
-        document.getElementById('userEmail').textContent = userLogado.email;
-        document.getElementById('userNameHeader').textContent = userLogado.nome;
-        document.getElementById('userPhone').textContent = userLogado.telemovel;
-        document.getElementById('userCountry').textContent = userLogado.pais;
-        document.getElementById('userAddress').textContent = userLogado.morada;
+    if (adminLogado) {
+        document.getElementById('adminName').textContent = adminLogado.nome;
+        document.getElementById('adminEmail').textContent = adminLogado.email;
+        document.getElementById('adminNameHeader').textContent = adminLogado.nome;
+        document.getElementById('adminPhone').textContent = adminLogado.telemovel || 'N/A';
+        document.getElementById('adminCountry').textContent = adminLogado.pais || 'N/A';
+        document.getElementById('adminAddress').textContent = adminLogado.morada || 'N/A';
+        document.getElementById('adminDescricao').textContent = adminLogado.descricao || 'N/A';
     }
 
-    document.getElementById('editPhone').addEventListener('click', () => editField('userPhone', 'telemovel'));
-    document.getElementById('editCountry').addEventListener('click', () => editField('userCountry', 'pais'));
-    document.getElementById('editAddress').addEventListener('click', () => editField('userAddress', 'morada'));
+    document.getElementById('editAdminPhone').addEventListener('click', () => editAdminField('adminPhone', 'telemovel'));
+    document.getElementById('editAdminCountry').addEventListener('click', () => editAdminField('adminCountry', 'pais'));
+    document.getElementById('editAdminAddress').addEventListener('click', () => editAdminField('adminAddress', 'morada'));
+    document.getElementById('editAdminDescricao').addEventListener('click', () => editAdminField('adminDescricao', 'descricao'));
 });
 
-function editField(elementId, localStorageKey) {
+function editAdminField(elementId, localStorageKey) {
     const element = document.getElementById(elementId);
     const currentValue = element.textContent;
     const newValue = prompt('Edit value:', currentValue);
     if (newValue !== null && newValue !== currentValue) {
         element.textContent = newValue;
-        let userLogado = JSON.parse(localStorage.getItem('userLogado'));
-        userLogado[localStorageKey] = newValue;
-        localStorage.setItem('userLogado', JSON.stringify(userLogado));
+        let adminLogado = JSON.parse(localStorage.getItem('userLogado'));
+        adminLogado[localStorageKey] = newValue;
+        localStorage.setItem('userLogado', JSON.stringify(adminLogado));
+        
+        const adminCredentials = JSON.parse(localStorage.getItem('adminCredentials')) || [
+            { nome: 'Rui', email: 'rui.goncalves.900@gmail.com', password: '123456' },
+            { nome: 'Bernardete', email: 'berna@123', password: '123456' },
+            { nome: 'Leonardo', email: 'leo@123', password: '123456' }
+        ];
+
+        const updatedAdminCredentials = adminCredentials.map(admin => {
+            if (admin.email === adminLogado.email) {
+                return {
+                    ...admin,
+                    [localStorageKey]: newValue
+                };
+            }
+            return admin;
+        });
+
+        localStorage.setItem('adminCredentials', JSON.stringify(updatedAdminCredentials));
     }
 }

@@ -41,7 +41,9 @@ body {
 }
 
 .info-box div {
-  margin-bottom: 15px; 
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center; /* Align items in the center vertically */
 }
 
 .description-section {
@@ -81,4 +83,16 @@ body {
   height: 10px;
   border-radius: 50%;
   margin-left: 10px;
+}
+
+/* New styles for edit icons */
+.edit-icon {
+  margin-left: 10px;
+  cursor: pointer;
+  color: white; /* Ensure the icon is visible */
+  font-size: 1.2em; /* Adjust the size of the icon */
+}
+
+.edit-icon:hover {
+  color: #00ccff; /* Change color on hover */
 }

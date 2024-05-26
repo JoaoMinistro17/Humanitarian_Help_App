@@ -36,22 +36,22 @@ function logar() {
     }
   });
 
-  const adminCredentials = [
+  const adminCredentials = JSON.parse(localStorage.getItem('adminCredentials')) || [
     { nome: 'Rui', email: 'rui.goncalves.900@gmail.com', password: '123456' },
     { nome: 'Bernardete', email: 'berna@123', password: '123456' },
     { nome: 'Leonardo', email: 'leo@123', password: '123456' }
   ];
 
-  const isAdmin = adminCredentials.some(admin => email.value == admin.email && password.value == admin.password);
+  const admin = adminCredentials.find(admin => email.value == admin.email && password.value == admin.password);
 
-  if (isAdmin) {
+  if (admin) {
     window.location.href = 'perfil_admin.html';
 
     let mathRandom = Math.random().toString(16).substr(2);
     let token = mathRandom + mathRandom;
 
     localStorage.setItem('token', token);
-    localStorage.setItem('userLogado', JSON.stringify({ nome: nome.value, email: email.value, password: password.value }));
+    localStorage.setItem('userLogado', JSON.stringify(admin));
   } else if (userValid) {
     window.location.href = 'perfil.html';
     
