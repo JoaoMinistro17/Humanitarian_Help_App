@@ -212,68 +212,70 @@
     <script src="js/main.js"></script>
   
     <script>
-document.addEventListener('DOMContentLoaded', function () {
-  // Retrieve the event data from local storage
-  const event = JSON.parse(localStorage.getItem('event')) || [];
-
-  const eventsContainer = document.getElementById('events-container');
-
-  // Iterate through the array of event data
-  event.forEach(event => {
-    // Create HTML elements dynamically for each event
-    const eventDiv = document.createElement('div');
-    eventDiv.className = 'col-md-4 d-flex';
-
-    const eventEntry = document.createElement('div');
-    eventEntry.className = 'blog-entry align-self-stretch';
-
-    const eventLink = document.createElement('a');
-    eventLink.href = 'blog-single.html';
-    eventLink.className = 'block-20';
-    eventLink.style.backgroundImage = `url('images/event-1.jpg')`;
-
-    const textDiv = document.createElement('div');
-    textDiv.className = 'text p-4 d-block';
-
-    const dateDiv = document.createElement('div');
-    dateDiv.className = 'meta mb-3';
-    dateDiv.innerHTML = `<div><a href="#">${event.date}</a></div>`;
-
-    const title = document.createElement('h3');
-    title.className = 'heading mb-4';
-    const titleLink = document.createElement('a');
-    titleLink.href = '#';
-    titleLink.textContent = event.title;
-    title.appendChild(titleLink);
-
-    const timeLoc = document.createElement('p');
-    timeLoc.className = 'time-loc';
-    timeLoc.innerHTML = `<span class="mr-2"><i class="icon-clock-o"></i> ${event.time}</span> <span><i class="icon-map-o"></i> ${event.location}</span>`;
-
-    const description = document.createElement('p');
-    description.textContent = event.description;
-
-    const joinLink = document.createElement('a');
-    joinLink.href = 'event.html';
-    joinLink.textContent = 'Juntar-me';
-    joinLink.innerHTML += '<i class="ion-ios-arrow-forward"></i>';
-
-    // Append elements to construct the event entry
-    textDiv.appendChild(dateDiv);
-    textDiv.appendChild(title);
-    textDiv.appendChild(timeLoc);
-    textDiv.appendChild(description);
-    textDiv.appendChild(joinLink);
-
-    eventEntry.appendChild(eventLink);
-    eventEntry.appendChild(textDiv);
-
-    eventDiv.appendChild(eventEntry);
-
-    // Append the event entry to the events container
-    eventsContainer.appendChild(eventDiv);
-  });
-});
+      document.addEventListener('DOMContentLoaded', function () {
+        // Retrieve the event data from local storage
+        const event = JSON.parse(localStorage.getItem('event')) || [];
+      
+        const eventsContainer = document.getElementById('events-container');
+      
+        // Iterate through the array of event data
+        event.forEach(event => {
+          // Create HTML elements dynamically for each event
+          const eventDiv = document.createElement('div');
+          eventDiv.className = 'col-md-4 d-flex';
+      
+          const eventEntry = document.createElement('div');
+          eventEntry.className = 'blog-entry align-self-stretch';
+      
+          const eventLink = document.createElement('a');
+          eventLink.href = 'blog-single.html';
+          eventLink.className = 'block-20';
+          eventLink.style.backgroundImage = `url(${event.image})`; // Change this line
+      
+          const textDiv = document.createElement('div');
+          textDiv.className = 'text p-4 d-block';
+      
+          const dateDiv = document.createElement('div');
+          dateDiv.className = 'meta mb-3';
+          dateDiv.innerHTML = `<div><a href="#">${event.date}</a></div>`;
+      
+          const title = document.createElement('h3');
+          title.className = 'heading mb-4';
+          const titleLink = document.createElement('a');
+          titleLink.href = '#';
+          titleLink.textContent = event.title;
+          title.appendChild(titleLink);
+      
+          const timeLoc = document.createElement('p');
+          timeLoc.className = 'time-loc';
+          timeLoc.innerHTML = `<span class="mr-2"><i class="icon-clock-o"></i> ${event.time}</span> <span><i class="icon-map-o"></i> ${event.location}</span>`;
+      
+          const description = document.createElement('p');
+          description.textContent = event.description;
+      
+          const joinLink = document.createElement('a');
+          joinLink.href = 'event.html';
+          joinLink.textContent = 'Juntar-me';
+          joinLink.innerHTML += '<i class="ion-ios-arrow-forward"></i>';
+      
+          // Append elements to construct the event entry
+          textDiv.appendChild(dateDiv);
+          textDiv.appendChild(title);
+          textDiv.appendChild(timeLoc);
+          textDiv.appendChild(description);
+          textDiv.appendChild(joinLink);
+      
+          eventEntry.appendChild(eventLink);
+          eventEntry.appendChild(textDiv);
+      
+          eventDiv.appendChild(eventEntry);
+      
+          // Append the event entry to the events container
+          eventsContainer.appendChild(eventDiv);
+        });
+      });
+      </script>
+      
 
     </script>
   </body>
