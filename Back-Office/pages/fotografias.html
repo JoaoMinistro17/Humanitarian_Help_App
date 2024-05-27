@@ -152,6 +152,9 @@
   const contentSection = document.querySelector('.content');
 
   initiativesData.forEach((initiative, index) => {
+    if (initiative.estado == 'rejeitado' || initiative.estado == 'pendente') {
+      return;
+    }
     // Crie os elementos do cartão
     const card = document.createElement('div');
     card.className = 'card';

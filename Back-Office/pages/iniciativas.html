@@ -425,26 +425,28 @@
 
             if (initiative.materiais) {  // Check if initiative.materiais exists
               // Calculate total quantity of each material used
-              initiative.materiais.forEach(material => {
+              if(initiative.estado === 'aceite') {
+                initiative.materiais.forEach(material => {
 
-                if (!totalMaterialsUsed[material.nome]) {
-                    totalMaterialsUsed[material.nome] = 0;
-                }
-                totalMaterialsUsed[material.nome] += material.quantidade_emUso;
-
-                // Retrieve the materials from the local storage
-                let materials = JSON.parse(localStorage.getItem('materials'));
-
-                // Update the quantidade_emUso of each material
-                materials.forEach(material => {
-                  if (totalMaterialsUsed[material.nome]) {                              
-                      material.quantidade_emUso = totalMaterialsUsed[material.nome];
+                  if (!totalMaterialsUsed[material.nome]) {
+                      totalMaterialsUsed[material.nome] = 0;
                   }
-                });
+                  totalMaterialsUsed[material.nome] += material.quantidade_emUso;
 
-                // Save the updated materials back to the local storage
-                localStorage.setItem('materials', JSON.stringify(materials));
-              });
+                  // Retrieve the materials from the local storage
+                  let materials = JSON.parse(localStorage.getItem('materials'));
+
+                  // Update the quantidade_emUso of each material
+                  materials.forEach(material => {
+                    if (totalMaterialsUsed[material.nome]) {                              
+                        material.quantidade_emUso = totalMaterialsUsed[material.nome];
+                    }
+                  });
+
+                  // Save the updated materials back to the local storage
+                  localStorage.setItem('materials', JSON.stringify(materials));
+                });
+              }
             }
           }
 
