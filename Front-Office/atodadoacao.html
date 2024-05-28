@@ -200,7 +200,6 @@
       // Set the cause's name
       causeNameElement.textContent = decodeURIComponent(causeName);
 
-
       // Get the values from the form fields
       const nome = document.getElementById('inputNome').value;
       const telemovel = document.getElementById('inputTelemovel').value;
@@ -236,28 +235,28 @@
 
       const causes = JSON.parse(localStorage.getItem('causes')) || [];
       const cause = causes.find(cause => cause.nome === causa);
-      cause.valor_atual = Number(cause.valor_atual) + parseInt(valor);
-      localStorage.setItem('causes', JSON.stringify(causes));
 
-
+      // atualizar o valor atual da causa
+      cause.valor_atual = (Number(cause.valor_atual) + parseInt(valor)).toString();
+      if (Number(cause.valor_atual) >= Number(cause.valor_objetivo)) {
+        cause.estado = 'concluída';
+      }
       // Save the updated array back to local storage
+      localStorage.setItem('causes', JSON.stringify(causes));
       localStorage.setItem('donation', JSON.stringify(volunteerSubmissions));
 
       // Optionally, provide feedback to the user
       alert('Guardado no Local Storage! Obrigado pela sua doação');
     });
 
-  document.addEventListener('DOMContentLoaded', function() {
-    let userLogado = JSON.parse(localStorage.getItem('userLogado'));
-    if (userLogado) {
-      let loginMenu = document.getElementById('loginMenu');
-      loginMenu.textContent = 'Perfil';
-      loginMenu.href = 'perfil.html'; 
-    }
-  });
-
+    document.addEventListener('DOMContentLoaded', function() {
+      let userLogado = JSON.parse(localStorage.getItem('userLogado'));
+      if (userLogado) {
+        let loginMenu = document.getElementById('loginMenu');
+        loginMenu.textContent = 'Perfil';
+        loginMenu.href = 'perfil.html'; 
+      }
+    });
   </script>
-
 </body>
-
 </html>

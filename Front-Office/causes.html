@@ -131,11 +131,11 @@
                 <div class="ftco-footer-widget mb-4 ml-md-4">
                     <h2 class="ftco-heading-2">Links</h2>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="py-2 d-block">Home</a></li>
-                        <li><a href="#" class="py-2 d-block">Sobre</a></li>
-                        <li><a href="#" class="py-2 d-block">Doações</a></li>
-                        <li><a href="#" class="py-2 d-block">Causas</a></li>
-                        <li><a href="#" class="py-2 d-block">Eventos</a></li>
+                      <li><a href="index.html" class="py-2 d-block">Home</a></li>
+                      <li><a href="about.html" class="py-2 d-block">Sobre</a></li>
+                      <li><a href="donate.html" class="py-2 d-block">Doações</a></li>
+                      <li><a href="causes.html" class="py-2 d-block">Causas</a></li>
+                      <li><a href="event.html" class="py-2 d-block">Eventos</a></li>
                     </ul>
                 </div>
             </div>
@@ -151,7 +151,7 @@
                                 </a>
                             </li>
                             <li><a href="#"><span class="icon icon-phone"></span><span class="text">+ 351 923 929 210</span></a></li>
-                            <li><a href="#"><span class="icon icon-envelope"></span><span class="text">gohelp.com</span></a></li>
+                            <li><a href="#"><span class="icon icon-envelope"></span><span class="text">gohelp@gmail.com</span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -195,71 +195,77 @@
       const causesContainer = document.getElementById('causes-container');
   
       // Iterate through the array of causes
-      causes.forEach(causeData => {
-        // Create the HTML elements dynamically
-        const causeCol = document.createElement('div');
-        causeCol.className = 'col-md-4';
-  
-        const causeEntry = document.createElement('div');
-        causeEntry.className = 'cause-entry';
-  
-        const imgLink = document.createElement('a');
-        imgLink.href = '#';
-        imgLink.className = 'img';
-        imgLink.style.backgroundImage = `url(${causeData.imagem})`;
-  
-        const textDiv = document.createElement('div');
-        textDiv.className = 'text p-3 p-md-4';
-  
-        const nome = document.createElement('h3');
-        const nomeLink = document.createElement('a');
-        nomeLink.href = '#';
-        nomeLink.textContent = causeData.nome;
-        nome.appendChild(nomeLink);
-  
-        const descricao = document.createElement('p');
-        descricao.textContent = causeData.descricao;
-  
-        const dates = document.createElement('p');
-        dates.innerHTML = `<strong>Data de Fim:</strong> ${causeData.data_conclusao}`;
-  
-        const progressDiv = document.createElement('div');
-        progressDiv.className = 'progress custom-progress-success';
-  
-        const progressBar = document.createElement('div');
-        progressBar.className = 'progress-bar bg-primary';
-        progressBar.role = 'progressbar';
-        const progressPercentage = (causeData.valor_atual / causeData.valor_objetivo) * 100;
-        progressBar.style.width = `${progressPercentage}%`;
-        progressBar.setAttribute('aria-valuenow', progressPercentage);
-        progressBar.setAttribute('aria-valuemin', '0');
-        progressBar.setAttribute('aria-valuemax', '100');
-        progressDiv.appendChild(progressBar);
-  
-        const fundRaised = document.createElement('span');
-        fundRaised.className = 'fund-raised d-block';
-        fundRaised.textContent = `${causeData.valor_atual.toLocaleString()}€ angariados de ${causeData.valor_objetivo.toLocaleString()}€`;
-  
-        const donateButton = document.createElement('a');
-        donateButton.href = 'atodadoacao.html';
-        donateButton.className = 'btn btn-primary mt-3';
-        donateButton.textContent = 'Doar';
-        donateButton.href = `atodadoacao.html?cause=${encodeURIComponent(causeData.nome)}`;
-  
-        // Append all elements to the cause entry
-        textDiv.appendChild(nome);
-        textDiv.appendChild(descricao);
-        textDiv.appendChild(dates);
-        textDiv.appendChild(progressDiv);
-        textDiv.appendChild(fundRaised);
-        textDiv.appendChild(donateButton);
-  
-        causeEntry.appendChild(imgLink);
-        causeEntry.appendChild(textDiv);
-  
-        causeCol.appendChild(causeEntry);
-        causesContainer.appendChild(causeCol);
+      causes.forEach(cause => {
+         // Apenas mostra as causas que estão em andamento
+        if(cause.estado == 'em andamento'){
+
+            // Create the HTML elements dynamically
+            const causeCol = document.createElement('div');
+            causeCol.className = 'col-md-4';
+      
+            const causeEntry = document.createElement('div');
+            causeEntry.className = 'cause-entry';
+      
+            const imgLink = document.createElement('a');
+            imgLink.href = '#';
+            imgLink.className = 'img';
+            imgLink.style.backgroundImage = `url(${cause.imagem})`;
+      
+            const textDiv = document.createElement('div');
+            textDiv.className = 'text p-3 p-md-4';
+      
+            const nome = document.createElement('h3');
+            const nomeLink = document.createElement('a');
+            nomeLink.href = '#';
+            nomeLink.textContent = cause.nome;
+            nome.appendChild(nomeLink);
+      
+            const descricao = document.createElement('p');
+            descricao.textContent = cause.descricao;
+      
+            const dates = document.createElement('p');
+            dates.innerHTML = `<strong>Data de Fim:</strong> ${cause.data_conclusao}`;
+      
+            const progressDiv = document.createElement('div');
+            progressDiv.className = 'progress custom-progress-success';
+      
+            const progressBar = document.createElement('div');
+            progressBar.className = 'progress-bar bg-primary';
+            progressBar.role = 'progressbar';
+            const progressPercentage = (cause.valor_atual / cause.valor_objetivo) * 100;
+            progressBar.style.width = `${progressPercentage}%`;
+            progressBar.setAttribute('aria-valuenow', progressPercentage);
+            progressBar.setAttribute('aria-valuemin', '0');
+            progressBar.setAttribute('aria-valuemax', '100');
+            progressDiv.appendChild(progressBar);
+      
+            const fundRaised = document.createElement('span');
+            fundRaised.className = 'fund-raised d-block';
+            fundRaised.textContent = `${cause.valor_atual.toLocaleString()}€ angariados de ${cause.valor_objetivo.toLocaleString()}€`;
+      
+            const donateButton = document.createElement('a');
+            donateButton.href = 'atodadoacao.html';
+            donateButton.className = 'btn btn-primary mt-3';
+            donateButton.textContent = 'Doar';
+            donateButton.href = `atodadoacao.html?cause=${encodeURIComponent(cause.nome)}`;
+      
+            // Append all elements to the cause entry
+            textDiv.appendChild(nome);
+            textDiv.appendChild(descricao);
+            textDiv.appendChild(dates);
+            textDiv.appendChild(progressDiv);
+            textDiv.appendChild(fundRaised);
+            textDiv.appendChild(donateButton);
+      
+            causeEntry.appendChild(imgLink);
+            causeEntry.appendChild(textDiv);
+      
+            causeCol.appendChild(causeEntry);
+            causesContainer.appendChild(causeCol);
+        }
       });
+      // Save the updated array back to local storage
+      localStorage.setItem('causes', JSON.stringify(causes));
     });
 
     document.addEventListener('DOMContentLoaded', function() {
