@@ -234,6 +234,12 @@
       // Add the new submission to the array
       volunteerSubmissions.push(formSubmission);
 
+      const causes = JSON.parse(localStorage.getItem('causes')) || [];
+      const cause = causes.find(cause => cause.nome === causa);
+      cause.valor_atual = Number(cause.valor_atual) + parseInt(valor);
+      localStorage.setItem('causes', JSON.stringify(causes));
+
+
       // Save the updated array back to local storage
       localStorage.setItem('donation', JSON.stringify(volunteerSubmissions));
 
