@@ -110,11 +110,11 @@
                 <div class="ftco-footer-widget mb-4 ml-md-4">
                     <h2 class="ftco-heading-2">Links</h2>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="py-2 d-block">Home</a></li>
-                        <li><a href="#" class="py-2 d-block">Sobre</a></li>
-                        <li><a href="#" class="py-2 d-block">Doações</a></li>
-                        <li><a href="#" class="py-2 d-block">Causas</a></li>
-                        <li><a href="#" class="py-2 d-block">Eventos</a></li>
+                        <li><a href="index.html" class="py-2 d-block">Home</a></li>
+                        <li><a href="about.html" class="py-2 d-block">Sobre</a></li>
+                        <li><a href="donate.html" class="py-2 d-block">Doações</a></li>
+                        <li><a href="causes.html" class="py-2 d-block">Causas</a></li>
+                        <li><a href="event.html" class="py-2 d-block">Eventos</a></li>
                     </ul>
                 </div>
             </div>
@@ -190,10 +190,6 @@
           const textDiv = document.createElement('div');
           textDiv.className = 'text p-4 d-block';
       
-          const dateDiv = document.createElement('div');
-          dateDiv.className = 'meta mb-3';
-          dateDiv.innerHTML = `<div><a href="#">${event.date}</a></div>`;
-      
           const nome = document.createElement('h3');
           nome.className = 'heading mb-4';
           const nomeLink = document.createElement('a');
@@ -201,6 +197,9 @@
           nomeLink.textContent = event.nome;
           nome.appendChild(nomeLink);
       
+          const data = document.createElement('p'); 
+          data.textContent = event.data; 
+
           const timeLoc = document.createElement('p');
           timeLoc.className = 'time-loc';
           timeLoc.innerHTML = `<span class="mr-2"><i class="icon-clock-o"></i> ${event.hora_inicio} - ${event.hora_fim}</span> <br> <span><i class="icon-map-o"></i> ${event.local}</span>`;
@@ -214,15 +213,14 @@
           joinLink.innerHTML += '<i class="ion-ios-arrow-forward"></i>';
       
           // Append elements to construct the event entry
-          textDiv.appendChild(dateDiv);
           textDiv.appendChild(nome);
+          textDiv.appendChild(data);
           textDiv.appendChild(timeLoc);
           textDiv.appendChild(descricao);
           textDiv.appendChild(joinLink);
       
           eventEntry.appendChild(eventLink);
           eventEntry.appendChild(textDiv);
-      
           eventDiv.appendChild(eventEntry);
       
           // Append the event entry to the events container
@@ -230,15 +228,14 @@
         });
       });
 
-    document.addEventListener('DOMContentLoaded', function() {
-    let userLogado = JSON.parse(localStorage.getItem('userLogado'));
-    if (userLogado) {
-      let loginMenu = document.getElementById('loginMenu');
-      loginMenu.textContent = 'Perfil';
-      loginMenu.href = 'perfil.html'; 
-    }
-  }); 
-
+      document.addEventListener('DOMContentLoaded', function() {
+        let userLogado = JSON.parse(localStorage.getItem('userLogado'));
+        if (userLogado) {
+          let loginMenu = document.getElementById('loginMenu');
+          loginMenu.textContent = 'Perfil';
+          loginMenu.href = 'perfil.html'; 
+        }
+      }); 
     </script>
   </body>
   </html>

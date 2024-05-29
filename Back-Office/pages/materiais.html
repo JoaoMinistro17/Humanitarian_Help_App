@@ -196,12 +196,12 @@
   document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("addMaterialForm");
     const tabela = document.getElementById("materialTableBody");
-    const materialsData = JSON.parse(localStorage.getItem("materials")) || [];
+    const materials = JSON.parse(localStorage.getItem("materials")) || [];
 
     // Função para renderizar os materiais na tabela
     function renderMaterials() {
       tabela.innerHTML = "";
-      materialsData.forEach((material, index) => {
+      materials.forEach((material, index) => {
         const newRow = tabela.insertRow();
         newRow.innerHTML = `
           <td>${index + 1}</td>
@@ -222,11 +222,11 @@
       const quantidade = form.quantidade.value;
 
       // Adicionar o novo material aos dados
-      const newMaterial = { nome, quantidade, quantidade_emUso:'0'};
-      materialsData.push(newMaterial);
+      const newMaterial = { nome, quantidade, quantidade_emUso:"0"};
+      materials.push(newMaterial);
 
       // Atualizar os dados no localStorage
-      localStorage.setItem("materials", JSON.stringify(materialsData));
+      localStorage.setItem("materials", JSON.stringify(materials));
 
       // Renderizar materiais na tabela
       renderMaterials();
@@ -243,8 +243,8 @@
 
     // Função para excluir material
     window.deleteMaterial = function (index) {
-      materialsData.splice(index, 1);
-      localStorage.setItem("materials", JSON.stringify(materialsData));
+      materials.splice(index, 1);
+      localStorage.setItem("materials", JSON.stringify(materials));
       renderMaterials();
     };
   });

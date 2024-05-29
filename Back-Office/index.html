@@ -378,31 +378,30 @@
               </div>
               <!-- /.card -->
           
-              <script>              
-                $(document).ready(function() {
+              <script>
+                function updateChart() {
                   const material = JSON.parse(localStorage.getItem('materials')) || [];
-                  const materialList = material.map(function(material) { return material.nome; });
-                  const materialQuant = material.map(function(material) { return material.quantidade; });
-                  const materialUsedQuant = material.map(function(material) { return material.quantidade_emUso; }); 
               
                   // Define your area chart data
                   const areaChartData = {
-                      labels: materialList,
+                      labels: material.map(item => item.nome),
                       datasets: [{
                           label: 'Disponível',
                           backgroundColor: 'rgba(54, 162, 235, 0.5)',
                           borderColor: 'rgba(54, 162, 235, 1)',
                           borderWidth: 1,
-                          data: materialQuant,
+                          data: material.map(item => item.quantidade),
                       }, {
                           label: 'Em uso',
                           backgroundColor: 'rgba(255, 99, 132, 0.5)',
                           borderColor: 'rgba(255, 99, 132, 1)',
                           borderWidth: 1,
-                          data: materialUsedQuant,
+                          data: material.map(item => (item.quantidade_emUso)),
                       }]
                   };
-      
+              
+                  console.log("AAA ",material)
+
                   // Initialize the bar chart
                   const barChartCanvas = $('#barChart');
                   const barChart = new Chart(barChartCanvas, {
@@ -414,6 +413,10 @@
                           datasetFill: false
                       }
                   });
+                }
+              
+                $(document).ready(function() {
+                  updateChart();
                 });
               </script>
 
@@ -421,6 +424,14 @@
               <div class="card card-success">
                 <div class="card-header">
                   <h3 class="card-title">Causas Em Andamento</h3>
+                  <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                      <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </div>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body p-0">
@@ -515,8 +526,8 @@
         {
             nome: "Iniciativa 3",
             email: "iniciativa3@example.com",
-            data: "2023-05-22",
-            hora_inicio: "10:00",
+            data: "2024-05-28",
+            hora_inicio: "9:00",
             hora_fim: "12:00",
             tipo: "Palestra",
             imagem: "https://via.placeholder.com/50",
@@ -539,13 +550,13 @@
           {
             nome: "Iniciativa 4",
             email: "iniciativa4@example.com",
-            data: "2023-05-22",
-            hora_inicio: "10:00",
-            hora_fim: "12:00",
+            data: "2024-05-28",
+            hora_inicio: "13:00",
+            hora_fim: "19:00",
             tipo: "Ensaio",
             imagem: "https://via.placeholder.com/50",
             local: "Local 3",
-            descricao: "Descrição da Iniciativa 3",
+            descricao: "Descrição da Iniciativa 4",
             galeria: '',
             estado: "aceite",
             voluntarios: voluntarios = [
@@ -557,8 +568,8 @@
             { nome: "Profissional 2" }
             ],
             materiais:  materiais = [
-            { nome: "Cadeira", quantidade_emUso: 5 },
-            { nome: "Microfone", quantidade_emUso: 25 }
+            { nome: "Coluna de som", quantidade_emUso: 4 },
+            { nome: "Microfone", quantidade_emUso: 8 }
             ]
           }
     ];
@@ -605,20 +616,20 @@
         {
             nome: "Voluntario 1",
             idade: "20",
-            telemovel: "91",
-            email: "nando@gmail.com"
+            telemovel: "919797979",
+            email: "voluntario@gmail.com"
         },
         {
             nome: "Voluntario 2",
             idade: "35",
-            telemovel: "92",
-            email: "paulo@gmail.com"
+            telemovel: "929292929",
+            email: "voluntario@gmail.com"
         },
         {
             nome: "Voluntario 3",
             idade: "40",
-            telemovel: "93",
-            email: "gusto@gmail.com"
+            telemovel: "939393939",
+            email: "voluntario@gmail.com"
         }
     ];
     // Armazenar os dados no Local Storage
@@ -630,25 +641,33 @@
     const professionals = [
         {
             nome: "Profissional 1",
-            idade: "91",
-            telemovel: "91",
-            email: "pro@gmail.com",
-            profissao: "Regador"
+            idade: "20",
+            telemovel: "911231231",
+            email: "profissional@gmail.com",
+            profissao: "Gestor do Ambiente"
         },
         {
             nome: "Profissional 2",
-            idade: "92",
-            telemovel: "92",
-            email: "fiss@gmail.com",
-            profissao: "Juiz"
+            idade: "25",
+            telemovel: "911321321",
+            email: "profissional@gmail.com",
+            profissao: "Gestor da qualidade"
         },
         {
             nome: "Profissional 3",
-            idade: "93",
-            telemovel: "93",
-            email: "ional@gmail.com",
-            profissao: "Osteopata"
+            idade: "30",
+            telemovel: "911321321",
+            email: "profissional@gmail.com",
+            profissao: "Polícia Municipal"
+        },
+        {
+            nome: "Profissional 4",
+            idade: "35",
+            telemovel: "911321321",
+            email: "profissional@gmail.com",
+            profissao: "Polícia Municipal"
         }
+        
     ];
       // Armazenar os dados no Local Storage
       localStorage.setItem('professionals', JSON.stringify(professionals));
@@ -675,7 +694,7 @@
             valor_objetivo: "1000",
             imagem: " ",
             descricao: "Descrição da causa 2",
-            estado: "pendente",
+            estado: "concluída",
         },
         {
             nome: "causa 3",

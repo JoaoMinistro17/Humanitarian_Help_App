@@ -292,15 +292,15 @@
 
           <div class="form-group">
               <label for="voluntarios">Voluntários</label>
-              <select class="form-control" id="voluntarios" name="voluntarios" multiple required></select>
+              <select class="form-control" id="voluntarios" name="voluntarios" multiple></select>
           </div>
           <div class="form-group">
               <label for="profissionais">Profissionais</label>
-              <select class="form-control" id="profissionais" name="profissionais" multiple required></select>
+              <select class="form-control" id="profissionais" name="profissionais" multiple></select>
           </div>
           <div class="form-group">
               <label for="materiais">Materiais</label>
-              <select class="form-control" id="materiais" name="materiais" multiple required></select>
+              <select class="form-control" id="materiais" name="materiais" multiple></select>
           </div>
           <div class="form-group">
             <label for="quantidade-materiais">Quantidade de Material</label>
@@ -437,7 +437,7 @@
                   let materials = JSON.parse(localStorage.getItem('materials'));
 
                   // Update the quantidade_emUso of each material
-                  materials.forEach(material => {
+                  materials.forEach(material => { 
                     if (totalMaterialsUsed[material.nome]) {                              
                         material.quantidade_emUso = totalMaterialsUsed[material.nome];
                     }
